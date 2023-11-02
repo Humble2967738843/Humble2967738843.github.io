@@ -717,17 +717,22 @@
 <h3 id="3-1-Task-Definition"><a href="#3-1-Task-Definition" class="headerlink" title="3.1 Task Definition"></a>3.1 Task Definition</h3><p>假设我们有一个由 *θ <em>参数化的多模态 LLM</em> f *（由两部分组成，由 θ<sub>vision</sub> 和 θ<sub>text</sub> 参数化的 f<sub>vision</sub> 和 f<sub>text </sub>），将输入 i<sub>e</sub> 和 x<sub>e</sub> 映射到 y<sub>o</sub> 的预测，其中 i<sub>e </sub>指的是编辑图像输入，xe 指的是编辑文本提示输入和 y<sub>o</sub> 表示为原始输出。我们将 M 表示为特定指标的符号表示，下标表示特定度量，上标表示变化编辑数据。我们准备第 3.2.1 节中所述的编辑数据集，其表示为 Dedit。受到姚等人的启发。 （2023），我们引入了一系列多模式模型编辑指标。</p>
 <p><img src="/../imgs/$%7Bfiilename%7D/ZFVB46CA.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/ZFVB46CA.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;ZFVB46CA&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F5LR2L362%22%2C%22annotationKey%22%3A%22MJQK4385%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%224%22%2C%22position%22%3A%7B%22pageIndex%22%3A3%2C%22rects%22%3A%5B%5B64.853%2C526.008%2C292.5%2C791.596%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEQHAEIP8%22%5D%2C%22locator%22%3A%224%22%7D%7D&quot; width=&quot;379&quot; height=&quot;442&quot; src=&quot;attachments/ZFVB46CA.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
 <p><strong>可靠性</strong>。需要编辑可靠性才能将预测从 y<sub>o</sub> 更改为 y<sub>e</sub>。直观上，我们需要的是更新后的 θe，其中 f（即 x<sub>e</sub>;θ<sub>e</sub>）&#x3D; y<sub>e</sub>。为了衡量可靠性，我们使用编辑准确性，如下所述：</p>
-<p><img src="/../imgs/$%7Bfiilename%7D/HSTRNPML.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/HSTRNPML.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;HSTRNPML&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F5LR2L362%22%2C%22annotationKey%22%3A%22NS7JGJWI%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%224%22%2C%22position%22%3A%7B%22pageIndex%22%3A3%2C%22rects%22%3A%5B%5B68.824%2C342.919%2C292.059%2C378.214%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEQHAEIP8%22%5D%2C%22locator%22%3A%224%22%7D%7D&quot; width=&quot;372&quot; height=&quot;59&quot; src=&quot;attachments/HSTRNPML.png&quot; ztype=&quot;zimage&quot;&gt;"><br>其中θ<sub>e</sub>指的是编辑后的参数。</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/HSTRNPML.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/HSTRNPML.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;HSTRNPML&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F5LR2L362%22%2C%22annotationKey%22%3A%22NS7JGJWI%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%224%22%2C%22position%22%3A%7B%22pageIndex%22%3A3%2C%22rects%22%3A%5B%5B68.824%2C342.919%2C292.059%2C378.214%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEQHAEIP8%22%5D%2C%22locator%22%3A%224%22%7D%7D&quot; width=&quot;372&quot; height=&quot;59&quot; src=&quot;attachments/HSTRNPML.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>其中θ<sub>e</sub>指的是编辑后的参数。</p>
 <p><strong>局部性</strong>。为了保持模型的稳定性，必须最大限度地减少编辑对模型更广泛的知识库造成的意外副作用。为了实现这一目标，我们引入了两个指标：M <sup>Text</sup> <sub>loc</sub> (T-Locality) 和 M<sup>Image</sup> <sub>loc</sub> (M-Locality)，这两个指标都是为了在编辑过程中保持模型的稳定性。鉴于多模态语言模型中的知识是从LLMs继承的，保护这些知识至关重要。考虑到这一目标，我们搁置了模型的视觉辨别模块，而是采用基本的问答数据集 D<sub>loc-t</sub>，如第 3.2.2 节中所述。我们定义问题为x，答案为y，如下：</p>
-<p><img src="/../imgs/$%7Bfiilename%7D/J24EN8UP.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/J24EN8UP.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;J24EN8UP&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F5LR2L362%22%2C%22annotationKey%22%3A%22M2ZHI4QM%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%224%22%2C%22position%22%3A%7B%22pageIndex%22%3A3%2C%22rects%22%3A%5B%5B67.941%2C93.214%2C292.941%2C133.361%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEQHAEIP8%22%5D%2C%22locator%22%3A%224%22%7D%7D&quot; width=&quot;375&quot; height=&quot;67&quot; src=&quot;attachments/J24EN8UP.png&quot; ztype=&quot;zimage&quot;&gt;"><br>视觉编码器在多模态语言模型中发挥着关键作用，将将图像转换为矢量表示，以便与自然语言文本共同编码。</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/J24EN8UP.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/J24EN8UP.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;J24EN8UP&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F5LR2L362%22%2C%22annotationKey%22%3A%22M2ZHI4QM%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%224%22%2C%22position%22%3A%7B%22pageIndex%22%3A3%2C%22rects%22%3A%5B%5B67.941%2C93.214%2C292.941%2C133.361%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEQHAEIP8%22%5D%2C%22locator%22%3A%224%22%7D%7D&quot; width=&quot;375&quot; height=&quot;67&quot; src=&quot;attachments/J24EN8UP.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>视觉编码器在多模态语言模型中发挥着关键作用，将将图像转换为矢量表示，以便与自然语言文本共同编码。</p>
 <p><img src="/../imgs/$%7Bfiilename%7D/IPZFZHUW.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/IPZFZHUW.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;IPZFZHUW&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F5LR2L362%22%2C%22annotationKey%22%3A%22ZIQHSJG7%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%224%22%2C%22position%22%3A%7B%22pageIndex%22%3A3%2C%22rects%22%3A%5B%5B301.765%2C653.066%2C528.529%2C777.919%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEQHAEIP8%22%5D%2C%22locator%22%3A%224%22%7D%7D&quot; width=&quot;378&quot; height=&quot;208&quot; src=&quot;attachments/IPZFZHUW.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
 <p>因此，我们必须考虑对该模块进行任何修改的潜在后果。我们构建表示为 D<sub>loc-v</sub> 的数据集用于测试 MImage loc ，并计算如下：</p>
-<p><img src="/../imgs/$%7Bfiilename%7D/4NC86SS7.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/4NC86SS7.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;4NC86SS7&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F5LR2L362%22%2C%22annotationKey%22%3A%22K2BYGI7E%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%224%22%2C%22position%22%3A%7B%22pageIndex%22%3A3%2C%22rects%22%3A%5B%5B302.647%2C522.478%2C532.941%2C557.772%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEQHAEIP8%22%5D%2C%22locator%22%3A%224%22%7D%7D&quot; width=&quot;384&quot; height=&quot;59&quot; src=&quot;attachments/4NC86SS7.png&quot; ztype=&quot;zimage&quot;&gt;"><br>其中（iv，xv，yv）是范围外数据，θe表示编辑数据更新的参数（即xe，ye)。</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/4NC86SS7.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/4NC86SS7.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;4NC86SS7&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F5LR2L362%22%2C%22annotationKey%22%3A%22K2BYGI7E%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%224%22%2C%22position%22%3A%7B%22pageIndex%22%3A3%2C%22rects%22%3A%5B%5B302.647%2C522.478%2C532.941%2C557.772%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEQHAEIP8%22%5D%2C%22locator%22%3A%224%22%7D%7D&quot; width=&quot;384&quot; height=&quot;59&quot; src=&quot;attachments/4NC86SS7.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>其中（iv，xv，yv）是范围外数据，θe表示编辑数据更新的参数（即xe，ye)。</p>
 <p><strong>泛化性</strong>。在整个编辑过程中，仅仅修改个别错误的输入是不够的。修订后的模型还应保留泛化能力，并始终为等效输入（例如改写的句子）生成一致的输出，如图 3 所示。虽然以前的单模态模型编辑任务仅需要考虑改写的文本，但多模态场景需要泛化以及图像。为了解决这个问题，我们引入了两个泛化考虑因素：MText gen (TGenerality) 和 MImage gen (M-Generality)，其表示如下：</p>
-<p><img src="/../imgs/$%7Bfiilename%7D/BS3DHYZH.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/BS3DHYZH.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;BS3DHYZH&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F5LR2L362%22%2C%22annotationKey%22%3A%22SSPQQ5PC%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%224%22%2C%22position%22%3A%7B%22pageIndex%22%3A3%2C%22rects%22%3A%5B%5B303.088%2C236.596%2C527.206%2C296.596%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEQHAEIP8%22%5D%2C%22locator%22%3A%224%22%7D%7D&quot; width=&quot;374&quot; height=&quot;100&quot; src=&quot;attachments/BS3DHYZH.png&quot; ztype=&quot;zimage&quot;&gt;"><br>其中 ir 表示重新表述的图像，xr 指重新表述的文本提示，N (x) 表示 x 范围内的对象。</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/BS3DHYZH.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/BS3DHYZH.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;BS3DHYZH&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F5LR2L362%22%2C%22annotationKey%22%3A%22SSPQQ5PC%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%224%22%2C%22position%22%3A%7B%22pageIndex%22%3A3%2C%22rects%22%3A%5B%5B303.088%2C236.596%2C527.206%2C296.596%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEQHAEIP8%22%5D%2C%22locator%22%3A%224%22%7D%7D&quot; width=&quot;374&quot; height=&quot;100&quot; src=&quot;attachments/BS3DHYZH.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>其中 ir 表示重新表述的图像，xr 指重新表述的文本提示，N (x) 表示 x 范围内的对象。</p>
 <h3 id="3-2-Datasets"><a href="#3-2-Datasets" class="headerlink" title="3.2 Datasets"></a>3.2 Datasets</h3><p>我们构建的数据集MMEdit主要包含两个子任务：编辑VQA（E-VQA）和编辑图像标题（E-IC）。</p>
 <h4 id="3-2-1-Reliability-Dataset-Construction"><a href="#3-2-1-Reliability-Dataset-Construction" class="headerlink" title="3.2.1 Reliability Dataset Construction"></a>3.2.1 Reliability Dataset Construction</h4><p>为了对我们的实验进行基准测试，我们选择了两个常见的多模态任务：视觉问答（VQA）（Antol et al., 2015）和图像</p>
-<p><img src="/../imgs/$%7Bfiilename%7D/TT279E4N.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/TT279E4N.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;TT279E4N&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F5LR2L362%22%2C%22annotationKey%22%3A%229KCXYY3D%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%225%22%2C%22position%22%3A%7B%22pageIndex%22%3A4%2C%22rects%22%3A%5B%5B60%2C488.39%2C297%2C778.39%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEQHAEIP8%22%5D%2C%22locator%22%3A%225%22%7D%7D&quot; width=&quot;395&quot; height=&quot;483&quot; src=&quot;attachments/TT279E4N.png&quot; ztype=&quot;zimage&quot;&gt;"><br>字幕（Herdade 等人，2019）。 <span style="background-color: #2ea8e580">VQA 旨在设计一种算法，不仅可以理解图像中的视觉内容，还可以理解用于查询该图像的自然语言，并随后生成这些查询的精确答案</span>。<span style="background-color: #2ea8e580">图像字幕是设计能够理解图像视觉内容的算法，随后用自然语言生成连贯且精确的图像描述</span>。在本研究中，我们选择 BLIP-2 OPT。我们的基础编辑数据源自两个评估数据集的次优条目，即 VQAv2（Goyal 等人，2017）和 COCO Caption（Chen 等人，2015)。</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/TT279E4N.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/TT279E4N.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;TT279E4N&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F5LR2L362%22%2C%22annotationKey%22%3A%229KCXYY3D%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%225%22%2C%22position%22%3A%7B%22pageIndex%22%3A4%2C%22rects%22%3A%5B%5B60%2C488.39%2C297%2C778.39%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEQHAEIP8%22%5D%2C%22locator%22%3A%225%22%7D%7D&quot; width=&quot;395&quot; height=&quot;483&quot; src=&quot;attachments/TT279E4N.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>字幕（Herdade 等人，2019）。 <span style="background-color: #2ea8e580">VQA 旨在设计一种算法，不仅可以理解图像中的视觉内容，还可以理解用于查询该图像的自然语言，并随后生成这些查询的精确答案</span>。<span style="background-color: #2ea8e580">图像字幕是设计能够理解图像视觉内容的算法，随后用自然语言生成连贯且精确的图像描述</span>。在本研究中，我们选择 BLIP-2 OPT。我们的基础编辑数据源自两个评估数据集的次优条目，即 VQAv2（Goyal 等人，2017）和 COCO Caption（Chen 等人，2015)。</p>
 <p>     除了基本的编辑数据之外，利用其他数据也至关重要。这些数据不仅有助于编辑过程，还验证更改的有效性，评估模型编辑的稳定性和通用性。</p>
 <h4 id="3-2-2-Locality-Dataset-Construction"><a href="#3-2-2-Locality-Dataset-Construction" class="headerlink" title="3.2.2 Locality Dataset Construction"></a>3.2.2 Locality Dataset Construction</h4><p>我们必须仔细考虑多模态模型中编辑对语言功能的影响，<span style="background-color: #5fb23680">类似于我们如何评估手术后个体大脑的各个认知区域。</span></p>
 <p><strong>文本局部性数据集</strong>。为了评估语言模型的稳定性，我们利用之前在 MEND 中使用的 NQ 数据集（Kwiatkowski 等人，2019）作为模型内 LLM 组件稳定性的基准。我们专门使用模型的输出预编辑和后期编辑来构建 KL 散点图，从而促进对模型编辑的约束。此外，我们还计算了保持 top-1 状态的实例比例，进一步量化了模型的稳定性。</p>
@@ -816,15 +821,15 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2023/11/02/hello-world/" class="post-nav-link">
+    <a href="/2023/11/02/wo-men-ke-yi-tong-guo-qing-jing-xue-xi-lai-bian-ji-shi-shi-zhi-shi-ma/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fas fa-angle-right"></i>
-        <div class="title-text">Hello World</div>
+        <div class="title-text">我们可以通过情景学习来编辑事实知识吗？</div>
       </div>
       <!-- <div class="content">
-        Welcome to Hexo! This is your very first post. Check documen
+        我们可以通过情景学习来编辑事实知识吗？Abstract之前的研究表明，像 GPT 这样的大型语言模型 (LLM) 在其参
       </div> -->
     </a>
   </div>
@@ -1120,9 +1125,9 @@
             
 
             <div class="post-img-box">
-              <a href="/2023/11/02/hello-world/" class="post-img " style="background-size: cover; 
+              <a href="/2023/11/02/wo-men-ke-yi-tong-guo-qing-jing-xue-xi-lai-bian-ji-shi-shi-zhi-shi-ma/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -1131,7 +1136,49 @@
                   <span class="post-date">11-02</span>
                 
               </div>
-              <a class="post-title" href="/2023/11/02/hello-world/">Hello World</a>
+              <a class="post-title" href="/2023/11/02/wo-men-ke-yi-tong-guo-qing-jing-xue-xi-lai-bian-ji-shi-shi-zhi-shi-ma/">我们可以通过情景学习来编辑事实知识吗？</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-02</span>
+                
+              </div>
+              <a class="post-title" href="/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/">编辑大型语言模型：问题、方法和机遇</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/11/02/zhi-shi-shen-jing-yuan-zhong-xin-zhi-lu-yu-yan-wu-guan-zhi-shi-shen-jing-yuan-he-jian-bing-zhi-shi-shen-jing-yuan-de-fa-xian/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-02</span>
+                
+              </div>
+              <a class="post-title" href="/2023/11/02/zhi-shi-shen-jing-yuan-zhong-xin-zhi-lu-yu-yan-wu-guan-zhi-shi-shen-jing-yuan-he-jian-bing-zhi-shi-shen-jing-yuan-de-fa-xian/">知识神经元中心之旅：语言无关知识神经元和简并知识神经元的发现</a>
             </div>
           </div>
         

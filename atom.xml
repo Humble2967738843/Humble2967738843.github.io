@@ -6,7 +6,7 @@
   <link href="http://humble2967738843.github.io/atom.xml" rel="self"/>
   
   <link href="http://humble2967738843.github.io/"/>
-  <updated>2023-11-02T04:31:27.969Z</updated>
+  <updated>2023-11-02T04:48:56.587Z</updated>
   <id>http://humble2967738843.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://humble2967738843.github.io/2023/11/02/duo-yu-yan-mo-xing-zhong-shi-shi-zhi-shi-de-kua-yu-yan-yi-zhi-xing/"/>
     <id>http://humble2967738843.github.io/2023/11/02/duo-yu-yan-mo-xing-zhong-shi-shi-zhi-shi-de-kua-yu-yan-yi-zhi-xing/</id>
     <published>2023-11-02T04:21:08.000Z</published>
-    <updated>2023-11-02T04:31:27.969Z</updated>
+    <updated>2023-11-02T04:48:56.587Z</updated>
     
     
       
@@ -46,7 +46,7 @@
     <link href="http://humble2967738843.github.io/2023/11/02/wo-men-ke-yi-bian-ji-duo-mo-tai-da-xing-yu-yan-mo-xing-ma/"/>
     <id>http://humble2967738843.github.io/2023/11/02/wo-men-ke-yi-bian-ji-duo-mo-tai-da-xing-yu-yan-mo-xing-ma/</id>
     <published>2023-11-02T04:21:08.000Z</published>
-    <updated>2023-11-02T04:29:27.318Z</updated>
+    <updated>2023-11-02T04:37:54.513Z</updated>
     
     
       
@@ -54,6 +54,81 @@
         
         
     <summary type="html">&lt;h1 id=&quot;我们可以编辑多模态大型语言模型吗？&quot;&gt;&lt;a href=&quot;#我们可以编辑多模态大型语言模型吗？&quot; class=&quot;headerlink&quot; title=&quot;我们可以编辑多模态大型语言模型吗？&quot;&gt;&lt;/a&gt;我们可以编辑多模态大型语言模型吗？&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
+    
+    
+    <category term="EMNLP2023" scheme="http://humble2967738843.github.io/tags/EMNLP2023/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我们可以通过情景学习来编辑事实知识吗？</title>
+    <link href="http://humble2967738843.github.io/2023/11/02/wo-men-ke-yi-tong-guo-qing-jing-xue-xi-lai-bian-ji-shi-shi-zhi-shi-ma/"/>
+    <id>http://humble2967738843.github.io/2023/11/02/wo-men-ke-yi-tong-guo-qing-jing-xue-xi-lai-bian-ji-shi-shi-zhi-shi-ma/</id>
+    <published>2023-11-02T04:21:08.000Z</published>
+    <updated>2023-11-02T04:50:04.052Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;我们可以通过情景学习来编辑事实知识吗？&quot;&gt;&lt;a href=&quot;#我们可以通过情景学习来编辑事实知识吗？&quot; class=&quot;headerlink&quot; title=&quot;我们可以通过情景学习来编辑事实知识吗？&quot;&gt;&lt;/a&gt;我们可以通过情景学习来编辑事实知识吗？&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
+    
+    
+    <category term="EMNLP2023" scheme="http://humble2967738843.github.io/tags/EMNLP2023/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编辑大型语言模型：问题、方法和机遇</title>
+    <link href="http://humble2967738843.github.io/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/"/>
+    <id>http://humble2967738843.github.io/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/</id>
+    <published>2023-11-02T04:21:08.000Z</published>
+    <updated>2023-11-02T04:43:53.611Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;编辑大型语言模型：问题、方法和机遇&quot;&gt;&lt;a href=&quot;#编辑大型语言模型：问题、方法和机遇&quot; class=&quot;headerlink&quot; title=&quot;编辑大型语言模型：问题、方法和机遇&quot;&gt;&lt;/a&gt;编辑大型语言模型：问题、方法和机遇&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
+    
+    
+    <category term="EMNLP2023" scheme="http://humble2967738843.github.io/tags/EMNLP2023/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>知识神经元中心之旅：语言无关知识神经元和简并知识神经元的发现</title>
+    <link href="http://humble2967738843.github.io/2023/11/02/zhi-shi-shen-jing-yuan-zhong-xin-zhi-lu-yu-yan-wu-guan-zhi-shi-shen-jing-yuan-he-jian-bing-zhi-shi-shen-jing-yuan-de-fa-xian/"/>
+    <id>http://humble2967738843.github.io/2023/11/02/zhi-shi-shen-jing-yuan-zhong-xin-zhi-lu-yu-yan-wu-guan-zhi-shi-shen-jing-yuan-he-jian-bing-zhi-shi-shen-jing-yuan-de-fa-xian/</id>
+    <published>2023-11-02T04:21:08.000Z</published>
+    <updated>2023-11-02T04:47:39.164Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;知识神经元中心之旅：语言无关知识神经元和简并知识神经元的发现&quot;&gt;&lt;a href=&quot;#知识神经元中心之旅：语言无关知识神经元和简并知识神经元的发现&quot; class=&quot;headerlink&quot;</summary>
         
       
     

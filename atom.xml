@@ -6,7 +6,7 @@
   <link href="http://humble2967738843.github.io/atom.xml" rel="self"/>
   
   <link href="http://humble2967738843.github.io/"/>
-  <updated>2023-11-02T08:37:35.971Z</updated>
+  <updated>2023-11-02T14:37:18.787Z</updated>
   <id>http://humble2967738843.github.io/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式</title>
+    <link href="http://humble2967738843.github.io/2023/11/02/she-ji-mo-shi/"/>
+    <id>http://humble2967738843.github.io/2023/11/02/she-ji-mo-shi/</id>
+    <published>2023-11-02T14:03:10.000Z</published>
+    <updated>2023-11-02T14:37:18.787Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-设计模式&quot;&gt;&lt;a href=&quot;#1-设计模式&quot; class=&quot;headerlink&quot; title=&quot;1. 设计模式&quot;&gt;&lt;/a&gt;1. 设计模式&lt;/h1&gt;&lt;h2 id=&quot;1-1-软件设计模式产生背景&quot;&gt;&lt;a href=&quot;#1-1-软件设计模式产生背景&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="软件开发" scheme="http://humble2967738843.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="设计模式" scheme="http://humble2967738843.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java基础</title>
+    <link href="http://humble2967738843.github.io/2023/11/02/java-ji-chu/"/>
+    <id>http://humble2967738843.github.io/2023/11/02/java-ji-chu/</id>
+    <published>2023-11-02T13:40:10.000Z</published>
+    <updated>2023-11-02T14:01:41.433Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Java多行注释&quot;&gt;&lt;a href=&quot;#Java多行注释&quot; class=&quot;headerlink&quot; title=&quot;Java多行注释&quot;&gt;&lt;/a&gt;Java多行注释&lt;/h2&gt;&lt;p&gt;单行注释：&amp;#x2F;&amp;#x2F; 注释文字&lt;/p&gt;
+&lt;p&gt;多行注释： &amp;#x2F;*</summary>
+        
+      
+    
+    
+    
+    <category term="软件开发" scheme="http://humble2967738843.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="Java基础" scheme="http://humble2967738843.github.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>情境学习创建任务向量</title>
@@ -42,18 +93,18 @@
   </entry>
   
   <entry>
-    <title>我们可以编辑多模态大型语言模型吗？</title>
-    <link href="http://humble2967738843.github.io/2023/11/02/wo-men-ke-yi-bian-ji-duo-mo-tai-da-xing-yu-yan-mo-xing-ma/"/>
-    <id>http://humble2967738843.github.io/2023/11/02/wo-men-ke-yi-bian-ji-duo-mo-tai-da-xing-yu-yan-mo-xing-ma/</id>
+    <title>多语言模型中事实知识的跨语言一致性</title>
+    <link href="http://humble2967738843.github.io/2023/11/02/duo-yu-yan-mo-xing-zhong-shi-shi-zhi-shi-de-kua-yu-yan-yi-zhi-xing/"/>
+    <id>http://humble2967738843.github.io/2023/11/02/duo-yu-yan-mo-xing-zhong-shi-shi-zhi-shi-de-kua-yu-yan-yi-zhi-xing/</id>
     <published>2023-11-02T04:21:08.000Z</published>
-    <updated>2023-11-02T05:02:28.683Z</updated>
+    <updated>2023-11-02T04:48:56.587Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;我们可以编辑多模态大型语言模型吗？&quot;&gt;&lt;a href=&quot;#我们可以编辑多模态大型语言模型吗？&quot; class=&quot;headerlink&quot; title=&quot;我们可以编辑多模态大型语言模型吗？&quot;&gt;&lt;/a&gt;我们可以编辑多模态大型语言模型吗？&lt;/h1&gt;&lt;h2</summary>
+    <summary type="html">&lt;h1 id=&quot;多语言模型中事实知识的跨语言一致性&quot;&gt;&lt;a href=&quot;#多语言模型中事实知识的跨语言一致性&quot; class=&quot;headerlink&quot; title=&quot;多语言模型中事实知识的跨语言一致性&quot;&gt;&lt;/a&gt;多语言模型中事实知识的跨语言一致性&lt;/h1&gt;&lt;h2</summary>
         
       
     
@@ -67,18 +118,18 @@
   </entry>
   
   <entry>
-    <title>多语言模型中事实知识的跨语言一致性</title>
-    <link href="http://humble2967738843.github.io/2023/11/02/duo-yu-yan-mo-xing-zhong-shi-shi-zhi-shi-de-kua-yu-yan-yi-zhi-xing/"/>
-    <id>http://humble2967738843.github.io/2023/11/02/duo-yu-yan-mo-xing-zhong-shi-shi-zhi-shi-de-kua-yu-yan-yi-zhi-xing/</id>
+    <title>我们可以编辑多模态大型语言模型吗？</title>
+    <link href="http://humble2967738843.github.io/2023/11/02/wo-men-ke-yi-bian-ji-duo-mo-tai-da-xing-yu-yan-mo-xing-ma/"/>
+    <id>http://humble2967738843.github.io/2023/11/02/wo-men-ke-yi-bian-ji-duo-mo-tai-da-xing-yu-yan-mo-xing-ma/</id>
     <published>2023-11-02T04:21:08.000Z</published>
-    <updated>2023-11-02T04:48:56.587Z</updated>
+    <updated>2023-11-02T05:02:28.683Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;多语言模型中事实知识的跨语言一致性&quot;&gt;&lt;a href=&quot;#多语言模型中事实知识的跨语言一致性&quot; class=&quot;headerlink&quot; title=&quot;多语言模型中事实知识的跨语言一致性&quot;&gt;&lt;/a&gt;多语言模型中事实知识的跨语言一致性&lt;/h1&gt;&lt;h2</summary>
+    <summary type="html">&lt;h1 id=&quot;我们可以编辑多模态大型语言模型吗？&quot;&gt;&lt;a href=&quot;#我们可以编辑多模态大型语言模型吗？&quot; class=&quot;headerlink&quot; title=&quot;我们可以编辑多模态大型语言模型吗？&quot;&gt;&lt;/a&gt;我们可以编辑多模态大型语言模型吗？&lt;/h1&gt;&lt;h2</summary>
         
       
     
@@ -188,27 +239,6 @@
     
     
     <category term="C++算法题目" scheme="http://humble2967738843.github.io/tags/C-%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://humble2967738843.github.io/2023/11/02/hello-world/"/>
-    <id>http://humble2967738843.github.io/2023/11/02/hello-world/</id>
-    <published>2023-11-02T03:40:32.432Z</published>
-    <updated>2023-11-02T03:40:32.432Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
     
   </entry>
   

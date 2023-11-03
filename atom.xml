@@ -6,7 +6,7 @@
   <link href="http://humble2967738843.github.io/atom.xml" rel="self"/>
   
   <link href="http://humble2967738843.github.io/"/>
-  <updated>2023-11-02T14:37:18.787Z</updated>
+  <updated>2023-11-03T03:08:06.903Z</updated>
   <id>http://humble2967738843.github.io/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JVM</title>
+    <link href="http://humble2967738843.github.io/2023/11/03/jvm/"/>
+    <id>http://humble2967738843.github.io/2023/11/03/jvm/</id>
+    <published>2023-11-03T03:08:06.000Z</published>
+    <updated>2023-11-03T03:08:06.903Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>设计模式</title>

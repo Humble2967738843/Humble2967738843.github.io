@@ -6,7 +6,7 @@
   <link href="http://humble2967738843.github.io/atom.xml" rel="self"/>
   
   <link href="http://humble2967738843.github.io/"/>
-  <updated>2023-11-03T03:08:06.903Z</updated>
+  <updated>2023-11-03T14:52:19.652Z</updated>
   <id>http://humble2967738843.github.io/</id>
   
   <author>
@@ -17,15 +17,52 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>并发编程</title>
+    <link href="http://humble2967738843.github.io/2023/11/03/bing-fa-bian-cheng/"/>
+    <id>http://humble2967738843.github.io/2023/11/03/bing-fa-bian-cheng/</id>
+    <published>2023-11-03T14:16:31.000Z</published>
+    <updated>2023-11-03T14:52:19.652Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;3-7-sleep和yield&quot;&gt;&lt;a href=&quot;#3-7-sleep和yield&quot; class=&quot;headerlink&quot; title=&quot;3.7 sleep和yield&quot;&gt;&lt;/a&gt;3.7</summary>
+        
+      
+    
+    
+    
+    <category term="软件开发" scheme="http://humble2967738843.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="并发编程" scheme="http://humble2967738843.github.io/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JVM</title>
     <link href="http://humble2967738843.github.io/2023/11/03/jvm/"/>
     <id>http://humble2967738843.github.io/2023/11/03/jvm/</id>
     <published>2023-11-03T03:08:06.000Z</published>
-    <updated>2023-11-03T03:08:06.903Z</updated>
+    <updated>2023-11-03T10:27:51.096Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-JVM与Java体系结构&quot;&gt;&lt;a href=&quot;#1-JVM与Java体系结构&quot; class=&quot;headerlink&quot; title=&quot;1. JVM与Java体系结构&quot;&gt;&lt;/a&gt;1. JVM与Java体系结构&lt;/h1&gt;&lt;p&gt;&lt;img</summary>
+        
+      
     
     
     
+    <category term="软件开发" scheme="http://humble2967738843.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     
+    
+    <category term="JVM" scheme="http://humble2967738843.github.io/tags/JVM/"/>
     
   </entry>
   
@@ -34,14 +71,14 @@
     <link href="http://humble2967738843.github.io/2023/11/02/she-ji-mo-shi/"/>
     <id>http://humble2967738843.github.io/2023/11/02/she-ji-mo-shi/</id>
     <published>2023-11-02T14:03:10.000Z</published>
-    <updated>2023-11-02T14:37:18.787Z</updated>
+    <updated>2023-11-03T13:45:18.489Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;1-设计模式&quot;&gt;&lt;a href=&quot;#1-设计模式&quot; class=&quot;headerlink&quot; title=&quot;1. 设计模式&quot;&gt;&lt;/a&gt;1. 设计模式&lt;/h1&gt;&lt;h2 id=&quot;1-1-软件设计模式产生背景&quot;&gt;&lt;a href=&quot;#1-1-软件设计模式产生背景&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;1，设计模式&quot;&gt;&lt;a href=&quot;#1，设计模式&quot; class=&quot;headerlink&quot; title=&quot;1，设计模式&quot;&gt;&lt;/a&gt;1，设计模式&lt;/h1&gt;&lt;h2 id=&quot;1-1-软件设计模式产生背景&quot;&gt;&lt;a href=&quot;#1-1-软件设计模式产生背景&quot;</summary>
         
       
     
@@ -59,15 +96,15 @@
     <link href="http://humble2967738843.github.io/2023/11/02/java-ji-chu/"/>
     <id>http://humble2967738843.github.io/2023/11/02/java-ji-chu/</id>
     <published>2023-11-02T13:40:10.000Z</published>
-    <updated>2023-11-02T14:01:41.433Z</updated>
+    <updated>2023-11-03T13:08:01.936Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;Java多行注释&quot;&gt;&lt;a href=&quot;#Java多行注释&quot; class=&quot;headerlink&quot; title=&quot;Java多行注释&quot;&gt;&lt;/a&gt;Java多行注释&lt;/h2&gt;&lt;p&gt;单行注释：&amp;#x2F;&amp;#x2F; 注释文字&lt;/p&gt;
-&lt;p&gt;多行注释： &amp;#x2F;*</summary>
+    <summary type="html">&lt;h1 id=&quot;1-多行注释&quot;&gt;&lt;a href=&quot;#1-多行注释&quot; class=&quot;headerlink&quot; title=&quot;1.多行注释&quot;&gt;&lt;/a&gt;1.多行注释&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;单行注释：&amp;#x2F;&amp;#x2F;</summary>
         
       
     

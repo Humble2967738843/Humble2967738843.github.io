@@ -690,9 +690,33 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h2 id="Java多行注释"><a href="#Java多行注释" class="headerlink" title="Java多行注释"></a>Java多行注释</h2><p>单行注释：&#x2F;&#x2F; 注释文字</p>
-<p>多行注释： &#x2F;* 注释文字 *&#x2F;</p>
+        <h1 id="1-多行注释"><a href="#1-多行注释" class="headerlink" title="1.多行注释"></a>1.多行注释</h1><ul>
+<li><p>单行注释：&#x2F;&#x2F; 注释文字</p>
+</li>
+<li><p>多行注释： &#x2F;* 注释文字 *&#x2F;</p>
+</li>
+<li><p>细节：（1）被注释的文字，不会被JVM解释执行；（2）多行注释里面不允许多行嵌套注释</p>
+</li>
+<li><p>文档注释：注释内容可以被JDK提供的工具javadoc所解析，生成一套以网页文件形式体现的该程序的说明文档，一般写在类前面</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span> 院龙</span></span><br><span class="line"><span class="comment">* <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Comment02</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 编写一个main方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 生成javadoc文档</span><br><span class="line">javadoc -d 文件夹名 -xx -yy Demo3.java</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../imgs/$%7Bfiilename%7D/image-20231103203001632-1699014603805-1.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231103203001632-1699014603805-1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231103203001632"></p>
+<h1 id="2-Java代码规范"><a href="#2-Java代码规范" class="headerlink" title="2.Java代码规范"></a>2.Java代码规范</h1><p>1.类、方法的注释，要以javadoc方式来写</p>
+<p>2.非Java Doc的注释，往往是给代码的维护者看的，着重告诉读者为什么这样写，如何修改，注意什么问题等</p>
+<p>3.使用tab操作，实现缩进，默认整体向右边移动，用shift+tab整体向左移</p>
+<p>4.运算符和 &#x3D; 两边习惯性各加一个空格</p>
+<p>5.源文件使用utf-8编码</p>
+<p>6.行宽度不要超过80字符</p>
+<p>7.代码编写次行和行尾风格</p>
+<h1 id="7-面向对象编程（基础）"><a href="#7-面向对象编程（基础）" class="headerlink" title="7. 面向对象编程（基础）"></a>7. 面向对象编程（基础）</h1><h2 id="7-1-类与对象"><a href="#7-1-类与对象" class="headerlink" title="7.1 类与对象"></a>7.1 类与对象</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Object01</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> String color;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 编写一个main方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">mian</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        张老太养了两只猫猫：一只小白，今年3岁，白色</span></span><br><span class="line"><span class="comment">        还有一只小花，今年100岁，花色。程序：</span></span><br><span class="line"><span class="comment">        当用户输入小猫的名字时，就显示该猫的名字，年龄，颜色。</span></span><br><span class="line"><span class="comment">        如果输入小猫名称有误，则显示 张老太没有这只猫</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        firstCat = <span class="keyword">new</span> <span class="title class_">Object01</span>();</span><br><span class="line">        secondCat = <span class="keyword">new</span> <span class="title class_">Object02</span>();</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-2-overload"><a href="#7-2-overload" class="headerlink" title="7.2 overload"></a>7.2 overload</h2><h2 id="7-3-可变参数"><a href="#7-3-可变参数" class="headerlink" title="7.3 可变参数"></a>7.3 可变参数</h2><h2 id="7-4-作用域"><a href="#7-4-作用域" class="headerlink" title="7.4 作用域"></a>7.4 作用域</h2><h2 id="7-5-this"><a href="#7-5-this" class="headerlink" title="7.5 this"></a>7.5 this</h2>
       </div>
       <div class="post-tags-categories">
         
@@ -744,7 +768,7 @@
       </div>
       
       <!-- <div class="content">
-        1. 设计模式1.1 软件设计模式产生背景1.2 软件设计模式概念软件设计模式（Software Design Patt
+        1，设计模式1.1 软件设计模式产生背景1.2 软件设计模式概念软件设计模式（Software Design Patte
       </div> -->
     </a>
   </div>
@@ -984,7 +1008,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E5%A4%9A%E8%A1%8C%E6%B3%A8%E9%87%8A"><span class="toc-text">Java多行注释</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%A4%9A%E8%A1%8C%E6%B3%A8%E9%87%8A"><span class="toc-text">1.多行注释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Java%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-text">2.Java代码规范</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89"><span class="toc-text">7. 面向对象编程（基础）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1"><span class="toc-text">7.1 类与对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-overload"><span class="toc-text">7.2 overload</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="toc-text">7.3 可变参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-4-%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-text">7.4 作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-5-this"><span class="toc-text">7.5 this</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -1010,6 +1034,27 @@
       <!-- hash算法 -->
       
       <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/11/03/bing-fa-bian-cheng/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-03</span>
+                
+              </div>
+              <a class="post-title" href="/2023/11/03/bing-fa-bian-cheng/">并发编程</a>
+            </div>
+          </div>
         
           <div class="aside-list-item">
             
@@ -1092,27 +1137,6 @@
                 
               </div>
               <a class="post-title" href="/2023/11/02/qing-jing-xue-xi-chuang-jian-ren-wu-xiang-liang/">情境学习创建任务向量</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/11/02/duo-yu-yan-mo-xing-zhong-shi-shi-zhi-shi-de-kua-yu-yan-yi-zhi-xing/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">11-02</span>
-                
-              </div>
-              <a class="post-title" href="/2023/11/02/duo-yu-yan-mo-xing-zhong-shi-shi-zhi-shi-de-kua-yu-yan-yi-zhi-xing/">多语言模型中事实知识的跨语言一致性</a>
             </div>
           </div>
         

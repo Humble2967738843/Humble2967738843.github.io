@@ -690,7 +690,7 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="1-设计模式"><a href="#1-设计模式" class="headerlink" title="1. 设计模式"></a>1. 设计模式</h1><h2 id="1-1-软件设计模式产生背景"><a href="#1-1-软件设计模式产生背景" class="headerlink" title="1.1 软件设计模式产生背景"></a>1.1 软件设计模式产生背景</h2><h2 id="1-2-软件设计模式概念"><a href="#1-2-软件设计模式概念" class="headerlink" title="1.2 软件设计模式概念"></a>1.2 软件设计模式概念</h2><p>软件设计模式（Software Design Pattern），是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。它描述了在软件设计过程中一些不断重复发生的问题，以及该问题的解决方案。也就是说，它是解决特定问题的一系列套路，是前辈的代码设计经验的总结，具有一定的普遍性，可以反复被使用的</p>
+        <h1 id="1，设计模式"><a href="#1，设计模式" class="headerlink" title="1，设计模式"></a>1，设计模式</h1><h2 id="1-1-软件设计模式产生背景"><a href="#1-1-软件设计模式产生背景" class="headerlink" title="1.1 软件设计模式产生背景"></a>1.1 软件设计模式产生背景</h2><h2 id="1-2-软件设计模式概念"><a href="#1-2-软件设计模式概念" class="headerlink" title="1.2 软件设计模式概念"></a>1.2 软件设计模式概念</h2><p>软件设计模式（Software Design Pattern），是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。它描述了在软件设计过程中一些不断重复发生的问题，以及该问题的解决方案。也就是说，它是解决特定问题的一系列套路，是前辈的代码设计经验的总结，具有一定的普遍性，可以反复被使用的</p>
 <h2 id="1-3-学习设计模式的必要性"><a href="#1-3-学习设计模式的必要性" class="headerlink" title="1.3 学习设计模式的必要性"></a>1.3 学习设计模式的必要性</h2><p>设计模式的本质是面向对象上街原则的实际运用，是对类的封装性、继承性、多态性以及类的关联关系和组合关系的充分理解。</p>
 <p>正确使用设计模式优点：</p>
 <ul>
@@ -709,7 +709,7 @@
 <p>用于描述类或对象之间怎样相互协作共同完成单个对象无法单独完成的任务，以及怎样分配职责。GoF书中提供了模板方法、策略、命令、职责链、状态、观察者、中介者、迭代器、访问者、备忘录、解释器等11种行为型模式。</p>
 </li>
 </ul>
-<h1 id="2-UML图"><a href="#2-UML图" class="headerlink" title="2.UML图"></a>2.UML图</h1><p>统一建模语言（Unified Modeling Language，UML）是用来设计软件的可视化建模语言。特点是简单、统一、图形化、能表达软件设计种的动态与静态信息。</p>
+<h1 id="2，UML图"><a href="#2，UML图" class="headerlink" title="2，UML图"></a>2，UML图</h1><p>统一建模语言（Unified Modeling Language，UML）是用来设计软件的可视化建模语言。特点是简单、统一、图形化、能表达软件设计种的动态与静态信息。</p>
 <h2 id="2-1类图概述"><a href="#2-1类图概述" class="headerlink" title="2.1类图概述"></a>2.1类图概述</h2><p>类图（Class digram）是显示了模型的静态结构，特别是模型中存在的类、类的内部结构以及它们与其他类的关系等。类图不显示暂时性的信息，类图是面向对象建模的主要组成部分。</p>
 <h2 id="2-2类图的作用"><a href="#2-2类图的作用" class="headerlink" title="2.2类图的作用"></a>2.2类图的作用</h2><ul>
 <li>在软件工程中，类图是一种惊天的结构图，描述了系统的类的集合，类的属性和类之间的关系，简化了人们对系统的理解。</li>
@@ -729,7 +729,42 @@
 <p><code>注意：</code></p>
 <p><code>1.括号中的内容表示可选</code></p>
 <p><code>2.也有将类型放在变量名前面，返回值类型放在方法名前面</code></p>
-
+<p>例子：</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/image-20231103210913189-1699016955618-1.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231103210913189-1699016955618-1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231103210913189"></p>
+<p>Demo定义了三个方法：</p>
+<p>method()方法：修饰符为public，没有参数，没有返回值</p>
+<p>method1()方法：修饰符为private，没有参数，返回值类型为String</p>
+<p>method2()方法：修饰符为protexted，接收两个参数，第一个参数为int，第二个参数为String，返回值类型是int</p>
+<h3 id="2-3-2-类与类之间关系的表示方式"><a href="#2-3-2-类与类之间关系的表示方式" class="headerlink" title="2.3.2 类与类之间关系的表示方式"></a>2.3.2 类与类之间关系的表示方式</h3><h4 id="2-3-2-1关联关系"><a href="#2-3-2-1关联关系" class="headerlink" title="2.3.2.1关联关系"></a>2.3.2.1关联关系</h4><p>关联关系是对象之间的一种引用关系，用于表示一类对象与另一类对象之间的联系，如老师和学生、师傅和徒弟、丈夫和妻子等。关联关系是类与类直接按最常用的一种关系，非为一般关联关系、聚合关系和组合关系</p>
+<p>关联又可以分为单向关联、双向该你了，自关联</p>
+<p>1，单向关联</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/image-20231103211501365-1699017304175-3.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231103211501365-1699017304175-3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231103211501365"></p>
+<p>在UML类图中单向关联用一个带箭头的实线表示。上图表示每个顾客都有一个地址，这通过让Customer类持有一个类型为Address的成员变量类实现。</p>
+<p>2，双向关联</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/image-20231103211651053-1699017414657-5.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231103211651053-1699017414657-5.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231103211651053"></p>
+<p>所谓的双向关联就是双方各自持有对方类型的成员变量。</p>
+<p>在UML类图中，双向关联用一个不带箭头的直线表示。上图中子啊Customer类中维护一个List<Product>，表示一个顾客可以购买多个商品；在Product类中维护一个Customer类型的成员变量表示这个产品被哪个顾客所购买。</p>
+<p>3，自关联</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/image-20231103211956190-1699017598958-7.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231103211956190-1699017598958-7.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231103211956190"></p>
+<p>自关联在UML类图中用一个带有箭头且指向自身的线表示。上图的意思就是Node类包含类型为Node的成员变量，也就是“自己包含自己”。</p>
+<h4 id="2-3-2-2-聚合关系"><a href="#2-3-2-2-聚合关系" class="headerlink" title="2.3.2.2 聚合关系"></a>2.3.2.2 聚合关系</h4><p>聚合关系是关联关系的一种，是强关联关系，是部分和整体之间的关系。</p>
+<p>聚合关系也是通过成员对象来实现的，其中成员对象是整体对象的一部分，但是成员对象可以脱离整体对象而独立存在。例如：学校和老师的关系，学校包含老师，但是如果学校停办了，老师依然存在。</p>
+<p>在UML类图中，聚合关系可以用带空心菱形的实现表示，菱形指向整体。下图是大学和教师的关系图：</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/image-20231103212410245-1699017852817-9.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231103212410245-1699017852817-9.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231103212410245"></p>
+<h4 id="2-3-2-3-组合关系"><a href="#2-3-2-3-组合关系" class="headerlink" title="2.3.2.3 组合关系"></a>2.3.2.3 组合关系</h4><p>组合表示类之间的整体与部分的关系，但它是一种更加强烈的聚合关系。</p>
+<p>在组合关系中，整体对象可以控制部分对象的生命周期，一旦整体对象不存在，部分对象也将不存在，部分对象不能脱离整体对象而存在。例如：头和嘴的关系，没有了头，嘴也就不存在了。</p>
+<p>在UML类图中，组合关系用带实心菱形的实线来表示，菱形指向整体，下图所示是头和嘴的关系图：</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/image-20231103212718430-1699018041821-11.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231103212718430-1699018041821-11.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231103212718430"></p>
+<h4 id="2-3-2-4-依赖关系"><a href="#2-3-2-4-依赖关系" class="headerlink" title="2.3.2.4 依赖关系"></a>2.3.2.4 依赖关系</h4><p>依赖关系是一种使用关系，它是对象之间耦合程度最弱的一种关联方式，是临时性的关联。在代码中，某个类的方法通过<strong>局部变量、方法的参数或者对静态方法的调用</strong>来访问另一个类（被依赖类）中的<strong>某些方法</strong>来完成一些职责。</p>
+<p>在UML类图中，依赖关系使用带箭头的虚线来表示，箭头从使用类指向被依赖的类。下图所示是司机和汽车的关系图，司机驾驶汽车：</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/image-20231103213153944-1699018317717-13.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231103213153944-1699018317717-13.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231103213153944"></p>
+<h4 id="2-3-2-5-继承关系"><a href="#2-3-2-5-继承关系" class="headerlink" title="2.3.2.5 继承关系"></a>2.3.2.5 继承关系</h4><p>继承关系是对象之间耦合度最大的一种关系，表示一般与特殊的关系，是父类与子类之间的关系，是一种继承关系。</p>
+<p>在UML类图中，泛化关系用带空心三角箭头的实线来表示，箭头从子类指向父类。在代码实现时，使用面向对象的继承机制来实现泛化关系。例如：Student类和Teacher类都是Person类的子类。</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/image-20231103213523353-1699018524901-15.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231103213523353-1699018524901-15.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231103213523353"></p>
+<h4 id="2-3-2-6-实现关系"><a href="#2-3-2-6-实现关系" class="headerlink" title="2.3.2.6 实现关系"></a>2.3.2.6 实现关系</h4><p>实现关系是接口与实现类之间的关系。在这种关系中，类实现了接口，类中国的操作实现接口中所声明的所有的抽象操作。</p>
+<p>在UML类图中，实现关系使用带空心三角箭头的虚线来表示，箭头从实现类指向接口。例如：汽车和船实现了交通工具。</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/image-20231103213803600-1699018685051-17.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231103213803600-1699018685051-17.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231103213803600"></p>
+<h1 id="3，软件设计原则"><a href="#3，软件设计原则" class="headerlink" title="3，软件设计原则"></a>3，软件设计原则</h1>
       </div>
       <div class="post-tags-categories">
         
@@ -781,7 +816,15 @@
       </div>
       
       <!-- <div class="content">
-        
+        1. JVM与Java体系结构
+
+
+
+
+字节码：
+
+任何能在jvm平台上执行的字节码格式都是一样的，称为jvm字节码
+不
       </div> -->
     </a>
   </div>
@@ -800,9 +843,12 @@
         <div class="title-text">Java基础</div>
       </div>
       <!-- <div class="content">
-        Java多行注释单行注释：&#x2F;&#x2F; 注释文字
+        1.多行注释
+单行注释：&#x2F;&#x2F; 注释文字
+
 多行注释： &#x2F;* 注释文字 *&#x2F;
 
+细
       </div> -->
     </a>
   </div>
@@ -1023,7 +1069,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">1. 设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%BA%A7%E7%94%9F%E8%83%8C%E6%99%AF"><span class="toc-text">1.1 软件设计模式产生背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E5%BF%B5"><span class="toc-text">1.2 软件设计模式概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E5%AD%A6%E4%B9%A0%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-text">1.3 学习设计模式的必要性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%88%86%E7%B1%BB"><span class="toc-text">1.4 设计模式分类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-UML%E5%9B%BE"><span class="toc-text">2.UML图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E7%B1%BB%E5%9B%BE%E6%A6%82%E8%BF%B0"><span class="toc-text">2.1类图概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2%E7%B1%BB%E5%9B%BE%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">2.2类图的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3%E7%B1%BB%E5%9B%BE%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="toc-text">2.3类图表示法</span></a></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%EF%BC%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">1，设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%BA%A7%E7%94%9F%E8%83%8C%E6%99%AF"><span class="toc-text">1.1 软件设计模式产生背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E5%BF%B5"><span class="toc-text">1.2 软件设计模式概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E5%AD%A6%E4%B9%A0%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-text">1.3 学习设计模式的必要性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%88%86%E7%B1%BB"><span class="toc-text">1.4 设计模式分类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%EF%BC%8CUML%E5%9B%BE"><span class="toc-text">2，UML图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E7%B1%BB%E5%9B%BE%E6%A6%82%E8%BF%B0"><span class="toc-text">2.1类图概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2%E7%B1%BB%E5%9B%BE%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">2.2类图的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3%E7%B1%BB%E5%9B%BE%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="toc-text">2.3类图表示法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-%E7%B1%BB%E4%B8%8E%E7%B1%BB%E4%B9%8B%E9%97%B4%E5%85%B3%E7%B3%BB%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E5%BC%8F"><span class="toc-text">2.3.2 类与类之间关系的表示方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-1%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB"><span class="toc-text">2.3.2.1关联关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-2-%E8%81%9A%E5%90%88%E5%85%B3%E7%B3%BB"><span class="toc-text">2.3.2.2 聚合关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-3-%E7%BB%84%E5%90%88%E5%85%B3%E7%B3%BB"><span class="toc-text">2.3.2.3 组合关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-4-%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB"><span class="toc-text">2.3.2.4 依赖关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-5-%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB"><span class="toc-text">2.3.2.5 继承关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-6-%E5%AE%9E%E7%8E%B0%E5%85%B3%E7%B3%BB"><span class="toc-text">2.3.2.6 实现关系</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%EF%BC%8C%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-text">3，软件设计原则</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -1049,6 +1095,27 @@
       <!-- hash算法 -->
       
       <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/11/03/bing-fa-bian-cheng/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-03</span>
+                
+              </div>
+              <a class="post-title" href="/2023/11/03/bing-fa-bian-cheng/">并发编程</a>
+            </div>
+          </div>
         
           <div class="aside-list-item">
             
@@ -1131,27 +1198,6 @@
                 
               </div>
               <a class="post-title" href="/2023/11/02/qing-jing-xue-xi-chuang-jian-ren-wu-xiang-liang/">情境学习创建任务向量</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/11/02/duo-yu-yan-mo-xing-zhong-shi-shi-zhi-shi-de-kua-yu-yan-yi-zhi-xing/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">11-02</span>
-                
-              </div>
-              <a class="post-title" href="/2023/11/02/duo-yu-yan-mo-xing-zhong-shi-shi-zhi-shi-de-kua-yu-yan-yi-zhi-xing/">多语言模型中事实知识的跨语言一致性</a>
             </div>
           </div>
         

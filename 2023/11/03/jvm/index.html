@@ -695,19 +695,29 @@
 <p><img src="/../imgs/$%7Bfiilename%7D/image-20231103174101458-1699004463451-11.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231103174101458-1699004463451-11.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231103174101458"></p>
 <p><img src="/../imgs/$%7Bfiilename%7D/image-20231103175519266-1699005321228-13.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231103175519266-1699005321228-13.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231103175519266"></p>
 <p><img src="/../imgs/$%7Bfiilename%7D/image-20231103175721844-1699005443920-15.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231103175721844-1699005443920-15.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231103175721844"></p>
-<p>字节码：</p>
-<ul>
-<li>任何能在jvm平台上执行的字节码格式都是一样的，称为<strong>jvm字节码</strong></li>
-<li>不同的编译器，可以编译出相同的字节码文件，字节码文件也可以在不同的JVM上运行</li>
-<li>Java虚拟机与Java语言并没有必然的联系，它只与特定的二进制文件——Class文件格式所关联，Class文件中包含了Java虚拟机指令集（或称为字节码、Bytecodes）和符号表，还有其他辅助信息</li>
-</ul>
-<p>虚拟机：</p>
-<ul>
-<li><p>所谓虚拟机（Virtual Machine），就是一台虚拟的计算机。他是一款软件，用来执行一系列不腻计算机指令。大体上，虚拟机可以分为<strong>系统虚拟机</strong>和<strong>程序虚拟机</strong>。Visual Box、VMware属于系统虚拟机，完全是对物理计算机的仿真，提供了一个可运行完整操作系统的软件平台；程序虚拟机就是Java虚拟机，它专门为执行单个计算机程序而设计</p>
-</li>
-<li><p>无论是系统虚拟机还是程序虚拟机，在上面运行的软件都被限制与虚拟机提供的自愿者中</p>
-</li>
-</ul>
+<h2 id="1-1Java虚拟机"><a href="#1-1Java虚拟机" class="headerlink" title="1.1Java虚拟机"></a>1.1Java虚拟机</h2><p><strong>字节码</strong>：</p>
+<p>1.任何能在jvm平台上执行的字节码格式都是一样的，称为<strong>jvm字节码</strong></p>
+<p>2.不同的编译器，可以编译出相同的字节码文件，字节码文件也可以在不同的JVM上运行</p>
+<p>3.Java虚拟机与Java语言并没有必然的联系，它只与特定的二进制文件——Class文件格式所关联，Class文件中包含了Java虚拟机指令集（或称为字节码、Bytecodes）和符号表，还有其他辅助信息</p>
+<p><strong>虚拟机</strong>：</p>
+<p>1.所谓虚拟机（Virtual Machine），就是一台虚拟的计算机。他是一款软件，用来执行一系列不腻计算机指令。大体上，虚拟机可以分为<strong>系统虚拟机</strong>和<strong>程序虚拟机</strong>。Visual Box、VMware属于系统虚拟机，完全是对物理计算机的仿真，提供了一个可运行完整操作系统的软件平台；程序虚拟机就是Java虚拟机，它专门为执行单个计算机程序而设计</p>
+<p>2.无论是系统虚拟机还是程序虚拟机，在上面运行的软件都被限制与虚拟机提供的自愿者中</p>
+<p><strong>作用</strong></p>
+<p>1.Java虚拟机就是二进制字节码的运行环境，负责装载字节码到其内部，解释&#x2F;编译为对应平台上的机器指令执行。每一条Java指令，Java虚拟机规范中都有详细的定义，如怎么取操作数，怎么处理操作数，处理结果放在哪里。</p>
+<p><strong>特点</strong></p>
+<p>1.一次编译，到处运行</p>
+<p>2.自动内存管理</p>
+<p>3.自动垃圾回收功能</p>
+<h2 id="1-2JVM位置"><a href="#1-2JVM位置" class="headerlink" title="1.2JVM位置"></a>1.2JVM位置</h2><p><img src="/../imgs/$%7Bfiilename%7D/image-20231105223414697-1699194857625-1.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231105223414697-1699194857625-1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231105223414697"></p>
+<p>JVM是运行在操作系统之上的，它与硬件没有直接的交互。</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/image-20231105223614555-1699194975706-3.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231105223614555-1699194975706-3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231105223614555"></p>
+<h2 id="1-3Google的Android系统结构"><a href="#1-3Google的Android系统结构" class="headerlink" title="1.3Google的Android系统结构"></a>1.3Google的Android系统结构</h2><p><img src="/../imgs/$%7Bfiilename%7D/image-20231105223734847-1699195056452-5.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231105223734847-1699195056452-5.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231105223734847"></p>
+<h2 id="1-4JVM整体结构"><a href="#1-4JVM整体结构" class="headerlink" title="1.4JVM整体结构"></a>1.4JVM整体结构</h2><p><img src="/../imgs/$%7Bfiilename%7D/image-20231105223857089-1699195138528-7.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231105223857089-1699195138528-7.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231105223857089"></p>
+<p>1.HotSpot VM是目前市面上高性能虚拟机的代表作之一</p>
+<p>2.它采用解释器与即时编译器并存的架构</p>
+<h2 id="1-5Java代码的执行流程"><a href="#1-5Java代码的执行流程" class="headerlink" title="1.5Java代码的执行流程"></a>1.5Java代码的执行流程</h2><p><img src="/../imgs/$%7Bfiilename%7D/image-20231105224512300-1699195514828-9.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231105224512300-1699195514828-9.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231105224512300"></p>
+<p><img src="/../imgs/$%7Bfiilename%7D/image-20231105224745162-1699195666593-11.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231105224745162-1699195666593-11.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231105224745162"></p>
+<p><img src="/../imgs/$%7Bfiilename%7D/image-20231105224907157-1699195749883-13.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231105224907157-1699195749883-13.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231105224907157"></p>
 
       </div>
       <div class="post-tags-categories">
@@ -1001,7 +1011,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-JVM%E4%B8%8EJava%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-text">1. JVM与Java体系结构</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-JVM%E4%B8%8EJava%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-text">1. JVM与Java体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1Java%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">1.1Java虚拟机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2JVM%E4%BD%8D%E7%BD%AE"><span class="toc-text">1.2JVM位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3Google%E7%9A%84Android%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84"><span class="toc-text">1.3Google的Android系统结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4JVM%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-text">1.4JVM整体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5Java%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-text">1.5Java代码的执行流程</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>

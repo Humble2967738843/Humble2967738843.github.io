@@ -713,7 +713,7 @@
 <p><img src="/../imgs/$%7Bfiilename%7D/J2V52PJA.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/J2V52PJA.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;J2V52PJA&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEYHEHWWX%22%2C%22annotationKey%22%3A%22SMECCLTE%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%223%22%2C%22position%22%3A%7B%22pageIndex%22%3A2%2C%22rects%22%3A%5B%5B317.885%2C419.308%2C562.5%2C460.846%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F77ALXKTW%22%5D%2C%22locator%22%3A%223%22%7D%7D&quot; width=&quot;408&quot; height=&quot;69&quot; src=&quot;attachments/J2V52PJA.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
 <p>其中 N 是近似步数。然后对每个单词 qi 的归因进行求和并标准化，得出查询的最终归因分数：</p>
 <p><img src="/../imgs/$%7Bfiilename%7D/TJE9KG2X.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/TJE9KG2X.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;TJE9KG2X&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEYHEHWWX%22%2C%22annotationKey%22%3A%22RUKKVDNU%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%223%22%2C%22position%22%3A%7B%22pageIndex%22%3A2%2C%22rects%22%3A%5B%5B320.192%2C349.5%2C562.5%2C388.731%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F77ALXKTW%22%5D%2C%22locator%22%3A%223%22%7D%7D&quot; width=&quot;404&quot; height=&quot;65&quot; src=&quot;attachments/TJE9KG2X.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
-<p>其中 n 是第 l 层中的神经元数量。最后，我们可以找到归因分数大于阈值τ的神经元，并将其视为知识神经元，记为N。</p>
+<p>其中 n 是第 l 层中的神经元数量。最后，<strong>我们可以找到归因分数大于阈值τ的神经元，并将其视为知识神经元</strong>，记为N。</p>
 <h3 id="2-2-Language-Indepent-Knowledge-Neuron-Dectection"><a href="#2-2-Language-Indepent-Knowledge-Neuron-Dectection" class="headerlink" title="2.2 Language-Indepent Knowledge Neuron Dectection"></a>2.2 Language-Indepent Knowledge Neuron Dectection</h3><p><strong>解释</strong> 许多 PLM 支持多语言，并且这些模型中的事实知识的很大一部分是与语言无关的（Xu 等人，2023 年；Wang、Lipton 和 Tsvetkov，2020 年）。这种必要性对于探索多语言 PLM 中事实知识的存储机制变得越来越重要。我们将存储多种语言共有的事实知识的神经元定义为与语言无关的知识神经元，记为 L。为了识别这些类型的知识神经元，我们设计了一种检测算法，如下所示。</p>
 <p><strong>算法</strong> 如图 2 的模块 2 所示，<span style="background-color: #ff666680">给定 K 种语言中具有相同语义的事实三元组，让相应的查询用 qk 表示，其中 k &#x3D; 1, 2, …。 。 。 ，K。对于每个查询，我们使用知识神经元定位模块来获取相应的知识神经元，其中神经元 w(l) i 的属性得分记为攻击 (w(l) i )。多语言PLM对不同语言的敏感度不同，导致不同语言查询的归因分数存在显着差异。</span>因此，很难通过设置统一的阈值来获得所有语言的知识神经元。为了解决这个问题，我们设计了一种多语言阈值调整技术。<span style="background-color: #ff666680">我们为不同的语言设置不同的缩放因子τk，并记录查询qk对应的神经元的最大归因得分，然后确定动态阈值：</span></p>
 <p><img src="/../imgs/$%7Bfiilename%7D/P9A52SBQ.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/P9A52SBQ.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;P9A52SBQ&quot; data-annotation=&quot;%7B%22attachmentURI%22%3A%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2FEYHEHWWX%22%2C%22annotationKey%22%3A%22CMF6JKKR%22%2C%22color%22%3A%22%23ffd400%22%2C%22pageLabel%22%3A%224%22%2C%22position%22%3A%7B%22pageIndex%22%3A3%2C%22rects%22%3A%5B%5B51.923%2C615.462%2C295.962%2C635.077%5D%5D%7D%2C%22citationItem%22%3A%7B%22uris%22%3A%5B%22http%3A%2F%2Fzotero.org%2Fusers%2Flocal%2FiUeV0SQs%2Fitems%2F77ALXKTW%22%5D%2C%22locator%22%3A%224%22%7D%7D&quot; width=&quot;407&quot; height=&quot;33&quot; src=&quot;attachments/P9A52SBQ.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
@@ -1072,6 +1072,48 @@
             
 
             <div class="post-img-box">
+              <a href="/2023/11/06/ji-yu-ti-shi-de-ling-yang-ben-guan-xi-chou-qu-fang-fa-tan-suo/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-06</span>
+                
+              </div>
+              <a class="post-title" href="/2023/11/06/ji-yu-ti-shi-de-ling-yang-ben-guan-xi-chou-qu-fang-fa-tan-suo/">基于提示的零样本关系抽取方法探索</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/11/06/wang-diao-ni-xiang-wang-diao-de-dong-xi-llms-de-gao-xiao-wang-que/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-06</span>
+                
+              </div>
+              <a class="post-title" href="/2023/11/06/wang-diao-ni-xiang-wang-diao-de-dong-xi-llms-de-gao-xiao-wang-que/">忘掉你想忘掉的东西：LLMs的高效忘却</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
               <a href="/2023/11/03/bing-fa-bian-cheng/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
@@ -1126,48 +1168,6 @@
                 
               </div>
               <a class="post-title" href="/2023/11/02/she-ji-mo-shi/">设计模式</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/11/02/java-ji-chu/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">11-02</span>
-                
-              </div>
-              <a class="post-title" href="/2023/11/02/java-ji-chu/">Java基础</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/11/02/qing-jing-xue-xi-chuang-jian-ren-wu-xiang-liang/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">11-02</span>
-                
-              </div>
-              <a class="post-title" href="/2023/11/02/qing-jing-xue-xi-chuang-jian-ren-wu-xiang-liang/">情境学习创建任务向量</a>
             </div>
           </div>
         

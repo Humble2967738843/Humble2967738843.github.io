@@ -6,7 +6,7 @@
   <link href="http://humble2967738843.github.io/atom.xml" rel="self"/>
   
   <link href="http://humble2967738843.github.io/"/>
-  <updated>2023-11-03T14:52:19.652Z</updated>
+  <updated>2023-11-07T03:47:06.079Z</updated>
   <id>http://humble2967738843.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于提示的零样本关系抽取方法探索</title>
+    <link href="http://humble2967738843.github.io/2023/11/06/ji-yu-ti-shi-de-ling-yang-ben-guan-xi-chou-qu-fang-fa-tan-suo/"/>
+    <id>http://humble2967738843.github.io/2023/11/06/ji-yu-ti-shi-de-ling-yang-ben-guan-xi-chou-qu-fang-fa-tan-suo/</id>
+    <published>2023-11-06T08:45:06.000Z</published>
+    <updated>2023-11-07T03:47:06.079Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;基于提示的零样本关系抽取方法探索&quot;&gt;&lt;a href=&quot;#基于提示的零样本关系抽取方法探索&quot; class=&quot;headerlink&quot; title=&quot;基于提示的零样本关系抽取方法探索&quot;&gt;&lt;/a&gt;基于提示的零样本关系抽取方法探索&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
+    
+    
+    <category term="ACL2022" scheme="http://humble2967738843.github.io/tags/ACL2022/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>忘掉你想忘掉的东西：LLMs的高效忘却</title>
+    <link href="http://humble2967738843.github.io/2023/11/06/wang-diao-ni-xiang-wang-diao-de-dong-xi-llms-de-gao-xiao-wang-que/"/>
+    <id>http://humble2967738843.github.io/2023/11/06/wang-diao-ni-xiang-wang-diao-de-dong-xi-llms-de-gao-xiao-wang-que/</id>
+    <published>2023-11-06T03:40:03.000Z</published>
+    <updated>2023-11-07T10:37:39.351Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;忘掉你想忘掉的东西：LLMs的高效忘却&quot;&gt;&lt;a href=&quot;#忘掉你想忘掉的东西：LLMs的高效忘却&quot; class=&quot;headerlink&quot; title=&quot;忘掉你想忘掉的东西：LLMs的高效忘却&quot;&gt;&lt;/a&gt;忘掉你想忘掉的东西：LLMs的高效忘却&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
+    
+    
+    <category term="EMNLP2023" scheme="http://humble2967738843.github.io/tags/EMNLP2023/"/>
+    
+  </entry>
   
   <entry>
     <title>并发编程</title>
@@ -222,7 +272,7 @@
     <link href="http://humble2967738843.github.io/2023/11/02/zhi-shi-shen-jing-yuan-zhong-xin-zhi-lu-yu-yan-wu-guan-zhi-shi-shen-jing-yuan-he-jian-bing-zhi-shi-shen-jing-yuan-de-fa-xian/"/>
     <id>http://humble2967738843.github.io/2023/11/02/zhi-shi-shen-jing-yuan-zhong-xin-zhi-lu-yu-yan-wu-guan-zhi-shi-shen-jing-yuan-he-jian-bing-zhi-shi-shen-jing-yuan-de-fa-xian/</id>
     <published>2023-11-02T04:21:08.000Z</published>
-    <updated>2023-11-02T04:47:39.164Z</updated>
+    <updated>2023-11-07T04:10:25.767Z</updated>
     
     
       
@@ -247,7 +297,7 @@
     <link href="http://humble2967738843.github.io/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/"/>
     <id>http://humble2967738843.github.io/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/</id>
     <published>2023-11-02T04:21:08.000Z</published>
-    <updated>2023-11-02T04:43:53.611Z</updated>
+    <updated>2023-11-07T04:07:01.403Z</updated>
     
     
       

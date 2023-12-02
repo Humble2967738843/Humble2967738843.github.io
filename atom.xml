@@ -6,7 +6,7 @@
   <link href="http://humble2967738843.github.io/atom.xml" rel="self"/>
   
   <link href="http://humble2967738843.github.io/"/>
-  <updated>2023-11-07T03:47:06.079Z</updated>
+  <updated>2023-12-01T13:14:46.860Z</updated>
   <id>http://humble2967738843.github.io/</id>
   
   <author>
@@ -15,6 +15,86 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2023/11/25/meeting23.11.25/"/>
+    <id>http://humble2967738843.github.io/2023/11/25/meeting23.11.25/</id>
+    <published>2023-11-25T10:33:38.045Z</published>
+    <updated>2023-12-01T13:14:46.860Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;事件提取作为问题生成和回答&quot;&gt;&lt;a href=&quot;#事件提取作为问题生成和回答&quot; class=&quot;headerlink&quot; title=&quot;事件提取作为问题生成和回答&quot;&gt;&lt;/a&gt;事件提取作为问题生成和回答&lt;/h1&gt;&lt;h2 id=&quot;Abstract&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Kaggle&#39;s_30_Days_Of_ML</title>
+    <link href="http://humble2967738843.github.io/2023/11/16/kaggle-s-30-days-of-ml/"/>
+    <id>http://humble2967738843.github.io/2023/11/16/kaggle-s-30-days-of-ml/</id>
+    <published>2023-11-16T12:48:00.000Z</published>
+    <updated>2023-11-17T04:56:54.797Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Kaggle’s-30-Days-Of-ML-Day-1-Getting-Started-With-Kaggle&quot;&gt;&lt;a href=&quot;#Kaggle’s-30-Days-Of-ML-Day-1-Getting-Started-With-Kaggle&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="kaggle比赛" scheme="http://humble2967738843.github.io/categories/kaggle%E6%AF%94%E8%B5%9B/"/>
+    
+    
+    <category term="kaggle比赛" scheme="http://humble2967738843.github.io/tags/kaggle%E6%AF%94%E8%B5%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文献整理</title>
+    <link href="http://humble2967738843.github.io/2023/11/09/wen-xian-zheng-li/"/>
+    <id>http://humble2967738843.github.io/2023/11/09/wen-xian-zheng-li/</id>
+    <published>2023-11-09T03:54:40.000Z</published>
+    <updated>2023-11-09T04:01:05.353Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;基于大语言模型的零样本信息抽取方法实现&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;Event</summary>
+        
+      
+    
+    
+    
+    <category term="文献整理" scheme="http://humble2967738843.github.io/categories/%E6%96%87%E7%8C%AE%E6%95%B4%E7%90%86/"/>
+    
+    
+    <category term="文献整理" scheme="http://humble2967738843.github.io/tags/%E6%96%87%E7%8C%AE%E6%95%B4%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>基于提示的零样本关系抽取方法探索</title>
@@ -121,7 +201,7 @@
     <link href="http://humble2967738843.github.io/2023/11/02/she-ji-mo-shi/"/>
     <id>http://humble2967738843.github.io/2023/11/02/she-ji-mo-shi/</id>
     <published>2023-11-02T14:03:10.000Z</published>
-    <updated>2023-11-05T10:08:27.260Z</updated>
+    <updated>2023-11-10T09:54:18.726Z</updated>
     
     
       
@@ -172,7 +252,7 @@
     <link href="http://humble2967738843.github.io/2023/11/02/qing-jing-xue-xi-chuang-jian-ren-wu-xiang-liang/"/>
     <id>http://humble2967738843.github.io/2023/11/02/qing-jing-xue-xi-chuang-jian-ren-wu-xiang-liang/</id>
     <published>2023-11-02T08:26:23.000Z</published>
-    <updated>2023-11-05T09:51:24.406Z</updated>
+    <updated>2023-11-13T14:02:30.056Z</updated>
     
     
       
@@ -293,31 +373,6 @@
   </entry>
   
   <entry>
-    <title>编辑大型语言模型：问题、方法和机遇</title>
-    <link href="http://humble2967738843.github.io/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/"/>
-    <id>http://humble2967738843.github.io/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/</id>
-    <published>2023-11-02T04:21:08.000Z</published>
-    <updated>2023-11-07T04:07:01.403Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;编辑大型语言模型：问题、方法和机遇&quot;&gt;&lt;a href=&quot;#编辑大型语言模型：问题、方法和机遇&quot; class=&quot;headerlink&quot; title=&quot;编辑大型语言模型：问题、方法和机遇&quot;&gt;&lt;/a&gt;编辑大型语言模型：问题、方法和机遇&lt;/h1&gt;&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
-    
-    
-    <category term="EMNLP2023" scheme="http://humble2967738843.github.io/tags/EMNLP2023/"/>
-    
-  </entry>
-  
-  <entry>
     <title>算法笔记V2.0</title>
     <link href="http://humble2967738843.github.io/2023/11/02/suan-fa-bi-ji-v2.0/"/>
     <id>http://humble2967738843.github.io/2023/11/02/suan-fa-bi-ji-v2.0/</id>
@@ -339,6 +394,31 @@
     
     
     <category term="C++算法题目" scheme="http://humble2967738843.github.io/tags/C-%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编辑大型语言模型：问题、方法和机遇</title>
+    <link href="http://humble2967738843.github.io/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/"/>
+    <id>http://humble2967738843.github.io/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/</id>
+    <published>2023-11-02T04:21:08.000Z</published>
+    <updated>2023-11-07T04:07:01.403Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;编辑大型语言模型：问题、方法和机遇&quot;&gt;&lt;a href=&quot;#编辑大型语言模型：问题、方法和机遇&quot; class=&quot;headerlink&quot; title=&quot;编辑大型语言模型：问题、方法和机遇&quot;&gt;&lt;/a&gt;编辑大型语言模型：问题、方法和机遇&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
+    
+    
+    <category term="EMNLP2023" scheme="http://humble2967738843.github.io/tags/EMNLP2023/"/>
     
   </entry>
   

@@ -6,7 +6,7 @@
   <link href="http://humble2967738843.github.io/atom.xml" rel="self"/>
   
   <link href="http://humble2967738843.github.io/"/>
-  <updated>2023-12-01T13:14:46.860Z</updated>
+  <updated>2024-03-23T04:15:56.744Z</updated>
   <id>http://humble2967738843.github.io/</id>
   
   <author>
@@ -18,17 +18,17 @@
   
   <entry>
     <title></title>
-    <link href="http://humble2967738843.github.io/2023/11/25/meeting23.11.25/"/>
-    <id>http://humble2967738843.github.io/2023/11/25/meeting23.11.25/</id>
-    <published>2023-11-25T10:33:38.045Z</published>
-    <updated>2023-12-01T13:14:46.860Z</updated>
+    <link href="http://humble2967738843.github.io/2024/03/23/tong-ji-xue-xi-fang-fa/"/>
+    <id>http://humble2967738843.github.io/2024/03/23/tong-ji-xue-xi-fang-fa/</id>
+    <published>2024-03-23T04:07:25.317Z</published>
+    <updated>2024-03-23T04:15:56.744Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;事件提取作为问题生成和回答&quot;&gt;&lt;a href=&quot;#事件提取作为问题生成和回答&quot; class=&quot;headerlink&quot; title=&quot;事件提取作为问题生成和回答&quot;&gt;&lt;/a&gt;事件提取作为问题生成和回答&lt;/h1&gt;&lt;h2 id=&quot;Abstract&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h1 id=&quot;10-1-提升方法AdaBoost算法&quot;&gt;&lt;a href=&quot;#10-1-提升方法AdaBoost算法&quot; class=&quot;headerlink&quot; title=&quot;10.1 提升方法AdaBoost算法&quot;&gt;&lt;/a&gt;10.1</summary>
         
       
     
@@ -38,387 +38,401 @@
   </entry>
   
   <entry>
-    <title>Kaggle&#39;s_30_Days_Of_ML</title>
-    <link href="http://humble2967738843.github.io/2023/11/16/kaggle-s-30-days-of-ml/"/>
-    <id>http://humble2967738843.github.io/2023/11/16/kaggle-s-30-days-of-ml/</id>
-    <published>2023-11-16T12:48:00.000Z</published>
-    <updated>2023-11-17T04:56:54.797Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/16/53-li-jie-dropout/"/>
+    <id>http://humble2967738843.github.io/2024/01/16/53-li-jie-dropout/</id>
+    <published>2024-01-16T03:26:08.783Z</published>
+    <updated>2024-01-16T03:26:08.783Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Kaggle’s-30-Days-Of-ML-Day-1-Getting-Started-With-Kaggle&quot;&gt;&lt;a href=&quot;#Kaggle’s-30-Days-Of-ML-Day-1-Getting-Started-With-Kaggle&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;53-理解-Dropout&quot;&gt;&lt;a href=&quot;#53-理解-Dropout&quot; class=&quot;headerlink&quot; title=&quot;53 理解 Dropout&quot;&gt;&lt;/a&gt;53 理解 Dropout&lt;/h1&gt;&lt;h2</summary>
         
       
     
     
     
-    <category term="kaggle比赛" scheme="http://humble2967738843.github.io/categories/kaggle%E6%AF%94%E8%B5%9B/"/>
-    
-    
-    <category term="kaggle比赛" scheme="http://humble2967738843.github.io/tags/kaggle%E6%AF%94%E8%B5%9B/"/>
     
   </entry>
   
   <entry>
-    <title>文献整理</title>
-    <link href="http://humble2967738843.github.io/2023/11/09/wen-xian-zheng-li/"/>
-    <id>http://humble2967738843.github.io/2023/11/09/wen-xian-zheng-li/</id>
-    <published>2023-11-09T03:54:40.000Z</published>
-    <updated>2023-11-09T04:01:05.353Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/15/xi-gua-shu/"/>
+    <id>http://humble2967738843.github.io/2024/01/15/xi-gua-shu/</id>
+    <published>2024-01-15T14:04:27.751Z</published>
+    <updated>2024-03-25T02:28:20.377Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;基于大语言模型的零样本信息抽取方法实现&lt;/th&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;Event</summary>
+    <summary type="html">&lt;h1 id=&quot;0204-K折交叉验证&quot;&gt;&lt;a href=&quot;#0204-K折交叉验证&quot; class=&quot;headerlink&quot; title=&quot;0204 K折交叉验证&quot;&gt;&lt;/a&gt;0204 K折交叉验证&lt;/h1&gt;&lt;p&gt;&lt;img</summary>
         
       
     
     
     
-    <category term="文献整理" scheme="http://humble2967738843.github.io/categories/%E6%96%87%E7%8C%AE%E6%95%B4%E7%90%86/"/>
-    
-    
-    <category term="文献整理" scheme="http://humble2967738843.github.io/tags/%E6%96%87%E7%8C%AE%E6%95%B4%E7%90%86/"/>
     
   </entry>
   
   <entry>
-    <title>基于提示的零样本关系抽取方法探索</title>
-    <link href="http://humble2967738843.github.io/2023/11/06/ji-yu-ti-shi-de-ling-yang-ben-guan-xi-chou-qu-fang-fa-tan-suo/"/>
-    <id>http://humble2967738843.github.io/2023/11/06/ji-yu-ti-shi-de-ling-yang-ben-guan-xi-chou-qu-fang-fa-tan-suo/</id>
-    <published>2023-11-06T08:45:06.000Z</published>
-    <updated>2023-11-07T03:47:06.079Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/13/52-dropout-zheng-ze-hua/"/>
+    <id>http://humble2967738843.github.io/2024/01/13/52-dropout-zheng-ze-hua/</id>
+    <published>2024-01-13T13:09:22.411Z</published>
+    <updated>2024-01-16T03:25:51.404Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;基于提示的零样本关系抽取方法探索&quot;&gt;&lt;a href=&quot;#基于提示的零样本关系抽取方法探索&quot; class=&quot;headerlink&quot; title=&quot;基于提示的零样本关系抽取方法探索&quot;&gt;&lt;/a&gt;基于提示的零样本关系抽取方法探索&lt;/h1&gt;&lt;h2</summary>
+    <summary type="html">&lt;h1 id=&quot;52-Dropout-正则化&quot;&gt;&lt;a href=&quot;#52-Dropout-正则化&quot; class=&quot;headerlink&quot; title=&quot;52 Dropout 正则化&quot;&gt;&lt;/a&gt;52 Dropout 正则化&lt;/h1&gt;&lt;h2</summary>
         
       
     
     
     
-    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
-    
-    
-    <category term="ACL2022" scheme="http://humble2967738843.github.io/tags/ACL2022/"/>
     
   </entry>
   
   <entry>
-    <title>忘掉你想忘掉的东西：LLMs的高效忘却</title>
-    <link href="http://humble2967738843.github.io/2023/11/06/wang-diao-ni-xiang-wang-diao-de-dong-xi-llms-de-gao-xiao-wang-que/"/>
-    <id>http://humble2967738843.github.io/2023/11/06/wang-diao-ni-xiang-wang-diao-de-dong-xi-llms-de-gao-xiao-wang-que/</id>
-    <published>2023-11-06T03:40:03.000Z</published>
-    <updated>2023-11-07T10:37:39.351Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/06/51-wei-shi-me-zheng-ze-hua-ke-yi-jian-shao-guo-ni-he/"/>
+    <id>http://humble2967738843.github.io/2024/01/06/51-wei-shi-me-zheng-ze-hua-ke-yi-jian-shao-guo-ni-he/</id>
+    <published>2024-01-06T15:03:06.290Z</published>
+    <updated>2024-01-06T15:15:27.118Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;忘掉你想忘掉的东西：LLMs的高效忘却&quot;&gt;&lt;a href=&quot;#忘掉你想忘掉的东西：LLMs的高效忘却&quot; class=&quot;headerlink&quot; title=&quot;忘掉你想忘掉的东西：LLMs的高效忘却&quot;&gt;&lt;/a&gt;忘掉你想忘掉的东西：LLMs的高效忘却&lt;/h1&gt;&lt;h2</summary>
+    <summary type="html">&lt;h1 id=&quot;51-为什么正则化可以减少过拟合？&quot;&gt;&lt;a href=&quot;#51-为什么正则化可以减少过拟合？&quot; class=&quot;headerlink&quot; title=&quot;51 为什么正则化可以减少过拟合？&quot;&gt;&lt;/a&gt;51 为什么正则化可以减少过拟合？&lt;/h1&gt;&lt;h2</summary>
         
       
     
     
     
-    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
-    
-    
-    <category term="EMNLP2023" scheme="http://humble2967738843.github.io/tags/EMNLP2023/"/>
     
   </entry>
   
   <entry>
-    <title>并发编程</title>
-    <link href="http://humble2967738843.github.io/2023/11/03/bing-fa-bian-cheng/"/>
-    <id>http://humble2967738843.github.io/2023/11/03/bing-fa-bian-cheng/</id>
-    <published>2023-11-03T14:16:31.000Z</published>
-    <updated>2023-11-03T14:52:19.652Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/05/50-zheng-ze-hua/"/>
+    <id>http://humble2967738843.github.io/2024/01/05/50-zheng-ze-hua/</id>
+    <published>2024-01-05T04:43:38.182Z</published>
+    <updated>2024-01-05T04:46:58.819Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;3-7-sleep和yield&quot;&gt;&lt;a href=&quot;#3-7-sleep和yield&quot; class=&quot;headerlink&quot; title=&quot;3.7 sleep和yield&quot;&gt;&lt;/a&gt;3.7</summary>
+    <summary type="html">&lt;h1 id=&quot;50-正则化&quot;&gt;&lt;a href=&quot;#50-正则化&quot; class=&quot;headerlink&quot; title=&quot;50 正则化&quot;&gt;&lt;/a&gt;50 正则化&lt;/h1&gt;&lt;h2 id=&quot;logistic-regression&quot;&gt;&lt;a</summary>
         
       
     
     
     
-    <category term="软件开发" scheme="http://humble2967738843.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="并发编程" scheme="http://humble2967738843.github.io/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
-    <title>JVM</title>
-    <link href="http://humble2967738843.github.io/2023/11/03/jvm/"/>
-    <id>http://humble2967738843.github.io/2023/11/03/jvm/</id>
-    <published>2023-11-03T03:08:06.000Z</published>
-    <updated>2023-11-05T14:49:17.276Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/05/49-ji-qi-xue-xi-ji-chu/"/>
+    <id>http://humble2967738843.github.io/2024/01/05/49-ji-qi-xue-xi-ji-chu/</id>
+    <published>2024-01-05T04:29:26.333Z</published>
+    <updated>2024-01-05T04:29:26.334Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;1-JVM与Java体系结构&quot;&gt;&lt;a href=&quot;#1-JVM与Java体系结构&quot; class=&quot;headerlink&quot; title=&quot;1. JVM与Java体系结构&quot;&gt;&lt;/a&gt;1. JVM与Java体系结构&lt;/h1&gt;&lt;p&gt;&lt;img</summary>
+    <summary type="html">&lt;h1 id=&quot;49-机器学习基础&quot;&gt;&lt;a href=&quot;#49-机器学习基础&quot; class=&quot;headerlink&quot; title=&quot;49 机器学习基础&quot;&gt;&lt;/a&gt;49 机器学习基础&lt;/h1&gt;&lt;h2</summary>
         
       
     
     
     
-    <category term="软件开发" scheme="http://humble2967738843.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="JVM" scheme="http://humble2967738843.github.io/tags/JVM/"/>
     
   </entry>
   
   <entry>
-    <title>设计模式</title>
-    <link href="http://humble2967738843.github.io/2023/11/02/she-ji-mo-shi/"/>
-    <id>http://humble2967738843.github.io/2023/11/02/she-ji-mo-shi/</id>
-    <published>2023-11-02T14:03:10.000Z</published>
-    <updated>2023-11-10T09:54:18.726Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/05/48-pian-chai-he-fang-chai/"/>
+    <id>http://humble2967738843.github.io/2024/01/05/48-pian-chai-he-fang-chai/</id>
+    <published>2024-01-05T04:08:24.728Z</published>
+    <updated>2024-01-05T04:22:47.102Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;1，设计模式&quot;&gt;&lt;a href=&quot;#1，设计模式&quot; class=&quot;headerlink&quot; title=&quot;1，设计模式&quot;&gt;&lt;/a&gt;1，设计模式&lt;/h1&gt;&lt;h2 id=&quot;1-1-软件设计模式产生背景&quot;&gt;&lt;a href=&quot;#1-1-软件设计模式产生背景&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;48-偏差和方差&quot;&gt;&lt;a href=&quot;#48-偏差和方差&quot; class=&quot;headerlink&quot; title=&quot;48 偏差和方差&quot;&gt;&lt;/a&gt;48 偏差和方差&lt;/h1&gt;&lt;h2 id=&quot;Bias-and-Variance&quot;&gt;&lt;a</summary>
         
       
     
     
     
-    <category term="软件开发" scheme="http://humble2967738843.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="设计模式" scheme="http://humble2967738843.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
-    <title>Java基础</title>
-    <link href="http://humble2967738843.github.io/2023/11/02/java-ji-chu/"/>
-    <id>http://humble2967738843.github.io/2023/11/02/java-ji-chu/</id>
-    <published>2023-11-02T13:40:10.000Z</published>
-    <updated>2023-11-05T14:18:49.495Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/02/41-da-jian-shen-ceng-shen-jing-wang-luo-kuai/"/>
+    <id>http://humble2967738843.github.io/2024/01/02/41-da-jian-shen-ceng-shen-jing-wang-luo-kuai/</id>
+    <published>2024-01-02T08:30:06.377Z</published>
+    <updated>2024-01-02T08:30:06.377Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;1-多行注释&quot;&gt;&lt;a href=&quot;#1-多行注释&quot; class=&quot;headerlink&quot; title=&quot;1.多行注释&quot;&gt;&lt;/a&gt;1.多行注释&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;单行注释：&amp;#x2F;&amp;#x2F;</summary>
+    <summary type="html">&lt;h1 id=&quot;41-搭建深层神经网络块&quot;&gt;&lt;a href=&quot;#41-搭建深层神经网络块&quot; class=&quot;headerlink&quot; title=&quot;41 搭建深层神经网络块&quot;&gt;&lt;/a&gt;41 搭建深层神经网络块&lt;/h1&gt;&lt;h2</summary>
         
       
     
     
     
-    <category term="软件开发" scheme="http://humble2967738843.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="Java基础" scheme="http://humble2967738843.github.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
   <entry>
-    <title>情境学习创建任务向量</title>
-    <link href="http://humble2967738843.github.io/2023/11/02/qing-jing-xue-xi-chuang-jian-ren-wu-xiang-liang/"/>
-    <id>http://humble2967738843.github.io/2023/11/02/qing-jing-xue-xi-chuang-jian-ren-wu-xiang-liang/</id>
-    <published>2023-11-02T08:26:23.000Z</published>
-    <updated>2023-11-13T14:02:30.056Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/02/43-zhe-he-da-nao-you-shi-me-guan-xi/"/>
+    <id>http://humble2967738843.github.io/2024/01/02/43-zhe-he-da-nao-you-shi-me-guan-xi/</id>
+    <published>2024-01-02T08:29:55.800Z</published>
+    <updated>2024-01-02T08:29:55.800Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;情境学习创建任务向量&quot;&gt;&lt;a href=&quot;#情境学习创建任务向量&quot; class=&quot;headerlink&quot; title=&quot;情境学习创建任务向量&quot;&gt;&lt;/a&gt;情境学习创建任务向量&lt;/h1&gt;&lt;h2 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;43-这和大脑有什么关系？&quot;&gt;&lt;a href=&quot;#43-这和大脑有什么关系？&quot; class=&quot;headerlink&quot; title=&quot;43 这和大脑有什么关系？&quot;&gt;&lt;/a&gt;43 这和大脑有什么关系？&lt;/h1&gt;&lt;h2</summary>
         
       
     
     
     
-    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
-    
-    
-    <category term="EMNLP2023" scheme="http://humble2967738843.github.io/tags/EMNLP2023/"/>
     
   </entry>
   
   <entry>
-    <title>多语言模型中事实知识的跨语言一致性</title>
-    <link href="http://humble2967738843.github.io/2023/11/02/duo-yu-yan-mo-xing-zhong-shi-shi-zhi-shi-de-kua-yu-yan-yi-zhi-xing/"/>
-    <id>http://humble2967738843.github.io/2023/11/02/duo-yu-yan-mo-xing-zhong-shi-shi-zhi-shi-de-kua-yu-yan-yi-zhi-xing/</id>
-    <published>2023-11-02T04:21:08.000Z</published>
-    <updated>2023-11-02T04:48:56.587Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/02/47-xun-lian-kai-fa-ce-shi-ji-he/"/>
+    <id>http://humble2967738843.github.io/2024/01/02/47-xun-lian-kai-fa-ce-shi-ji-he/</id>
+    <published>2024-01-02T03:48:42.171Z</published>
+    <updated>2024-01-02T03:59:04.324Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;多语言模型中事实知识的跨语言一致性&quot;&gt;&lt;a href=&quot;#多语言模型中事实知识的跨语言一致性&quot; class=&quot;headerlink&quot; title=&quot;多语言模型中事实知识的跨语言一致性&quot;&gt;&lt;/a&gt;多语言模型中事实知识的跨语言一致性&lt;/h1&gt;&lt;h2</summary>
+    <summary type="html">&lt;h1 id=&quot;47-训练-开发-测试集合&quot;&gt;&lt;a href=&quot;#47-训练-开发-测试集合&quot; class=&quot;headerlink&quot; title=&quot;47 训练 开发 测试集合&quot;&gt;&lt;/a&gt;47 训练 开发 测试集合&lt;/h1&gt;&lt;h2</summary>
         
       
     
     
     
-    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
-    
-    
-    <category term="EMNLP2023" scheme="http://humble2967738843.github.io/tags/EMNLP2023/"/>
     
   </entry>
   
   <entry>
-    <title>我们可以编辑多模态大型语言模型吗？</title>
-    <link href="http://humble2967738843.github.io/2023/11/02/wo-men-ke-yi-bian-ji-duo-mo-tai-da-xing-yu-yan-mo-xing-ma/"/>
-    <id>http://humble2967738843.github.io/2023/11/02/wo-men-ke-yi-bian-ji-duo-mo-tai-da-xing-yu-yan-mo-xing-ma/</id>
-    <published>2023-11-02T04:21:08.000Z</published>
-    <updated>2023-11-02T05:02:28.683Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/02/42-can-shu-vs-chao-can-shu/"/>
+    <id>http://humble2967738843.github.io/2024/01/02/42-can-shu-vs-chao-can-shu/</id>
+    <published>2024-01-02T03:37:50.867Z</published>
+    <updated>2024-01-02T03:43:59.267Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;我们可以编辑多模态大型语言模型吗？&quot;&gt;&lt;a href=&quot;#我们可以编辑多模态大型语言模型吗？&quot; class=&quot;headerlink&quot; title=&quot;我们可以编辑多模态大型语言模型吗？&quot;&gt;&lt;/a&gt;我们可以编辑多模态大型语言模型吗？&lt;/h1&gt;&lt;h2</summary>
+    <summary type="html">&lt;h1 id=&quot;42-参数-vs-超参数&quot;&gt;&lt;a href=&quot;#42-参数-vs-超参数&quot; class=&quot;headerlink&quot; title=&quot;42 参数 vs 超参数&quot;&gt;&lt;/a&gt;42 参数 vs 超参数&lt;/h1&gt;&lt;h2</summary>
         
       
     
     
     
-    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
-    
-    
-    <category term="EMNLP2023" scheme="http://humble2967738843.github.io/tags/EMNLP2023/"/>
     
   </entry>
   
   <entry>
-    <title>我们可以通过情景学习来编辑事实知识吗？</title>
-    <link href="http://humble2967738843.github.io/2023/11/02/wo-men-ke-yi-tong-guo-qing-jing-xue-xi-lai-bian-ji-shi-shi-zhi-shi-ma/"/>
-    <id>http://humble2967738843.github.io/2023/11/02/wo-men-ke-yi-tong-guo-qing-jing-xue-xi-lai-bian-ji-shi-shi-zhi-shi-ma/</id>
-    <published>2023-11-02T04:21:08.000Z</published>
-    <updated>2023-11-02T04:50:04.052Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/02/40-wei-shi-me-yao-shi-yong-shen-ceng-biao-shi/"/>
+    <id>http://humble2967738843.github.io/2024/01/02/40-wei-shi-me-yao-shi-yong-shen-ceng-biao-shi/</id>
+    <published>2024-01-02T03:07:29.161Z</published>
+    <updated>2024-01-02T03:29:08.251Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;我们可以通过情景学习来编辑事实知识吗？&quot;&gt;&lt;a href=&quot;#我们可以通过情景学习来编辑事实知识吗？&quot; class=&quot;headerlink&quot; title=&quot;我们可以通过情景学习来编辑事实知识吗？&quot;&gt;&lt;/a&gt;我们可以通过情景学习来编辑事实知识吗？&lt;/h1&gt;&lt;h2</summary>
+    <summary type="html">&lt;h1 id=&quot;40-为什么要使用深层表示？&quot;&gt;&lt;a href=&quot;#40-为什么要使用深层表示？&quot; class=&quot;headerlink&quot; title=&quot;40 为什么要使用深层表示？&quot;&gt;&lt;/a&gt;40 为什么要使用深层表示？&lt;/h1&gt;&lt;h2</summary>
         
       
     
     
     
-    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
-    
-    
-    <category term="EMNLP2023" scheme="http://humble2967738843.github.io/tags/EMNLP2023/"/>
     
   </entry>
   
   <entry>
-    <title>知识神经元中心之旅：语言无关知识神经元和简并知识神经元的发现</title>
-    <link href="http://humble2967738843.github.io/2023/11/02/zhi-shi-shen-jing-yuan-zhong-xin-zhi-lu-yu-yan-wu-guan-zhi-shi-shen-jing-yuan-he-jian-bing-zhi-shi-shen-jing-yuan-de-fa-xian/"/>
-    <id>http://humble2967738843.github.io/2023/11/02/zhi-shi-shen-jing-yuan-zhong-xin-zhi-lu-yu-yan-wu-guan-zhi-shi-shen-jing-yuan-he-jian-bing-zhi-shi-shen-jing-yuan-de-fa-xian/</id>
-    <published>2023-11-02T04:21:08.000Z</published>
-    <updated>2023-11-07T04:10:25.767Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/02/building-recommender-system-with-gnn/"/>
+    <id>http://humble2967738843.github.io/2024/01/02/building-recommender-system-with-gnn/</id>
+    <published>2024-01-02T01:36:10.054Z</published>
+    <updated>2024-01-02T02:05:18.472Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;知识神经元中心之旅：语言无关知识神经元和简并知识神经元的发现&quot;&gt;&lt;a href=&quot;#知识神经元中心之旅：语言无关知识神经元和简并知识神经元的发现&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;Building-Recommender-System-with-GNN&quot;&gt;&lt;a href=&quot;#Building-Recommender-System-with-GNN&quot; class=&quot;headerlink&quot; title=&quot;Building</summary>
         
       
     
     
     
-    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
-    
-    
-    <category term="EMNLP2023" scheme="http://humble2967738843.github.io/tags/EMNLP2023/"/>
     
   </entry>
   
   <entry>
-    <title>编辑大型语言模型：问题、方法和机遇</title>
-    <link href="http://humble2967738843.github.io/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/"/>
-    <id>http://humble2967738843.github.io/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/</id>
-    <published>2023-11-02T04:21:08.000Z</published>
-    <updated>2023-11-07T04:07:01.403Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/02/graph-neural-networks/"/>
+    <id>http://humble2967738843.github.io/2024/01/02/graph-neural-networks/</id>
+    <published>2024-01-02T01:10:20.540Z</published>
+    <updated>2024-01-02T01:33:47.735Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;编辑大型语言模型：问题、方法和机遇&quot;&gt;&lt;a href=&quot;#编辑大型语言模型：问题、方法和机遇&quot; class=&quot;headerlink&quot; title=&quot;编辑大型语言模型：问题、方法和机遇&quot;&gt;&lt;/a&gt;编辑大型语言模型：问题、方法和机遇&lt;/h1&gt;&lt;h2</summary>
+    <summary type="html">&lt;h1 id=&quot;Graph-Neural-Networks&quot;&gt;&lt;a href=&quot;#Graph-Neural-Networks&quot; class=&quot;headerlink&quot; title=&quot;Graph Neural Networks&quot;&gt;&lt;/a&gt;Graph Neural</summary>
         
       
     
     
     
-    <category term="NLP顶会" scheme="http://humble2967738843.github.io/categories/NLP%E9%A1%B6%E4%BC%9A/"/>
-    
-    
-    <category term="EMNLP2023" scheme="http://humble2967738843.github.io/tags/EMNLP2023/"/>
     
   </entry>
   
   <entry>
-    <title>算法笔记V2.0</title>
-    <link href="http://humble2967738843.github.io/2023/11/02/suan-fa-bi-ji-v2.0/"/>
-    <id>http://humble2967738843.github.io/2023/11/02/suan-fa-bi-ji-v2.0/</id>
-    <published>2023-11-02T04:21:08.000Z</published>
-    <updated>2023-11-05T04:31:46.652Z</updated>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/01/bert-and-its-family/"/>
+    <id>http://humble2967738843.github.io/2024/01/01/bert-and-its-family/</id>
+    <published>2024-01-01T07:10:51.204Z</published>
+    <updated>2024-01-01T08:05:06.936Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;img src=&quot;../imgs/$%7Bfiilename%7D/image-20230714101300230.png&quot; class=&quot;lazyload placeholder&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;BERT-and-its-family&quot;&gt;&lt;a href=&quot;#BERT-and-its-family&quot; class=&quot;headerlink&quot; title=&quot;BERT and its family&quot;&gt;&lt;/a&gt;BERT and its</summary>
         
       
     
     
     
-    <category term="软件开发" scheme="http://humble2967738843.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2024/01/01/transformer/"/>
+    <id>http://humble2967738843.github.io/2024/01/01/transformer/</id>
+    <published>2024-01-01T02:05:14.455Z</published>
+    <updated>2024-01-01T07:01:19.053Z</updated>
     
     
-    <category term="C++算法题目" scheme="http://humble2967738843.github.io/tags/C-%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/"/>
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Transformer&quot;&gt;&lt;a href=&quot;#Transformer&quot; class=&quot;headerlink&quot; title=&quot;Transformer&quot;&gt;&lt;/a&gt;Transformer&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2023/12/29/zi-zhu-yi-li-ji-zhi/"/>
+    <id>http://humble2967738843.github.io/2023/12/29/zi-zhu-yi-li-ji-zhi/</id>
+    <published>2023-12-29T02:52:53.232Z</published>
+    <updated>2024-01-01T02:04:38.652Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;自注意力机制&quot;&gt;&lt;a href=&quot;#自注意力机制&quot; class=&quot;headerlink&quot; title=&quot;自注意力机制&quot;&gt;&lt;/a&gt;自注意力机制&lt;/h1&gt;&lt;h2 id=&quot;Sophisticated-input&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2023/12/24/39-he-dui-ju-zhen-de-wei-shu/"/>
+    <id>http://humble2967738843.github.io/2023/12/24/39-he-dui-ju-zhen-de-wei-shu/</id>
+    <published>2023-12-24T05:07:34.929Z</published>
+    <updated>2023-12-24T05:28:34.579Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;39-核对矩阵的维数&quot;&gt;&lt;a href=&quot;#39-核对矩阵的维数&quot; class=&quot;headerlink&quot; title=&quot;39 核对矩阵的维数&quot;&gt;&lt;/a&gt;39</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://humble2967738843.github.io/2023/12/23/38-shen-ceng-wang-luo-zhong-de-qian-xiang-chuan-bo/"/>
+    <id>http://humble2967738843.github.io/2023/12/23/38-shen-ceng-wang-luo-zhong-de-qian-xiang-chuan-bo/</id>
+    <published>2023-12-23T09:46:03.835Z</published>
+    <updated>2023-12-23T10:01:30.952Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;38-深层网络中的前向传播&quot;&gt;&lt;a href=&quot;#38-深层网络中的前向传播&quot; class=&quot;headerlink&quot; title=&quot;38 深层网络中的前向传播&quot;&gt;&lt;/a&gt;38</summary>
+        
+      
+    
+    
+    
     
   </entry>
   

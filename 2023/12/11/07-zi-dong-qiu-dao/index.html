@@ -1,0 +1,650 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
+  
+  <meta name="generator" content="Hexo 7.0.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>院龙的博客</title>
+
+  
+    <meta name="description" content="07自动求导7.1自动求导 向量链式法则  标量链式法则   拓展到向量      【举例】 假设  计算  先分解  得到：  【举例】 假设  计算：  分解：  得到：   自动求导  自动求导计算一个函数在指定值上的导数  它有别于  符号求导   数值求导       计算图  将代码分解成操作子 将计算表示成一个无环图 显示构造（Tensorflow&#x2F;Theano&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="院龙的博客">
+<meta property="og:url" content="http://humble2967738843.github.io/2023/12/11/07-zi-dong-qiu-dao/index.html">
+<meta property="og:site_name" content="院龙的博客">
+<meta property="og:description" content="07自动求导7.1自动求导 向量链式法则  标量链式法则   拓展到向量      【举例】 假设  计算  先分解  得到：  【举例】 假设  计算：  分解：  得到：   自动求导  自动求导计算一个函数在指定值上的导数  它有别于  符号求导   数值求导       计算图  将代码分解成操作子 将计算表示成一个无环图 显示构造（Tensorflow&#x2F;Theano&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/S6Tb8R7FJHlnz4d.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/COAszUhudmN2DTr.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/zptWGbem5KU2jBX.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/JcoD796mwbYytWz.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/xeqpFOuPcIftW6D.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/BLu8YUWO2CZoe6J.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/9NPKpfrQtjC2Tms.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/Y6tjNIBpowdvxcJ.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/PAi5fJZp2BY7KFg.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/CthWvdQFenfuZKs.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/6KDvQl5n9AkydEN.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/Iz1M8gLcWxJNvY6.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/aQzUWTLnN9VxXKM.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/ythLVXC43JjNxKQ.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/CpHZuG3OMXW4j8b.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/C5vyrK4lhzgbFTf.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/17QKZj2VHnM3I5v.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/VnXqmPtDUeJFkRu.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/VTkutaxzcqKof9W.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/WBhC2ZMX4ENqfL6.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/PTR7fGQApD8Xqm4.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/94OXD5cbTZ1yteY.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/Hqjch59NZpvRiuW.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/nuhBQ2sCtLRyZ7V.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/iprdJa5QMcyGVkR.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/zRwyU2geNMVEHIs.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/BoZMD6XeflHOFhK.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/Qoy15qtKZFImcrS.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/Cw8ALrPfid1IuHy.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/y39NPT1OtaxSZ5K.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/CDgNFVxRL6wMKov.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/Z2MYUCwPh8BkVK4.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/rZFiQPnf8wMbEtj.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/11/GeTXM4N9CzVFgIE.png">
+<meta property="article:published_time" content="2023-12-11T10:29:22.942Z">
+<meta property="article:modified_time" content="2023-12-11T14:39:01.272Z">
+<meta property="article:author" content="yuan long">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/12/11/S6Tb8R7FJHlnz4d.png">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="院龙的博客" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.27.0">
+
+  
+
+  
+
+  
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">院龙的博客</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2023/12/02/16-1-ci-qian-ru-word2vec/"><span class="title">16.1词嵌入（Word2Vec）</span></a><a class="item title" href="/2023/11/02/suan-fa-bi-ji-v2.0/"><span class="title">算法笔记V2.0</span></a><a class="item title" href="/2023/12/06/ci-xiang-liang-yu-yu-yan-mo-xing/"><span class="title">词向量与语言模型</span></a><a class="item title" href="/2023/11/16/kaggle-s-30-days-of-ml/"><span class="title">Kaggle's_30_Days_Of_ML</span></a><a class="item title" href="/2023/11/02/qing-jing-xue-xi-chuang-jian-ren-wu-xiang-liang/"><span class="title">情境学习创建任务向量</span></a><a class="item title" href="/2023/11/02/she-ji-mo-shi/"><span class="title">设计模式</span></a><a class="item title" href="/2023/11/09/wen-xian-zheng-li/"><span class="title">文献整理</span></a><a class="item title" href="/2023/11/06/wang-diao-ni-xiang-wang-diao-de-dong-xi-llms-de-gao-xiao-wang-que/"><span class="title">忘掉你想忘掉的东西：LLMs的高效忘却</span></a><a class="item title" href="/2023/11/02/zhi-shi-shen-jing-yuan-zhong-xin-zhi-lu-yu-yan-wu-guan-zhi-shi-shen-jing-yuan-he-jian-bing-zhi-shi-shen-jing-yuan-de-fa-xian/"><span class="title">知识神经元中心之旅：语言无关知识神经元和简并知识神经元的发现</span></a><a class="item title" href="/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/"><span class="title">编辑大型语言模型：问题、方法和机遇</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-12-11T10:29:22.942Z">2023-12-11</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2023-12-11T14:39:01.272Z">2023-12-11</time></span></div></div></div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="07自动求导"><a href="#07自动求导" class="headerlink" title="07自动求导"></a>07自动求导</h1><h2 id="7-1自动求导"><a href="#7-1自动求导" class="headerlink" title="7.1自动求导"></a>7.1自动求导</h2><ul>
+<li><p>向量链式法则</p>
+<ul>
+<li><p>标量链式法则</p>
+<p><img src="https://s2.loli.net/2023/12/11/S6Tb8R7FJHlnz4d.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/S6Tb8R7FJHlnz4d.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211183126611"></p>
+</li>
+<li><p>拓展到向量</p>
+<p><img src="https://s2.loli.net/2023/12/11/COAszUhudmN2DTr.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/COAszUhudmN2DTr.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211183232318"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>【举例】</p>
+<p>假设</p>
+<p><img src="https://s2.loli.net/2023/12/11/zptWGbem5KU2jBX.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/zptWGbem5KU2jBX.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211183335744"></p>
+<p>计算</p>
+<p><img src="https://s2.loli.net/2023/12/11/JcoD796mwbYytWz.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/JcoD796mwbYytWz.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211183403246"></p>
+<p>先分解</p>
+<p><img src="https://s2.loli.net/2023/12/11/xeqpFOuPcIftW6D.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/xeqpFOuPcIftW6D.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211183436407"></p>
+<p>得到：</p>
+<p><img src="https://s2.loli.net/2023/12/11/BLu8YUWO2CZoe6J.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/BLu8YUWO2CZoe6J.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211183524557"></p>
+<p>【举例】</p>
+<p>假设</p>
+<p><img src="https://s2.loli.net/2023/12/11/9NPKpfrQtjC2Tms.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/9NPKpfrQtjC2Tms.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211183636383"></p>
+<p>计算：</p>
+<p><img src="https://s2.loli.net/2023/12/11/Y6tjNIBpowdvxcJ.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/Y6tjNIBpowdvxcJ.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211183658241"></p>
+<p>分解：</p>
+<p><img src="https://s2.loli.net/2023/12/11/PAi5fJZp2BY7KFg.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/PAi5fJZp2BY7KFg.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211183715182"></p>
+<p>得到：</p>
+<p><img src="https://s2.loli.net/2023/12/11/CthWvdQFenfuZKs.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/CthWvdQFenfuZKs.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211183732861"></p>
+<ul>
+<li><p>自动求导</p>
+<ul>
+<li><p>自动求导计算一个函数在指定值上的导数</p>
+</li>
+<li><p>它有别于</p>
+<ul>
+<li><p><strong>符号求导</strong></p>
+<p><img src="https://s2.loli.net/2023/12/11/6KDvQl5n9AkydEN.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/6KDvQl5n9AkydEN.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211184638366"></p>
+</li>
+<li><p><strong>数值求导</strong></p>
+<p><img src="https://s2.loli.net/2023/12/11/Iz1M8gLcWxJNvY6.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/Iz1M8gLcWxJNvY6.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211184654006"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>计算图</p>
+<ul>
+<li>将代码分解成操作子</li>
+<li>将计算表示成一个无环图</li>
+<li>显示构造（<code>Tensorflow</code>&#x2F;<code>Theano</code>&#x2F;<code>MXNet</code>）</li>
+<li>隐式构造（<code>PyTorch</code>&#x2F;<code>MXNet</code>）</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/12/11/aQzUWTLnN9VxXKM.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/aQzUWTLnN9VxXKM.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211185105449"></p>
+<p><img src="https://s2.loli.net/2023/12/11/ythLVXC43JjNxKQ.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/ythLVXC43JjNxKQ.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211184924484"></p>
+<p><strong>相当于告诉机器我是如何一步一步地计算地：</strong></p>
+<p><img src="https://s2.loli.net/2023/12/11/CpHZuG3OMXW4j8b.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/CpHZuG3OMXW4j8b.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211185511402"></p>
+<ul>
+<li><p>自动求导地两种模式</p>
+<ul>
+<li><p>链式法则</p>
+<p><img src="https://s2.loli.net/2023/12/11/C5vyrK4lhzgbFTf.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/C5vyrK4lhzgbFTf.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211185643029"></p>
+</li>
+<li><p>正向积累</p>
+<p><img src="https://s2.loli.net/2023/12/11/17QKZj2VHnM3I5v.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/17QKZj2VHnM3I5v.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211185655510"></p>
+</li>
+<li><p>反向积累、又称反向传递 （<strong>backforward</strong>）</p>
+<p><img src="https://s2.loli.net/2023/12/11/VnXqmPtDUeJFkRu.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/VnXqmPtDUeJFkRu.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211185711166"></p>
+</li>
+</ul>
+</li>
+<li><p>反向积累</p>
+<p><img src="https://s2.loli.net/2023/12/11/VTkutaxzcqKof9W.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/VTkutaxzcqKof9W.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211185840734"></p>
+</li>
+</ul>
+<p><strong>先看正向，正向就是自计算图的底端，从下往上开始计算</strong></p>
+<p><img src="https://s2.loli.net/2023/12/11/WBhC2ZMX4ENqfL6.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/WBhC2ZMX4ENqfL6.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211220023597"></p>
+<p>当正向算完以后，就可以反向积累了。</p>
+<p><strong>首先，先求 $z$ 关于 $b$ 的导数，算完的结果是 $2b$ ，显然这里的 $b$ 反向积累时，不知道它的值究竟是多少，怎么办呢？我们可以使用之前正向计算过程中留下的结果，也就是读取之前运行的结果</strong></p>
+<p><img src="https://s2.loli.net/2023/12/11/PTR7fGQApD8Xqm4.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/PTR7fGQApD8Xqm4.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211220447492"></p>
+<p>同理，我们可以计算 $z$ 关于 $a$ 的导数，这里的 $b$ 就可以使用上面的 $2b$ 中的 $b$ 了。</p>
+<p><img src="https://s2.loli.net/2023/12/11/94OXD5cbTZ1yteY.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/94OXD5cbTZ1yteY.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211220730240"></p>
+<p><strong>最后，我们计算 $z$ 关于 $w$ 的导数，其中的 $a$ 可以取自正向计算时得到的结果</strong></p>
+<p><img src="https://s2.loli.net/2023/12/11/Hqjch59NZpvRiuW.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/Hqjch59NZpvRiuW.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211220926630"></p>
+<ul>
+<li><p>反向累积小结</p>
+<ul>
+<li><p><strong>前向：执行图，存储中间结果</strong></p>
+</li>
+<li><p><strong>反向：从相反方向执行图</strong></p>
+<ul>
+<li><p>去除不需要的枝</p>
+<p><img src="https://s2.loli.net/2023/12/11/nuhBQ2sCtLRyZ7V.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/nuhBQ2sCtLRyZ7V.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211221147596"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>复杂度</p>
+<ul>
+<li><strong>计算复杂度：O(n), n是操作子个数</strong><ul>
+<li>通常正向和反向的代价类似</li>
+</ul>
+</li>
+<li><strong>内存复杂度：O(n)，因为需要存储正向的所有中间结果</strong></li>
+<li>跟正向累积对比：<ul>
+<li><strong>O(n)计算复杂度用来计算一个变量的梯度</strong></li>
+<li><strong>O(1)内存复杂度</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-2自动求导实现"><a href="#7-2自动求导实现" class="headerlink" title="7.2自动求导实现"></a>7.2自动求导实现</h2><p>假设我们想对函数 $y &#x3D; 2 \boldsymbol {x}^T\boldsymbol {x}$ 关于列向量 $\boldsymbol {x}$ 求导</p>
+<p><img src="https://s2.loli.net/2023/12/11/iprdJa5QMcyGVkR.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/iprdJa5QMcyGVkR.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211221815678"></p>
+<p>在我们计算 $y$ 关于 $\boldsymbol {x}$ 的梯度之前，我们需要一个地方来存储梯度。</p>
+<p><img src="https://s2.loli.net/2023/12/11/zRwyU2geNMVEHIs.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/zRwyU2geNMVEHIs.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211221935331"></p>
+<p>现在我们计算 $y$ 。</p>
+<p><img src="https://s2.loli.net/2023/12/11/BoZMD6XeflHOFhK.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/BoZMD6XeflHOFhK.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211222059870"></p>
+<p>通过调用反向传播函数来自动计算 $y$ 关于 $\boldsymbol {x}$ 每个分量的梯度。</p>
+<p><img src="https://s2.loli.net/2023/12/11/Qoy15qtKZFImcrS.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/Qoy15qtKZFImcrS.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211222232173"></p>
+<p><img src="https://s2.loli.net/2023/12/11/Cw8ALrPfid1IuHy.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/Cw8ALrPfid1IuHy.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211222304753"></p>
+<p>现在让我们计算 $\boldsymbol {x}$ 的另一个函数。</p>
+<p><img src="https://s2.loli.net/2023/12/11/y39NPT1OtaxSZ5K.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/y39NPT1OtaxSZ5K.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211222417179"></p>
+<p><strong>深度学习中，我们的目的不是计算微分矩阵，而是批量中每个样本单独计算的偏导数之和。</strong></p>
+<p><img src="https://s2.loli.net/2023/12/11/CDgNFVxRL6wMKov.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/CDgNFVxRL6wMKov.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211222656511"></p>
+<p>将某些<strong>计算移动到记录的计算图之外</strong>，用于<strong>固定网络中的某些参数</strong></p>
+<p><img src="https://s2.loli.net/2023/12/11/Z2MYUCwPh8BkVK4.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/Z2MYUCwPh8BkVK4.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211222810152"></p>
+<p><img src="https://s2.loli.net/2023/12/11/rZFiQPnf8wMbEtj.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/rZFiQPnf8wMbEtj.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211222909131"></p>
+<p>即使构建函数的计算图需要通过 Python 控制流（例如，条件、循环或任意函数调用）我们任然可以计算得到变量的梯度。</p>
+<p>工作原理是：<strong>隐式计算流：首先看我们的函数，你会发现，整个函数的返回值总是取决于 b 的值或者是你输入的 a 的值。每一次计算的时候，PyTorch会在背后将计算图存储下来，然后倒着做一遍就可以正确答案了</strong>。同时计算更慢。</p>
+<p><img src="https://s2.loli.net/2023/12/11/GeTXM4N9CzVFgIE.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/11/GeTXM4N9CzVFgIE.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231211223252136"></p>
+<h2 id="7-3QA"><a href="#7-3QA" class="headerlink" title="7.3QA"></a>7.3QA</h2>
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/12/12/08-xian-xing-hui-gui/">2023-12-12</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/12/10/06-ju-zhen-ji-suan/">2023-12-10</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">yuan long</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0">Stellar 1.27.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#07%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC"><span class="toc-text">07自动求导</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC"><span class="toc-text">7.1自动求导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC%E5%AE%9E%E7%8E%B0"><span class="toc-text">7.2自动求导实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3QA"><span class="toc-text">7.3QA</span></a></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.27.0" async></script>
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

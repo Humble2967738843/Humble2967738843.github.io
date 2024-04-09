@@ -1,0 +1,636 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
+  
+  <meta name="generator" content="Hexo 7.0.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>院龙的博客</title>
+
+  
+    <meta name="description" content="0204 K折交叉验证 0205 测试集分割留出法 0206 验证集 0207 均方误差 0208错误率与精确度公式  0209查准率与查全率 0210P-R反向关系原理   0211 P-R反向关系图   0212 P-R加权调和平均数 0213 macro_microP-R  0214 使用P-R曲线比较不同模型 0215 ROC曲线 0216 排序损失rank-loss 0217 AUC与r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="院龙的博客">
+<meta property="og:url" content="http://humble2967738843.github.io/2024/01/15/xi-gua-shu/index.html">
+<meta property="og:site_name" content="院龙的博客">
+<meta property="og:description" content="0204 K折交叉验证 0205 测试集分割留出法 0206 验证集 0207 均方误差 0208错误率与精确度公式  0209查准率与查全率 0210P-R反向关系原理   0211 P-R反向关系图   0212 P-R加权调和平均数 0213 macro_microP-R  0214 使用P-R曲线比较不同模型 0215 ROC曲线 0216 排序损失rank-loss 0217 AUC与r">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115195857331.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/15/hGeNuPqEw2KdamL.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/15/abAQVWwImtsRSu8.png">
+<meta property="og:image" content="c:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115200948281.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/15/v3huHoQinVwDErU.png">
+<meta property="og:image" content="c:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115201820121.png">
+<meta property="og:image" content="c:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115202522563.png">
+<meta property="og:image" content="c:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115204224315.png">
+<meta property="og:image" content="c:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115204442507.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/15/EvtV3X8fITgd74y.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/15/cjlvL1oNHBwpfs5.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/15/PzjYBU16kfqFIEw.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/15/7Q1jGOzvUreRHb4.png">
+<meta property="og:image" content="c:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115210607952.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/15/lk24DTPKhtnrVUb.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/15/T7xLYHR9BIOsC5S.png">
+<meta property="og:image" content="c:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115211805687.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/15/kVMrjETeX3gQJH6.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/20/YoFNSMmGAjLP42d.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/20/wEkmlAtCs8iM2fV.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/16/WkYKBxvsw5odjzF.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/16/wDVlFmr1bvH9ZX3.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/16/ZtgFwHrE6BiU8Gq.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/16/ikfwX93A8WdqLOu.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/16/ayjosxPpOLZBDM1.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/16/1CFTHWcjtxLqeBh.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/16/27uWCaZ6Hwnx5jL.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/16/rKPUiZnYWVGwE1s.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/16/4bJHnsZlvGtdVWK.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/16/9lfWY4NLZvUBcui.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/eNxatXS5rqBE39U.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/co9km6H3lQ2b54Z.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/ZhTqdG27J4sujfF.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/o5EzXv27wIGZmsL.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/FE1zPHNbGuDvVUp.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/zg4tuD8vTmyO5aG.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/twrS8OxmLap2CAq.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/BJEtSwbKAFRufD3.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/U3ECIQGNbHTmWR9.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/Jjtz6xIaLDCU2wP.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/qxrvtnBDP2JECRh.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/3KZsylpXHYir4BP.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/RhO3V48bsLMAQrB.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/O1cWYJFv5kG9UxR.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/18/U2jf3RG9NWpca1h.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/gLJlm1QGrvekF6R.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/iA8wPYc4bJQoslH.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/BqdHfZ1A4DlPzRo.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/Y9bVmeSwNrhBivu.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/5XidpVSD9M7zQ6e.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/LzFiwM98T725UeN.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/UHg3xOF4b7tMY2Q.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/hLnOxq91Ar4jcmP.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/CdALSlsvrbkKijP.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/DqNRfCL5w31vdQh.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/QwRmU9nEOolZeGx.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/GVnFRKD1loQWL3u.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/fdSB7q1TzpjrDcv.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/DNR3TLxzI2frEkP.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/4rnolLUfD6X3vaS.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/20/vBigtkzJE4A8pxO.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/21/tMfAJhVWTUBu519.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/21/UDK5f4EznXNkLHM.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/21/xLAeNDMQyFCVrfK.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/21/W7ry6RFZknJaDfI.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/21/8IbfD4EXWZuUANM.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/21/n5KQJAC4GcxWYjE.png">
+<meta property="og:image" content="c:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240321114406985.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/21/jITXMkENx7LohFU.png">
+<meta property="og:image" content="https://s2.loli.net/2024/03/23/yi3XNk2FuOUvGz9.png">
+<meta property="article:published_time" content="2024-01-15T14:04:27.751Z">
+<meta property="article:modified_time" content="2024-03-25T02:28:20.377Z">
+<meta property="article:author" content="yuan long">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115195857331.png">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="院龙的博客" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.27.0">
+
+  
+
+  
+
+  
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">院龙的博客</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2023/12/02/16-1-ci-qian-ru-word2vec/"><span class="title">16.1词嵌入（Word2Vec）</span></a><a class="item title" href="/2023/11/02/suan-fa-bi-ji-v2.0/"><span class="title">算法笔记V2.0</span></a><a class="item title" href="/2023/12/06/ci-xiang-liang-yu-yu-yan-mo-xing/"><span class="title">词向量与语言模型</span></a><a class="item title" href="/2023/11/16/kaggle-s-30-days-of-ml/"><span class="title">Kaggle's_30_Days_Of_ML</span></a><a class="item title" href="/2023/11/02/qing-jing-xue-xi-chuang-jian-ren-wu-xiang-liang/"><span class="title">情境学习创建任务向量</span></a><a class="item title" href="/2023/11/02/she-ji-mo-shi/"><span class="title">设计模式</span></a><a class="item title" href="/2023/11/09/wen-xian-zheng-li/"><span class="title">文献整理</span></a><a class="item title" href="/2023/11/06/wang-diao-ni-xiang-wang-diao-de-dong-xi-llms-de-gao-xiao-wang-que/"><span class="title">忘掉你想忘掉的东西：LLMs的高效忘却</span></a><a class="item title" href="/2023/11/02/zhi-shi-shen-jing-yuan-zhong-xin-zhi-lu-yu-yan-wu-guan-zhi-shi-shen-jing-yuan-he-jian-bing-zhi-shi-shen-jing-yuan-de-fa-xian/"><span class="title">知识神经元中心之旅：语言无关知识神经元和简并知识神经元的发现</span></a><a class="item title" href="/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/"><span class="title">编辑大型语言模型：问题、方法和机遇</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-01-15T14:04:27.751Z">2024-01-15</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-03-25T02:28:20.377Z">2024-03-25</time></span></div></div></div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="0204-K折交叉验证"><a href="#0204-K折交叉验证" class="headerlink" title="0204 K折交叉验证"></a>0204 K折交叉验证</h1><p><img src="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115195857331.png" class="lazyload placeholder" data-srcset="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115195857331.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115195857331"></p>
+<h1 id="0205-测试集分割留出法"><a href="#0205-测试集分割留出法" class="headerlink" title="0205 测试集分割留出法"></a>0205 测试集分割留出法</h1><p><img src="https://s2.loli.net/2024/01/15/hGeNuPqEw2KdamL.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/01/15/hGeNuPqEw2KdamL.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115200322730"></p>
+<h1 id="0206-验证集"><a href="#0206-验证集" class="headerlink" title="0206 验证集"></a>0206 验证集</h1><p><img src="https://s2.loli.net/2024/01/15/abAQVWwImtsRSu8.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/01/15/abAQVWwImtsRSu8.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115200552460"></p>
+<h1 id="0207-均方误差"><a href="#0207-均方误差" class="headerlink" title="0207 均方误差"></a>0207 均方误差</h1><p><img src="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115200948281.png" class="lazyload placeholder" data-srcset="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115200948281.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115200948281"></p>
+<h1 id="0208错误率与精确度公式"><a href="#0208错误率与精确度公式" class="headerlink" title="0208错误率与精确度公式"></a>0208错误率与精确度公式</h1><p><img src="https://s2.loli.net/2024/01/15/v3huHoQinVwDErU.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/01/15/v3huHoQinVwDErU.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115201639265"></p>
+<p><img src="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115201820121.png" class="lazyload placeholder" data-srcset="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115201820121.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115201820121"></p>
+<h1 id="0209查准率与查全率"><a href="#0209查准率与查全率" class="headerlink" title="0209查准率与查全率"></a>0209查准率与查全率</h1><p><img src="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115202522563.png" class="lazyload placeholder" data-srcset="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115202522563.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115202522563"></p>
+<h1 id="0210P-R反向关系原理"><a href="#0210P-R反向关系原理" class="headerlink" title="0210P-R反向关系原理"></a>0210P-R反向关系原理</h1><p><img src="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115204224315.png" class="lazyload placeholder" data-srcset="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115204224315.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115204224315"></p>
+<p><img src="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115204442507.png" class="lazyload placeholder" data-srcset="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115204442507.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115204442507"></p>
+<p><img src="https://s2.loli.net/2024/01/15/EvtV3X8fITgd74y.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/01/15/EvtV3X8fITgd74y.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115205515474"></p>
+<h1 id="0211-P-R反向关系图"><a href="#0211-P-R反向关系图" class="headerlink" title="0211 P-R反向关系图"></a>0211 P-R反向关系图</h1><p><img src="https://s2.loli.net/2024/01/15/cjlvL1oNHBwpfs5.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/01/15/cjlvL1oNHBwpfs5.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115205723559"></p>
+<p><img src="https://s2.loli.net/2024/01/15/PzjYBU16kfqFIEw.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/01/15/PzjYBU16kfqFIEw.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115205822764"></p>
+<p><img src="https://s2.loli.net/2024/01/15/7Q1jGOzvUreRHb4.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/01/15/7Q1jGOzvUreRHb4.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115210156902"></p>
+<h1 id="0212-P-R加权调和平均数"><a href="#0212-P-R加权调和平均数" class="headerlink" title="0212 P-R加权调和平均数"></a>0212 P-R加权调和平均数</h1><p><img src="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115210607952.png" class="lazyload placeholder" data-srcset="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115210607952.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115210607952"></p>
+<h1 id="0213-macro-microP-R"><a href="#0213-macro-microP-R" class="headerlink" title="0213 macro_microP-R"></a>0213 macro_microP-R</h1><p><img src="https://s2.loli.net/2024/01/15/lk24DTPKhtnrVUb.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/01/15/lk24DTPKhtnrVUb.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115211245502"></p>
+<p><img src="https://s2.loli.net/2024/01/15/T7xLYHR9BIOsC5S.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/01/15/T7xLYHR9BIOsC5S.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115211401246"></p>
+<h1 id="0214-使用P-R曲线比较不同模型"><a href="#0214-使用P-R曲线比较不同模型" class="headerlink" title="0214 使用P-R曲线比较不同模型"></a>0214 使用P-R曲线比较不同模型</h1><p><img src="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115211805687.png" class="lazyload placeholder" data-srcset="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240115211805687.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115211805687"></p>
+<h1 id="0215-ROC曲线"><a href="#0215-ROC曲线" class="headerlink" title="0215 ROC曲线"></a>0215 ROC曲线</h1><p><img src="https://s2.loli.net/2024/01/15/kVMrjETeX3gQJH6.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/01/15/kVMrjETeX3gQJH6.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240115212739034"></p>
+<h1 id="0216-排序损失rank-loss"><a href="#0216-排序损失rank-loss" class="headerlink" title="0216 排序损失rank-loss"></a>0216 排序损失rank-loss</h1><p><img src="https://s2.loli.net/2024/01/20/YoFNSMmGAjLP42d.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/01/20/YoFNSMmGAjLP42d.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240120205407448"></p>
+<h1 id="0217-AUC与rank-loss"><a href="#0217-AUC与rank-loss" class="headerlink" title="0217 AUC与rank-loss"></a>0217 AUC与rank-loss</h1><p><img src="https://s2.loli.net/2024/01/20/wEkmlAtCs8iM2fV.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/01/20/wEkmlAtCs8iM2fV.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240120205845857"></p>
+<h1 id="0403-熵的度量：一般分布"><a href="#0403-熵的度量：一般分布" class="headerlink" title="0403 熵的度量：一般分布"></a>0403 熵的度量：一般分布</h1><p><img src="https://s2.loli.net/2024/03/16/WkYKBxvsw5odjzF.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/16/WkYKBxvsw5odjzF.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240316115401863"></p>
+<p><img src="https://s2.loli.net/2024/03/16/wDVlFmr1bvH9ZX3.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/16/wDVlFmr1bvH9ZX3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240316115626781"></p>
+<h1 id="0404-信息的度量：信息增益"><a href="#0404-信息的度量：信息增益" class="headerlink" title="0404 信息的度量：信息增益"></a>0404 信息的度量：信息增益</h1><p><img src="https://s2.loli.net/2024/03/16/ZtgFwHrE6BiU8Gq.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/16/ZtgFwHrE6BiU8Gq.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240316120030435"></p>
+<h1 id="0405-决策树ID3算法举例：好坏西瓜"><a href="#0405-决策树ID3算法举例：好坏西瓜" class="headerlink" title="0405 决策树ID3算法举例：好坏西瓜"></a>0405 决策树ID3算法举例：好坏西瓜</h1><p><img src="https://s2.loli.net/2024/03/16/ikfwX93A8WdqLOu.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/16/ikfwX93A8WdqLOu.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240316120857159"></p>
+<h1 id="0406-好坏西瓜继续分叉"><a href="#0406-好坏西瓜继续分叉" class="headerlink" title="0406 好坏西瓜继续分叉"></a>0406 好坏西瓜继续分叉</h1><p><img src="https://s2.loli.net/2024/03/16/ayjosxPpOLZBDM1.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/16/ayjosxPpOLZBDM1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240316121121335"></p>
+<h1 id="0407-增益率简述"><a href="#0407-增益率简述" class="headerlink" title="0407 增益率简述"></a>0407 增益率简述</h1><p><img src="https://s2.loli.net/2024/03/16/1CFTHWcjtxLqeBh.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/16/1CFTHWcjtxLqeBh.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240316121421026"></p>
+<h1 id="0408-决策树CART基尼指数"><a href="#0408-决策树CART基尼指数" class="headerlink" title="0408 决策树CART基尼指数"></a>0408 决策树CART基尼指数</h1><p><img src="https://s2.loli.net/2024/03/16/27uWCaZ6Hwnx5jL.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/16/27uWCaZ6Hwnx5jL.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240316123131555"></p>
+<h1 id="0409-基尼指数计算：第一次分叉"><a href="#0409-基尼指数计算：第一次分叉" class="headerlink" title="0409 基尼指数计算：第一次分叉"></a>0409 基尼指数计算：第一次分叉</h1><p><img src="https://s2.loli.net/2024/03/16/rKPUiZnYWVGwE1s.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/16/rKPUiZnYWVGwE1s.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240316123340068"></p>
+<h3 id="0410-基尼指数计算：第二次分叉"><a href="#0410-基尼指数计算：第二次分叉" class="headerlink" title="0410 基尼指数计算：第二次分叉"></a>0410 基尼指数计算：第二次分叉</h3><p><img src="https://s2.loli.net/2024/03/16/4bJHnsZlvGtdVWK.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/16/4bJHnsZlvGtdVWK.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240316124037637"></p>
+<h1 id="0411-基尼指数计算：第三次分叉与终止"><a href="#0411-基尼指数计算：第三次分叉与终止" class="headerlink" title="0411 基尼指数计算：第三次分叉与终止"></a>0411 基尼指数计算：第三次分叉与终止</h1><p><img src="https://s2.loli.net/2024/03/16/9lfWY4NLZvUBcui.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/16/9lfWY4NLZvUBcui.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240316124324228"></p>
+<h1 id="0412-CART算法回归树"><a href="#0412-CART算法回归树" class="headerlink" title="0412 CART算法回归树"></a>0412 CART算法回归树</h1><p><img src="https://s2.loli.net/2024/03/18/eNxatXS5rqBE39U.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/eNxatXS5rqBE39U.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318113957124"></p>
+<p>多个特征，第一步算法SSR最小值</p>
+<p>防止过拟合：如设定小于20不再分割</p>
+<h1 id="0413-剪枝处理"><a href="#0413-剪枝处理" class="headerlink" title="0413 剪枝处理"></a>0413 剪枝处理</h1><p>在训练集上使用信息增益得到决策树：</p>
+<p><img src="https://s2.loli.net/2024/03/18/co9km6H3lQ2b54Z.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/co9km6H3lQ2b54Z.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318114909636"></p>
+<p><img src="https://s2.loli.net/2024/03/18/ZhTqdG27J4sujfF.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/ZhTqdG27J4sujfF.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318115034225"></p>
+<h1 id="0414-预剪枝一"><a href="#0414-预剪枝一" class="headerlink" title="0414 预剪枝一"></a>0414 预剪枝一</h1><p>预剪枝是一种贪心算法，能剪就剪</p>
+<p><img src="https://s2.loli.net/2024/03/18/o5EzXv27wIGZmsL.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/o5EzXv27wIGZmsL.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318115415202"></p>
+<h1 id="0415-预剪枝二"><a href="#0415-预剪枝二" class="headerlink" title="0415 预剪枝二"></a>0415 预剪枝二</h1><p><img src="https://s2.loli.net/2024/03/18/FE1zPHNbGuDvVUp.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/FE1zPHNbGuDvVUp.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318115627704"></p>
+<p><img src="https://s2.loli.net/2024/03/18/zg4tuD8vTmyO5aG.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/zg4tuD8vTmyO5aG.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318115804138"></p>
+<p>最后这里，全部是坏瓜，所以也不再分</p>
+<p><img src="https://s2.loli.net/2024/03/18/twrS8OxmLap2CAq.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/twrS8OxmLap2CAq.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318115943306"></p>
+<p>经过预剪枝，得到的图是：</p>
+<p><img src="https://s2.loli.net/2024/03/18/BJEtSwbKAFRufD3.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/BJEtSwbKAFRufD3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318120142603"></p>
+<h1 id="0416-后剪枝"><a href="#0416-后剪枝" class="headerlink" title="0416 后剪枝"></a>0416 后剪枝</h1><p>后剪枝是能不剪就不剪</p>
+<p><img src="https://s2.loli.net/2024/03/18/U3ECIQGNbHTmWR9.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/U3ECIQGNbHTmWR9.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318120723808"></p>
+<p>最终是：</p>
+<p><img src="https://s2.loli.net/2024/03/18/Jjtz6xIaLDCU2wP.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/Jjtz6xIaLDCU2wP.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318120842391"></p>
+<p><img src="https://s2.loli.net/2024/03/18/qxrvtnBDP2JECRh.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/qxrvtnBDP2JECRh.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318120931067"></p>
+<p>补充：Prune Regression trees</p>
+<h1 id="0417-连续值C4-5二分法信息增益最大准则"><a href="#0417-连续值C4-5二分法信息增益最大准则" class="headerlink" title="0417 连续值C4.5二分法信息增益最大准则"></a>0417 连续值C4.5二分法信息增益最大准则</h1><p><img src="https://s2.loli.net/2024/03/18/3KZsylpXHYir4BP.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/3KZsylpXHYir4BP.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318121551534"></p>
+<h1 id="0418-决策树缺失值处理"><a href="#0418-决策树缺失值处理" class="headerlink" title="0418 决策树缺失值处理"></a>0418 决策树缺失值处理</h1><p><img src="https://s2.loli.net/2024/03/18/RhO3V48bsLMAQrB.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/RhO3V48bsLMAQrB.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318121853668"></p>
+<p><img src="https://s2.loli.net/2024/03/18/O1cWYJFv5kG9UxR.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/O1cWYJFv5kG9UxR.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318122313628"></p>
+<p><img src="https://s2.loli.net/2024/03/18/U2jf3RG9NWpca1h.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/18/U2jf3RG9NWpca1h.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240318122500736"></p>
+<h1 id="0701-贝叶斯分类器综述"><a href="#0701-贝叶斯分类器综述" class="headerlink" title="0701 贝叶斯分类器综述"></a>0701 贝叶斯分类器综述</h1><h1 id="0702-贝叶斯定理—一个应用"><a href="#0702-贝叶斯定理—一个应用" class="headerlink" title="0702 贝叶斯定理—一个应用"></a>0702 贝叶斯定理—一个应用</h1><p><a target="_blank" rel="noopener" href="https://www.matongxue.com/madocs/279/">https://www.matongxue.com/madocs/279/</a></p>
+<h1 id="0703-贝叶斯定理"><a href="#0703-贝叶斯定理" class="headerlink" title="0703 贝叶斯定理"></a>0703 贝叶斯定理</h1><p><a target="_blank" rel="noopener" href="https://www.matongxue.com/madocs/279/">https://www.matongxue.com/madocs/279/</a></p>
+<p><img src="https://s2.loli.net/2024/03/20/gLJlm1QGrvekF6R.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/gLJlm1QGrvekF6R.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320103534165"></p>
+<h1 id="0704-预热——一个半朴素贝叶斯的例子"><a href="#0704-预热——一个半朴素贝叶斯的例子" class="headerlink" title="0704 预热——一个半朴素贝叶斯的例子"></a>0704 预热——一个半朴素贝叶斯的例子</h1><p><img src="https://s2.loli.net/2024/03/20/iA8wPYc4bJQoslH.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/iA8wPYc4bJQoslH.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320103738904"></p>
+<h1 id="0705贝叶斯决策论"><a href="#0705贝叶斯决策论" class="headerlink" title="0705贝叶斯决策论"></a>0705贝叶斯决策论</h1><p><img src="https://s2.loli.net/2024/03/20/BqdHfZ1A4DlPzRo.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/BqdHfZ1A4DlPzRo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320105552909"></p>
+<p><img src="https://s2.loli.net/2024/03/20/Y9bVmeSwNrhBivu.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/Y9bVmeSwNrhBivu.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320105728365"></p>
+<p><img src="https://s2.loli.net/2024/03/20/5XidpVSD9M7zQ6e.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/5XidpVSD9M7zQ6e.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320105910528"></p>
+<p><img src="https://s2.loli.net/2024/03/20/LzFiwM98T725UeN.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/LzFiwM98T725UeN.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320110043237"></p>
+<h1 id="0706-最大似然估计"><a href="#0706-最大似然估计" class="headerlink" title="0706 最大似然估计"></a>0706 最大似然估计</h1><p><a target="_blank" rel="noopener" href="https://www.matongxue.com/madocs/447/">https://www.matongxue.com/madocs/447/</a></p>
+<p><img src="https://s2.loli.net/2024/03/20/UHg3xOF4b7tMY2Q.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/UHg3xOF4b7tMY2Q.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320111820618"></p>
+<h1 id="0709-最大似然估计——公式与取对数"><a href="#0709-最大似然估计——公式与取对数" class="headerlink" title="0709 最大似然估计——公式与取对数"></a>0709 最大似然估计——公式与取对数</h1><p><img src="https://s2.loli.net/2024/03/20/hLnOxq91Ar4jcmP.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/hLnOxq91Ar4jcmP.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320112532737"></p>
+<p><img src="https://s2.loli.net/2024/03/20/CdALSlsvrbkKijP.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/CdALSlsvrbkKijP.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320112722367"></p>
+<p><img src="https://s2.loli.net/2024/03/20/DqNRfCL5w31vdQh.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/DqNRfCL5w31vdQh.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320112804276"></p>
+<p><img src="https://s2.loli.net/2024/03/20/QwRmU9nEOolZeGx.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/QwRmU9nEOolZeGx.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320113055666"></p>
+<p><img src="https://s2.loli.net/2024/03/20/GVnFRKD1loQWL3u.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/GVnFRKD1loQWL3u.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320113151728"></p>
+<p><img src="https://s2.loli.net/2024/03/20/fdSB7q1TzpjrDcv.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/fdSB7q1TzpjrDcv.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320113406505"></p>
+<p><img src="https://s2.loli.net/2024/03/20/DNR3TLxzI2frEkP.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/DNR3TLxzI2frEkP.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320113430304"></p>
+<p><img src="https://s2.loli.net/2024/03/20/4rnolLUfD6X3vaS.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/4rnolLUfD6X3vaS.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320113519442"></p>
+<p><img src="https://s2.loli.net/2024/03/20/vBigtkzJE4A8pxO.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/20/vBigtkzJE4A8pxO.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320113606279"></p>
+<h1 id="0711-拉普拉斯修正"><a href="#0711-拉普拉斯修正" class="headerlink" title="0711 拉普拉斯修正"></a>0711 拉普拉斯修正</h1><p><img src="https://s2.loli.net/2024/03/21/tMfAJhVWTUBu519.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/21/tMfAJhVWTUBu519.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321111636788"></p>
+<p><img src="https://s2.loli.net/2024/03/21/UDK5f4EznXNkLHM.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/21/UDK5f4EznXNkLHM.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321111730575"></p>
+<p>拉普拉斯修正避免了因为训练集不充分而导致的概率估计为0的情况</p>
+<p>拉普拉斯修正实际上是假设了属性值与类别均匀分布，这是在朴素贝叶斯学习过程中额外引入的关于数据的先验</p>
+<h1 id="0712-EM算法"><a href="#0712-EM算法" class="headerlink" title="0712 EM算法"></a>0712 EM算法</h1><p><img src="https://s2.loli.net/2024/03/21/xLAeNDMQyFCVrfK.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/21/xLAeNDMQyFCVrfK.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321112303279"></p>
+<p><img src="https://s2.loli.net/2024/03/21/W7ry6RFZknJaDfI.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/21/W7ry6RFZknJaDfI.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321112439716"></p>
+<p><img src="https://s2.loli.net/2024/03/21/8IbfD4EXWZuUANM.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/21/8IbfD4EXWZuUANM.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321112701578"></p>
+<p><img src="https://s2.loli.net/2024/03/21/n5KQJAC4GcxWYjE.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/21/n5KQJAC4GcxWYjE.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321112826435"></p>
+<h1 id="0802-集成学习的威力"><a href="#0802-集成学习的威力" class="headerlink" title="0802 集成学习的威力"></a>0802 集成学习的威力</h1><p><img src="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240321114406985.png" class="lazyload placeholder" data-srcset="C:/Users/YL.YL.000/AppData/Roaming/Typora/typora-user-images/image-20240321114406985.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321114406985"></p>
+<h1 id="0803-AdaBoost原理看个例子包懂"><a href="#0803-AdaBoost原理看个例子包懂" class="headerlink" title="0803 AdaBoost原理看个例子包懂"></a>0803 AdaBoost原理看个例子包懂</h1><p><img src="https://s2.loli.net/2024/03/21/jITXMkENx7LohFU.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/21/jITXMkENx7LohFU.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321114637180"></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27126737">https://zhuanlan.zhihu.com/p/27126737</a></p>
+<h1 id="0804-AdaBoost算法实现"><a href="#0804-AdaBoost算法实现" class="headerlink" title="0804 AdaBoost算法实现"></a>0804 AdaBoost算法实现</h1><h1 id="0807-Gradient-Boosting简述"><a href="#0807-Gradient-Boosting简述" class="headerlink" title="0807 Gradient Boosting简述"></a>0807 Gradient Boosting简述</h1><p><img src="https://s2.loli.net/2024/03/23/yi3XNk2FuOUvGz9.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2024/03/23/yi3XNk2FuOUvGz9.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240323114332358"></p>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/01/16/53-li-jie-dropout/">2024-01-16</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/01/13/52-dropout-zheng-ze-hua/">2024-01-13</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">yuan long</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0">Stellar 1.27.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0204-K%E6%8A%98%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81"><span class="toc-text">0204 K折交叉验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0205-%E6%B5%8B%E8%AF%95%E9%9B%86%E5%88%86%E5%89%B2%E7%95%99%E5%87%BA%E6%B3%95"><span class="toc-text">0205 测试集分割留出法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0206-%E9%AA%8C%E8%AF%81%E9%9B%86"><span class="toc-text">0206 验证集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0207-%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE"><span class="toc-text">0207 均方误差</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0208%E9%94%99%E8%AF%AF%E7%8E%87%E4%B8%8E%E7%B2%BE%E7%A1%AE%E5%BA%A6%E5%85%AC%E5%BC%8F"><span class="toc-text">0208错误率与精确度公式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0209%E6%9F%A5%E5%87%86%E7%8E%87%E4%B8%8E%E6%9F%A5%E5%85%A8%E7%8E%87"><span class="toc-text">0209查准率与查全率</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0210P-R%E5%8F%8D%E5%90%91%E5%85%B3%E7%B3%BB%E5%8E%9F%E7%90%86"><span class="toc-text">0210P-R反向关系原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0211-P-R%E5%8F%8D%E5%90%91%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="toc-text">0211 P-R反向关系图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0212-P-R%E5%8A%A0%E6%9D%83%E8%B0%83%E5%92%8C%E5%B9%B3%E5%9D%87%E6%95%B0"><span class="toc-text">0212 P-R加权调和平均数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0213-macro-microP-R"><span class="toc-text">0213 macro_microP-R</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0214-%E4%BD%BF%E7%94%A8P-R%E6%9B%B2%E7%BA%BF%E6%AF%94%E8%BE%83%E4%B8%8D%E5%90%8C%E6%A8%A1%E5%9E%8B"><span class="toc-text">0214 使用P-R曲线比较不同模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0215-ROC%E6%9B%B2%E7%BA%BF"><span class="toc-text">0215 ROC曲线</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0216-%E6%8E%92%E5%BA%8F%E6%8D%9F%E5%A4%B1rank-loss"><span class="toc-text">0216 排序损失rank-loss</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0217-AUC%E4%B8%8Erank-loss"><span class="toc-text">0217 AUC与rank-loss</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0403-%E7%86%B5%E7%9A%84%E5%BA%A6%E9%87%8F%EF%BC%9A%E4%B8%80%E8%88%AC%E5%88%86%E5%B8%83"><span class="toc-text">0403 熵的度量：一般分布</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0404-%E4%BF%A1%E6%81%AF%E7%9A%84%E5%BA%A6%E9%87%8F%EF%BC%9A%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A"><span class="toc-text">0404 信息的度量：信息增益</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0405-%E5%86%B3%E7%AD%96%E6%A0%91ID3%E7%AE%97%E6%B3%95%E4%B8%BE%E4%BE%8B%EF%BC%9A%E5%A5%BD%E5%9D%8F%E8%A5%BF%E7%93%9C"><span class="toc-text">0405 决策树ID3算法举例：好坏西瓜</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0406-%E5%A5%BD%E5%9D%8F%E8%A5%BF%E7%93%9C%E7%BB%A7%E7%BB%AD%E5%88%86%E5%8F%89"><span class="toc-text">0406 好坏西瓜继续分叉</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0407-%E5%A2%9E%E7%9B%8A%E7%8E%87%E7%AE%80%E8%BF%B0"><span class="toc-text">0407 增益率简述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0408-%E5%86%B3%E7%AD%96%E6%A0%91CART%E5%9F%BA%E5%B0%BC%E6%8C%87%E6%95%B0"><span class="toc-text">0408 决策树CART基尼指数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0409-%E5%9F%BA%E5%B0%BC%E6%8C%87%E6%95%B0%E8%AE%A1%E7%AE%97%EF%BC%9A%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%88%86%E5%8F%89"><span class="toc-text">0409 基尼指数计算：第一次分叉</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0410-%E5%9F%BA%E5%B0%BC%E6%8C%87%E6%95%B0%E8%AE%A1%E7%AE%97%EF%BC%9A%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%88%86%E5%8F%89"><span class="toc-text">0410 基尼指数计算：第二次分叉</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0411-%E5%9F%BA%E5%B0%BC%E6%8C%87%E6%95%B0%E8%AE%A1%E7%AE%97%EF%BC%9A%E7%AC%AC%E4%B8%89%E6%AC%A1%E5%88%86%E5%8F%89%E4%B8%8E%E7%BB%88%E6%AD%A2"><span class="toc-text">0411 基尼指数计算：第三次分叉与终止</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0412-CART%E7%AE%97%E6%B3%95%E5%9B%9E%E5%BD%92%E6%A0%91"><span class="toc-text">0412 CART算法回归树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0413-%E5%89%AA%E6%9E%9D%E5%A4%84%E7%90%86"><span class="toc-text">0413 剪枝处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0414-%E9%A2%84%E5%89%AA%E6%9E%9D%E4%B8%80"><span class="toc-text">0414 预剪枝一</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0415-%E9%A2%84%E5%89%AA%E6%9E%9D%E4%BA%8C"><span class="toc-text">0415 预剪枝二</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0416-%E5%90%8E%E5%89%AA%E6%9E%9D"><span class="toc-text">0416 后剪枝</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0417-%E8%BF%9E%E7%BB%AD%E5%80%BCC4-5%E4%BA%8C%E5%88%86%E6%B3%95%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A%E6%9C%80%E5%A4%A7%E5%87%86%E5%88%99"><span class="toc-text">0417 连续值C4.5二分法信息增益最大准则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0418-%E5%86%B3%E7%AD%96%E6%A0%91%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A4%84%E7%90%86"><span class="toc-text">0418 决策树缺失值处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0701-%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8%E7%BB%BC%E8%BF%B0"><span class="toc-text">0701 贝叶斯分类器综述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0702-%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86%E2%80%94%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8"><span class="toc-text">0702 贝叶斯定理—一个应用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0703-%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86"><span class="toc-text">0703 贝叶斯定理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0704-%E9%A2%84%E7%83%AD%E2%80%94%E2%80%94%E4%B8%80%E4%B8%AA%E5%8D%8A%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">0704 预热——一个半朴素贝叶斯的例子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0705%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%86%B3%E7%AD%96%E8%AE%BA"><span class="toc-text">0705贝叶斯决策论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0706-%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1"><span class="toc-text">0706 最大似然估计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0709-%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1%E2%80%94%E2%80%94%E5%85%AC%E5%BC%8F%E4%B8%8E%E5%8F%96%E5%AF%B9%E6%95%B0"><span class="toc-text">0709 最大似然估计——公式与取对数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0711-%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E4%BF%AE%E6%AD%A3"><span class="toc-text">0711 拉普拉斯修正</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0712-EM%E7%AE%97%E6%B3%95"><span class="toc-text">0712 EM算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0802-%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%A8%81%E5%8A%9B"><span class="toc-text">0802 集成学习的威力</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0803-AdaBoost%E5%8E%9F%E7%90%86%E7%9C%8B%E4%B8%AA%E4%BE%8B%E5%AD%90%E5%8C%85%E6%87%82"><span class="toc-text">0803 AdaBoost原理看个例子包懂</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0804-AdaBoost%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-text">0804 AdaBoost算法实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0807-Gradient-Boosting%E7%AE%80%E8%BF%B0"><span class="toc-text">0807 Gradient Boosting简述</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.27.0" async></script>
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

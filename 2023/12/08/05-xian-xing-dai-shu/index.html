@@ -1,0 +1,668 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
+  
+  <meta name="generator" content="Hexo 7.0.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>院龙的博客</title>
+
+  
+    <meta name="description" content="05线性代数 5.1线性代数标量  简单操作$$c &#x3D; a + b \c &#x3D; a * b \c &#x3D; sina$$  长度$$\begin{equation}\left| a \right| &#x3D;\begin{cases}a &amp; \text{ $ if a &gt; 0 $ } \-a &amp; \text{ $ otherwise $ }\end{c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="院龙的博客">
+<meta property="og:url" content="http://humble2967738843.github.io/2023/12/08/05-xian-xing-dai-shu/index.html">
+<meta property="og:site_name" content="院龙的博客">
+<meta property="og:description" content="05线性代数 5.1线性代数标量  简单操作$$c &#x3D; a + b \c &#x3D; a * b \c &#x3D; sina$$  长度$$\begin{equation}\left| a \right| &#x3D;\begin{cases}a &amp; \text{ $ if a &gt; 0 $ } \-a &amp; \text{ $ otherwise $ }\end{c">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/12/08/WRwMYeFdpP2Ogho.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/08/FJW457BjzIxQhAU.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/08/iHdQYVvpjbSwI4R.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/08/TStW7HOB1r4J9XF.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/08/aFrORcwp1KMbfhP.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/08/GEneLpHOWuBFza5.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/08/WkO897cMeLTEVqG.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/08/eQ3w7MXjvZBKmEl.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/08/aqi97HUjBVQGk1F.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/SGmW8QPnMXzfIor.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/GmoESUCyKabAnXV.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/WeOzi8kUPvHhZDt.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/fB4mHSrdutLOPJw.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/3r4JBczaENgw9Gd.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/aDjNKtfdH6vXb9g.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/6VOAfsBmClFR4Dt.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/ryJBHx4iSZCNaoQ.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/B6XvFPcsIaHyEwr.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/z2JnxGuyglNSBX6.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/9xKdV6USFkj1yHq.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/z4UXC9R8aLsDGKQ.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/cTdrO89U1tLs3Ny.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/71WP9ROlLvsFifZ.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/N1CK9gH4YFcJD5m.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/vRTyCNFwMLeUurW.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/O5mESaK81ujvLzg.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/SBplV19n6WCbJ8U.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/f3FbEpYLR1dtPga.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/LfJOmsx1oaqD28k.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/ypw5d9il6NRGrc2.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/qYuWCpZ1zIGEOlm.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/ktsEXCSLOF1phTP.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/sJ9u4axNmzAZeOj.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/4qhyUSHTos8bQpE.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/PitU9EjMDT6rswy.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/l82JiN9IY45mAz7.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/O8qkeSBwUpjYFCs.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/WgdQNoFIHRqrk8E.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/RX5k97ySiZHUJ8D.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/nIaBMVCW8K6OlNT.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/9JXOxPIDnt1ZmUR.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/zfXoBY1nAbhLOUF.png">
+<meta property="article:published_time" content="2023-12-08T04:53:21.800Z">
+<meta property="article:modified_time" content="2023-12-09T08:49:56.167Z">
+<meta property="article:author" content="yuan long">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/12/08/WRwMYeFdpP2Ogho.png">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="院龙的博客" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.27.0">
+
+  
+
+  
+
+  
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">院龙的博客</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2023/12/02/16-1-ci-qian-ru-word2vec/"><span class="title">16.1词嵌入（Word2Vec）</span></a><a class="item title" href="/2023/11/02/suan-fa-bi-ji-v2.0/"><span class="title">算法笔记V2.0</span></a><a class="item title" href="/2023/12/06/ci-xiang-liang-yu-yu-yan-mo-xing/"><span class="title">词向量与语言模型</span></a><a class="item title" href="/2023/11/16/kaggle-s-30-days-of-ml/"><span class="title">Kaggle's_30_Days_Of_ML</span></a><a class="item title" href="/2023/11/02/qing-jing-xue-xi-chuang-jian-ren-wu-xiang-liang/"><span class="title">情境学习创建任务向量</span></a><a class="item title" href="/2023/11/02/she-ji-mo-shi/"><span class="title">设计模式</span></a><a class="item title" href="/2023/11/09/wen-xian-zheng-li/"><span class="title">文献整理</span></a><a class="item title" href="/2023/11/06/wang-diao-ni-xiang-wang-diao-de-dong-xi-llms-de-gao-xiao-wang-que/"><span class="title">忘掉你想忘掉的东西：LLMs的高效忘却</span></a><a class="item title" href="/2023/11/02/zhi-shi-shen-jing-yuan-zhong-xin-zhi-lu-yu-yan-wu-guan-zhi-shi-shen-jing-yuan-he-jian-bing-zhi-shi-shen-jing-yuan-de-fa-xian/"><span class="title">知识神经元中心之旅：语言无关知识神经元和简并知识神经元的发现</span></a><a class="item title" href="/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/"><span class="title">编辑大型语言模型：问题、方法和机遇</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-12-08T04:53:21.800Z">2023-12-08</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2023-12-09T08:49:56.167Z">2023-12-09</time></span></div></div></div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="05线性代数"><a href="#05线性代数" class="headerlink" title="05线性代数"></a>05线性代数</h1><p><img src="https://s2.loli.net/2023/12/08/WRwMYeFdpP2Ogho.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/08/WRwMYeFdpP2Ogho.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231208123851480"></p>
+<h2 id="5-1线性代数"><a href="#5-1线性代数" class="headerlink" title="5.1线性代数"></a>5.1线性代数</h2><p><strong>标量</strong></p>
+<ul>
+<li><p>简单操作<br>$$<br>c &#x3D; a + b \<br>c &#x3D; a * b \<br>c &#x3D; sina<br>$$</p>
+</li>
+<li><p>长度<br>$$<br>\begin{equation}<br>\left| a \right| &#x3D;<br>\begin{cases}<br>a &amp; \text{ $ if a &gt; 0 $ } \<br>-a &amp; \text{ $ otherwise $ }<br>\end{cases}<br>\end{equation}<br>$$</p>
+<p>$$<br>\left| a + b\right| &lt;&#x3D; \left| a \right| + \left| b \right|  \<br>\left| a * b\right| &#x3D; \left| a \right|  *  \left| b \right|<br>$$</p>
+</li>
+</ul>
+<p><strong>向量</strong></p>
+<ul>
+<li><p>简单操作<br>$$<br>||a||<em>2 &#x3D; \left[ \sum</em>{i&#x3D;1}^m a_i^2 \right]^{1&#x2F;2} \<br>||a|| &gt;&#x3D; 0 for all a \<br>||a + b|| &lt;&#x3D; ||a|| + ||b|| \<br>||a * b|| &#x3D; |a| * ||b||<br>$$</p>
+</li>
+<li><p>长度</p>
+</li>
+</ul>
+<p>【举例】</p>
+<p>$c &#x3D; a + b$</p>
+<p><img src="https://s2.loli.net/2023/12/08/FJW457BjzIxQhAU.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/08/FJW457BjzIxQhAU.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231208221234555"></p>
+<p>$c &#x3D; a * b$</p>
+<p><img src="https://s2.loli.net/2023/12/08/iHdQYVvpjbSwI4R.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/08/iHdQYVvpjbSwI4R.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231208221304693"></p>
+<ul>
+<li>点乘</li>
+</ul>
+<p>$$<br>a^T b &#x3D; \sum_i a_ib_i<br>$$</p>
+<ul>
+<li>正交</li>
+</ul>
+<p>$$<br>a^Tb &#x3D; \sum_i a_i b_i &#x3D; 0<br>$$</p>
+<p><img src="https://s2.loli.net/2023/12/08/TStW7HOB1r4J9XF.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/08/TStW7HOB1r4J9XF.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231208221644639"></p>
+<p><strong>矩阵</strong></p>
+<ul>
+<li>简单操作</li>
+</ul>
+<p>$$<br>C &#x3D; A + B \<br>C &#x3D; a * B \<br>C &#x3D; sinA<br>$$</p>
+<ul>
+<li>乘法（矩阵乘以向量）</li>
+</ul>
+<p>$$<br>c &#x3D; Ab<br>$$</p>
+<p><img src="https://s2.loli.net/2023/12/08/aFrORcwp1KMbfhP.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/08/aFrORcwp1KMbfhP.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="矩阵乘以向量"></p>
+<p><strong>直观上理解矩阵乘法</strong>：向量可以看作空间，矩阵可以看作是特定的工具，向量与特定的矩阵相乘后，将会使得向量变得扭曲，也就是变换到另一个空间中</p>
+<p><img src="https://s2.loli.net/2023/12/08/GEneLpHOWuBFza5.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/08/GEneLpHOWuBFza5.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="直观上理解矩阵乘法"></p>
+<ul>
+<li>范数</li>
+</ul>
+<p>$$<br>c &#x3D; A * b \<br>hence |c| &lt;&#x3D; ||A|| * ||b||<br>$$</p>
+<ul>
+<li>取决于如何衡量 b 和 c的长度</li>
+<li>常见的范数</li>
+<li>矩阵范数：最小的满足的上面公式的值</li>
+<li>Frobenius 范数</li>
+</ul>
+<p>$$<br>||A||<em>{Frob} &#x3D; \left[ \sum</em>{ij} A_{ij}^2 \right]^{1&#x2F;2}<br>$$</p>
+<p><strong>特殊矩阵</strong></p>
+<ul>
+<li>对称和反对称</li>
+</ul>
+<p>$$<br>A_{ij} &#x3D; A_{ji} \<br>A_{ij} &#x3D; -A_{ji}<br>$$</p>
+<p><img src="https://s2.loli.net/2023/12/08/WkO897cMeLTEVqG.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/08/WkO897cMeLTEVqG.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231208223352977"></p>
+<ul>
+<li>正定</li>
+</ul>
+<p>$$<br>||x||^2 &#x3D; x^Tx &gt;&#x3D; 0 \<br>generalizes to \<br>x^TAx &gt;&#x3D; 0<br>$$</p>
+<p><img src="https://s2.loli.net/2023/12/08/eQ3w7MXjvZBKmEl.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/08/eQ3w7MXjvZBKmEl.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231208223522068"></p>
+<ul>
+<li>正交矩阵<ul>
+<li>所有行都相互正交</li>
+<li>所有行都有单位长度 $u$</li>
+<li>可以写成</li>
+</ul>
+</li>
+<li>置换矩阵</li>
+<li>置换矩阵是正交矩阵</li>
+<li>特征向量和特征值<ul>
+<li>不被矩阵改变方向的向量$x$（<strong>但长度可能会改变</strong>）</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>Ax &#x3D; \lambda x<br>$$</p>
+<p><img src="https://s2.loli.net/2023/12/08/aqi97HUjBVQGk1F.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/08/aqi97HUjBVQGk1F.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231208224252581"></p>
+<ul>
+<li>对称矩阵总是可以找到特征向量</li>
+</ul>
+<h2 id="5-2线性代数实现"><a href="#5-2线性代数实现" class="headerlink" title="5.2线性代数实现"></a>5.2线性代数实现</h2><p>标量由只有一个元素的张量表示</p>
+<p><img src="https://s2.loli.net/2023/12/09/SGmW8QPnMXzfIor.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/SGmW8QPnMXzfIor.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209152426875"></p>
+<p>你可以将向量视为标量值组成的列表</p>
+<p><img src="https://s2.loli.net/2023/12/09/GmoESUCyKabAnXV.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/GmoESUCyKabAnXV.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209152539663"></p>
+<p>通过张量的索引来访问任一元素</p>
+<p><img src="https://s2.loli.net/2023/12/09/WeOzi8kUPvHhZDt.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/WeOzi8kUPvHhZDt.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209152604605"></p>
+<p>访问张量的长度</p>
+<p><img src="https://s2.loli.net/2023/12/09/fB4mHSrdutLOPJw.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/fB4mHSrdutLOPJw.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209152703768"></p>
+<p>只有一个轴的张量，形状只有一个元素</p>
+<p><img src="https://s2.loli.net/2023/12/09/3r4JBczaENgw9Gd.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/3r4JBczaENgw9Gd.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209152726497"></p>
+<p>通过指定两个分量 $m$ 和 $n$ 来创建一个形状 $m * n$ 的矩阵</p>
+<p><img src="https://s2.loli.net/2023/12/09/aDjNKtfdH6vXb9g.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/aDjNKtfdH6vXb9g.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209152855536"></p>
+<p>矩阵的转置</p>
+<p><img src="https://s2.loli.net/2023/12/09/6VOAfsBmClFR4Dt.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/6VOAfsBmClFR4Dt.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209152938567"></p>
+<p>对称矩阵（symmetric matrix）$A$ 等于其转置：$A &#x3D; A^T$</p>
+<p><img src="https://s2.loli.net/2023/12/09/ryJBHx4iSZCNaoQ.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/ryJBHx4iSZCNaoQ.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209153046682"></p>
+<p><img src="https://s2.loli.net/2023/12/09/B6XvFPcsIaHyEwr.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/B6XvFPcsIaHyEwr.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209153111807"></p>
+<p>就像向量是标量的推广，矩阵是向量的推广一样，我们可以构建具有更多轴的数据结构 <strong>代表2个具有3 * 4结构的矩阵的组合</strong></p>
+<p><img src="https://s2.loli.net/2023/12/09/z2JnxGuyglNSBX6.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/z2JnxGuyglNSBX6.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209153215038"></p>
+<p>给定具有相同形状的任何两个张量，任何按元素二元运算的结果都将是相同形状的张量</p>
+<p><img src="https://s2.loli.net/2023/12/09/9xKdV6USFkj1yHq.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/9xKdV6USFkj1yHq.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209153448715"></p>
+<p><img src="https://s2.loli.net/2023/12/09/z4UXC9R8aLsDGKQ.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/z4UXC9R8aLsDGKQ.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209153501138"></p>
+<p>两个矩阵的按元素的成绩称为 哈达玛积（Hadamard product）（数学符号）⊙</p>
+<p><img src="https://s2.loli.net/2023/12/09/cTdrO89U1tLs3Ny.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/cTdrO89U1tLs3Ny.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209153835936"></p>
+<p><img src="https://s2.loli.net/2023/12/09/71WP9ROlLvsFifZ.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/71WP9ROlLvsFifZ.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209153850528"></p>
+<p>计算其元素的和</p>
+<p><img src="https://s2.loli.net/2023/12/09/N1CK9gH4YFcJD5m.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/N1CK9gH4YFcJD5m.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209153932420"></p>
+<p>表示任意形状张量的元素和</p>
+<p><img src="https://s2.loli.net/2023/12/09/vRTyCNFwMLeUurW.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/vRTyCNFwMLeUurW.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209154014998"></p>
+<p>指定求和汇总张量的轴</p>
+<p>axis&#x3D;0 意味着对 2 这一维度进行求和，剩下的两个维度留下来了。</p>
+<p><img src="https://s2.loli.net/2023/12/09/O5mESaK81ujvLzg.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/O5mESaK81ujvLzg.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209154251883"></p>
+<p><img src="https://s2.loli.net/2023/12/09/SBplV19n6WCbJ8U.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/SBplV19n6WCbJ8U.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209154222362"></p>
+<p>axis&#x3D;1 意味着对 5 这一维度进行求和，剩下的两个维度留下来了。</p>
+<p><img src="https://s2.loli.net/2023/12/09/f3FbEpYLR1dtPga.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/f3FbEpYLR1dtPga.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209154529821"></p>
+<p>也可以指定其中的多个维度进行求和，其余的维度留下来</p>
+<p><img src="https://s2.loli.net/2023/12/09/LfJOmsx1oaqD28k.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/LfJOmsx1oaqD28k.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209154709279"></p>
+<p><img src="https://s2.loli.net/2023/12/09/ypw5d9il6NRGrc2.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/ypw5d9il6NRGrc2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209154755666"></p>
+<p><strong>下面解释一下是怎么按特定轴求和的</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">原始的tensor.size([2, 5, 4]), 一共是40个数</span><br><span class="line">tensor([[[ 0,  1,  3,  4],</span><br><span class="line">		 [ 5,  6,  7,  8],</span><br><span class="line">		 [ 9, 10, 11, 12],</span><br><span class="line">		 [13, 14, 15, 16],</span><br><span class="line">		 [17, 18, 19, 20]],</span><br><span class="line">		 </span><br><span class="line">		[[21, 22, 23, 24],</span><br><span class="line">		 [24, 25, 26, 27],</span><br><span class="line">		 [28, 29, 30, 31],</span><br><span class="line">		 [32, 33, 34, 35],</span><br><span class="line">		 [36, 37, 38, 39]]])</span><br><span class="line">按 axis=0 求和，也就是</span><br></pre></td></tr></table></figure>
+
+<p>一个与求和相关的量是 平均值（mean 或 average）</p>
+<p><img src="https://s2.loli.net/2023/12/09/qYuWCpZ1zIGEOlm.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/qYuWCpZ1zIGEOlm.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209162139075"></p>
+<p>计算总和或均值时保持轴数不变</p>
+<p><img src="https://s2.loli.net/2023/12/09/ktsEXCSLOF1phTP.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/ktsEXCSLOF1phTP.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209162248301"></p>
+<p>通过广播将 $A$ 除以 sum_A </p>
+<p><img src="https://s2.loli.net/2023/12/09/sJ9u4axNmzAZeOj.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/sJ9u4axNmzAZeOj.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209162431838"></p>
+<p>某个轴计算 $A$ 元素的累积总和</p>
+<p><img src="https://s2.loli.net/2023/12/09/4qhyUSHTos8bQpE.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/4qhyUSHTos8bQpE.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209162526414"></p>
+<p>点积是相同位置的按元素乘积的和4</p>
+<p><img src="https://s2.loli.net/2023/12/09/PitU9EjMDT6rswy.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/PitU9EjMDT6rswy.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209162702754"></p>
+<p>我们可以通过执行按元素乘法，然后进行求和来表示两个向量的点积</p>
+<p><img src="https://s2.loli.net/2023/12/09/l82JiN9IY45mAz7.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/l82JiN9IY45mAz7.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209162847916"></p>
+<p>矩阵向量积 $Ax$ 是一个长度为 $m$ 的列向量，其 $i^{th}$ 元素是点积 $a_i^Tx$</p>
+<p><img src="https://s2.loli.net/2023/12/09/O8qkeSBwUpjYFCs.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/O8qkeSBwUpjYFCs.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209163033727"></p>
+<p>我们可以将矩阵-矩阵乘法 $AB$ 看作是简单地执行 $m$ 次矩阵-向量积，并将结果拼接在一起，形成一个 $n * m$ 的矩阵</p>
+<p><img src="https://s2.loli.net/2023/12/09/WgdQNoFIHRqrk8E.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/WgdQNoFIHRqrk8E.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209163240282"></p>
+<p>$L_2$ 范数是向量元素平方和的平方根<br>$$<br>||x||<em>2 &#x3D; \sqrt{\sum</em>{i-1}^n x_i^2}<br>$$<br><img src="https://s2.loli.net/2023/12/09/RX5k97ySiZHUJ8D.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/RX5k97ySiZHUJ8D.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209163429546"></p>
+<p>$L_1$ 范数，它表示为向量元素的绝对值之和：<br>$$<br>||x||<em>1 &#x3D; \sum</em>{i&#x3D;1}^n |x_i|<br>$$<br><img src="https://s2.loli.net/2023/12/09/nIaBMVCW8K6OlNT.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/nIaBMVCW8K6OlNT.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209163603565"></p>
+<p>矩阵的 <em>弗罗贝尼乌斯范数</em> （Frobenius norm） 是矩阵元素的平方和的平方根：</p>
+<p>$$<br>||X||<em>F &#x3D; \sqrt{\sum</em>{i&#x3D;1}^m \sum_{j&#x3D;1}^n x_{ij}^2}<br>$$<br><img src="https://s2.loli.net/2023/12/09/9JXOxPIDnt1ZmUR.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/9JXOxPIDnt1ZmUR.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209163941729"></p>
+<h2 id="5-3按特定轴求和"><a href="#5-3按特定轴求和" class="headerlink" title="5.3按特定轴求和"></a>5.3按特定轴求和</h2><p><img src="https://s2.loli.net/2023/12/09/zfXoBY1nAbhLOUF.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/zfXoBY1nAbhLOUF.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231209164342978"></p>
+<h2 id="5-4QA"><a href="#5-4QA" class="headerlink" title="5.4QA"></a>5.4QA</h2>
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/12/10/06-ju-zhen-ji-suan/">2023-12-10</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/12/07/00-xu-lun-ji-ben-gai-nian/">2023-12-07</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">yuan long</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0">Stellar 1.27.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#05%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="toc-text">05线性代数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="toc-text">5.1线性代数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%AE%9E%E7%8E%B0"><span class="toc-text">5.2线性代数实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3%E6%8C%89%E7%89%B9%E5%AE%9A%E8%BD%B4%E6%B1%82%E5%92%8C"><span class="toc-text">5.3按特定轴求和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4QA"><span class="toc-text">5.4QA</span></a></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.27.0" async></script>
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

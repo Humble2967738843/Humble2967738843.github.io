@@ -1,0 +1,782 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
+  
+  <meta name="generator" content="Hexo 7.0.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>词向量与语言模型 - 院龙的博客</title>
+
+  
+    <meta name="description" content="词向量与语言模型1.语言模型基础与词向量语言模型可以简单理解为**一个句子s在所有句子中出现的概率分布P(s)**。比如：一个语料库中有100个句子，『OK』这个句子出现了5次，那么$p(OK) &#x3D; 5 %$。 那么，如何学习到这种概率分布呢？最简单的方法是建立一个无比庞大的与来哦库，该语料库中包含了人类成千上万年间可能交过的所有的花，那么我们不久可以计算出这句话的概率了吗？可惜这种方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="词向量与语言模型">
+<meta property="og:url" content="http://humble2967738843.github.io/2023/12/06/ci-xiang-liang-yu-yu-yan-mo-xing/index.html">
+<meta property="og:site_name" content="院龙的博客">
+<meta property="og:description" content="词向量与语言模型1.语言模型基础与词向量语言模型可以简单理解为**一个句子s在所有句子中出现的概率分布P(s)**。比如：一个语料库中有100个句子，『OK』这个句子出现了5次，那么$p(OK) &#x3D; 5 %$。 那么，如何学习到这种概率分布呢？最简单的方法是建立一个无比庞大的与来哦库，该语料库中包含了人类成千上万年间可能交过的所有的花，那么我们不久可以计算出这句话的概率了吗？可惜这种方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/vfWaFKh4Oox2lki.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/5h2RyCPvrNwLEf9.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/09/1ldrYhGB8PitHDX.jpg">
+<meta property="article:published_time" content="2023-12-06T04:42:18.000Z">
+<meta property="article:modified_time" content="2023-12-09T09:50:35.599Z">
+<meta property="article:author" content="yuan long">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/12/09/vfWaFKh4Oox2lki.png">
+  
+  
+  
+  <meta name="keywords" content="NLP">
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="院龙的博客" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.27.0">
+
+  
+
+  
+
+  
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">院龙的博客</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2023/12/02/16-1-ci-qian-ru-word2vec/"><span class="title">16.1词嵌入（Word2Vec）</span></a><a class="item title" href="/2023/11/02/suan-fa-bi-ji-v2.0/"><span class="title">算法笔记V2.0</span></a><a class="item title" href="/2023/12/06/ci-xiang-liang-yu-yu-yan-mo-xing/"><span class="title">词向量与语言模型</span></a><a class="item title" href="/2023/11/16/kaggle-s-30-days-of-ml/"><span class="title">Kaggle's_30_Days_Of_ML</span></a><a class="item title" href="/2023/11/02/qing-jing-xue-xi-chuang-jian-ren-wu-xiang-liang/"><span class="title">情境学习创建任务向量</span></a><a class="item title" href="/2023/11/02/she-ji-mo-shi/"><span class="title">设计模式</span></a><a class="item title" href="/2023/11/09/wen-xian-zheng-li/"><span class="title">文献整理</span></a><a class="item title" href="/2023/11/06/wang-diao-ni-xiang-wang-diao-de-dong-xi-llms-de-gao-xiao-wang-que/"><span class="title">忘掉你想忘掉的东西：LLMs的高效忘却</span></a><a class="item title" href="/2023/11/02/zhi-shi-shen-jing-yuan-zhong-xin-zhi-lu-yu-yan-wu-guan-zhi-shi-shen-jing-yuan-he-jian-bing-zhi-shi-shen-jing-yuan-de-fa-xian/"><span class="title">知识神经元中心之旅：语言无关知识神经元和简并知识神经元的发现</span></a><a class="item title" href="/2023/11/02/bian-ji-da-xing-yu-yan-mo-xing-wen-ti-fang-fa-he-ji-yu/"><span class="title">编辑大型语言模型：问题、方法和机遇</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">深度学习与自然语言处理</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-12-06T04:42:18.000Z">2023-12-06</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2023-12-09T09:50:35.599Z">2023-12-09</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>词向量与语言模型</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="词向量与语言模型"><a href="#词向量与语言模型" class="headerlink" title="词向量与语言模型"></a>词向量与语言模型</h1><h2 id="1-语言模型基础与词向量"><a href="#1-语言模型基础与词向量" class="headerlink" title="1.语言模型基础与词向量"></a>1.语言模型基础与词向量</h2><p>语言模型可以简单理解为**一个句子s在所有句子中出现的概率分布P(s)**。比如：一个语料库中有100个句子，『OK』这个句子出现了5次，那么$p(OK) &#x3D; 5 %$。</p>
+<p>那么，如何学习到这种概率分布呢？最简单的方法是建立一个无比庞大的与来哦库，该语料库中包含了人类成千上万年间可能交过的所有的花，那么我们不久可以计算出这句话的概率了吗？可惜这种方法不够现实。</p>
+<p>自然的，能不能通过数学的方法进行表示呢？答案是可以的，因为S是一个序列$w_1, w_2, …, w_n$,那么$p(s)$可以展开为：<br>$$<br>p(s) &#x3D; P(w_1, w_2, \cdots, w_n) &#x3D; P(w_1) \cdot<br>P(w_2|w_1) \cdot P(w_3|w_1,w_2) \cdots P(w_n|w_1, w_2, \cdots, w_{n-1})<br>$$<br>那么现在的问题就变成了我们如何计算$P(w_1, w_2, …, w_n)$</p>
+<h3 id="1-1统计方法-n元模型"><a href="#1-1统计方法-n元模型" class="headerlink" title="1.1统计方法 - n元模型"></a>1.1统计方法 - n元模型</h3><p>回忆概率论：<br>$$<br>P(A|B) &#x3D; \frac{P(AB)}{P(B)}<br>$$<br>我们观察上式， 会发现，$P(w_1)$比较好算， $p(w_2|w_1) &#x3D; \frac{P(w_1w_2)}{P(w_1)}$也还行，但是$P(w_3|w_1,w_2)$就比较有难度了，随着n的增大，计算会越来越难，$P(w_n|w_1, w_2,…, w_n)$几乎根本不可能计算出来，怎么办？</p>
+<p><strong>马尔可夫假设：</strong>假设任意一个词$w_i$出现的概率只同它前面的n个词$w_{i-1}, …, w_{i - n}$有关，因此，那么就有：<br>$$<br>一元模型：P(S) &#x3D; \prod_{i&#x3D;1}^{l} P(w_i) \<br>二元模型：P(s) &#x3D; \prod_{i&#x3D;1}^{l} P(w_i|w_{i-1})<br>$$<br>缺点：</p>
+<ol>
+<li>无法建模更远的关系，语料不足使得无法训练更高阶的语言模型。</li>
+<li>无法建模出词之间的相似度。</li>
+<li>训练语料里面有些n元组没有出现过，其对应的条件概率就是0， 导致计算一整句话的概率为0，解决这个问题有来个那种常用的方法：平滑法和回退法。</li>
+</ol>
+<h3 id="1-2深度学习方法-神经网络语言模型-1"><a href="#1-2深度学习方法-神经网络语言模型-1" class="headerlink" title="1.2深度学习方法 - 神经网络语言模型[1]"></a>1.2深度学习方法 - 神经网络语言模型[1]</h3><p>首先，我们回到问题本身，我们为什么要计算$p(s)$，我们的目的是为了通过大规模语料库学习到语言内部的概率分布，那么有没有办法通过深度学习额方式来学习到这种概率分布呢？</p>
+<p><img src="https://s2.loli.net/2023/12/09/vfWaFKh4Oox2lki.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/vfWaFKh4Oox2lki.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231206130946742"></p>
+<p>观察上图，假设有一组词序列，$w_1, w_2, …, w_t$ ，其中，$w_i \in V$，$V$是所有单词的集合。我们输入的是一个词序列， 而我们的输出是一个概率值，表示根据context预测出下一个词是$i$的概率。用数学来表示，我们最终是要训练一个模型：<br>$$<br>P(s) &#x3D; P(w_t|w_1^{t-1})<br>$$</p>
+<ul>
+<li>$w_t$ 表示这个词序列中的第$t$个单词，$w_{t-n+1}$表示输入长度为n的词序列中的第一个单词</li>
+<li>$w_1^{t-1}$表示从第一个单词到$t-1$个的那次组成的子序列</li>
+</ul>
+<p>因此，我们发现，该模型的每个样本其实计算的是：$p(w_n|w_1, …, w_{n-1})$</p>
+<h3 id="1-3词向量-表示语言的方式"><a href="#1-3词向量-表示语言的方式" class="headerlink" title="1.3词向量 - 表示语言的方式"></a>1.3词向量 - 表示语言的方式</h3><p>前面，我们通过NNLM可以知道，通过语言模型的训练，模型可以学习到语言的概率分布，那么如何将学习到的信息应用到下游任务呢？这就是词向量产生的背景，这里简单介绍下Word2Vec[4]。</p>
+<p>首先明确一点，<strong>词向量是语言模型的副产物</strong>。怎么理解呢？意思是说，词向量是语言模型训练完成之后产生的。</p>
+<p>这里我们以Word2Vec的CBOW训练模型为例：</p>
+<p><img src="https://s2.loli.net/2023/12/09/5h2RyCPvrNwLEf9.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/5h2RyCPvrNwLEf9.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"><br>$$<br>h &#x3D; \frac{1}{C} W^T(w_1 + w_2 + \cdots + x_c) \<br>u &#x3D; w’^{T} * h \<br>P(w_j| context) &#x3D; y_i &#x3D; \frac{exp({u_j})}{\sum_{k \in V} exp({u_k})}<br>$$<br>通过这样的训练完成后，把$W_{V \times N}$ 保存下来，我们就得到了词向量。</p>
+<h2 id="2-预训练语言模型-用模型表示语言"><a href="#2-预训练语言模型-用模型表示语言" class="headerlink" title="2.预训练语言模型 - 用模型表示语言"></a>2.预训练语言模型 - 用模型表示语言</h2><p>前面提到，我们的最终目的还是<strong>通过语言模型来获得某种语言的表示</strong>，但是我们看到，上面那种训练方式，似乎不太合适，那个最后$W_{V \times N}$ 消失不见了，并且模型没有做深。</p>
+<p>我们此处总结一些Word2Vec的弱点：</p>
+<ul>
+<li>模型无法做深，词向量的表征能力有限，词向量的抽象程度不高。</li>
+<li>词向量获得的是上下文无关的，难以解决歧义问题</li>
+<li>OV词无法解决</li>
+</ul>
+<h3 id="2-1NLP特点"><a href="#2-1NLP特点" class="headerlink" title="2.1NLP特点"></a>2.1NLP特点</h3><p>在进入预训练语言模型之前，我们先来看看对于NLP来说，最重要的是什么。</p>
+<p>首先是NLP的特点：</p>
+<ol>
+<li>输入是一个维线性序列</li>
+<li>输入是不定长的，这点对于模型处理起来会比较麻烦</li>
+<li>单词位置与句子位置的相对位置非常重要，互换可能导致完全不同的意思</li>
+<li>句子中的长距离特征对于理解语义也是非常关键的。</li>
+</ol>
+<p>其次是，NLP中几大常见的任务：</p>
+<ol>
+<li><strong>序列标注</strong>：分词、词性标注、命名实体识别等。特点是句子中每个单词要求模型根据上下文都要给出一个分类类别。</li>
+<li><strong>分类任务</strong>：文本分类、情感分析。特点是不管文章多长，总体给出一个分类类别即可。</li>
+<li><strong>句子关系推断</strong>：QA、自然语言推理。特点是给定两个句子，模型判断出两个句子是否具备某种语义关系。</li>
+<li><strong>生成式任务</strong>：机器翻译、文本摘要。特点是输入文本内容后，需要自主生成另一个文本。</li>
+</ol>
+<p>最后，我们来聊一聊三大基本单元：CNN、LSTM、Transformer。</p>
+<p>首先，先简单回顾下Transformer的self-attention机制，该机制在预训练语言模型中起到了至关重要的作用。我们看到，对于Transformer来说，通过self-attention机制，词与词之间的关系一目了然，并且不会受到文本长度的限制。然后注意，在Attention is all you need这篇文章中，Transformer是Encoder-decoder架构的，这与后面的BERT所用的有所不同，后面的BERT所用的只是transformer_block。</p>
+<p>于是我们总结一下这三个基本单元的优缺点：</p>
+<p><strong>RNN</strong></p>
+<ul>
+<li>优点：天生的具有时序结构，十分适合解决NLP问题</li>
+<li>缺点：<ol>
+<li>反向传播时所存在的优化困难的问题，及梯度消失，梯度爆炸问题，进而导致超长距离依赖的解决不佳。</li>
+<li>并行能力，进而导致难以做深</li>
+</ol>
+</li>
+</ul>
+<p><strong>CNN</strong></p>
+<ul>
+<li><p>优点：</p>
+<ol>
+<li>可以并行，可以做的非常深</li>
+<li>能够很好的捕捉 n-gram 特征</li>
+</ol>
+</li>
+<li><p>缺点：</p>
+<ol>
+<li>无法解决长距离依赖问题</li>
+<li>对于位置信息不敏感</li>
+</ol>
+</li>
+</ul>
+<p><strong>Transformer</strong></p>
+<ul>
+<li><p>优点：</p>
+<ol>
+<li>self-attention天生的就解决了长距离依赖问题</li>
+<li>可以并行，可以做的非常深</li>
+<li>位置信息通过 position embedding 很好的补充了</li>
+</ol>
+</li>
+<li><p>缺点：</p>
+<ol>
+<li>对于超长文本，会导致非常大的计算复杂度</li>
+<li>位置信息依赖于 position embedding</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-2ELMO"><a href="#2-2ELMO" class="headerlink" title="2.2ELMO"></a>2.2ELMO</h3><p><img src="https://s2.loli.net/2023/12/09/1ldrYhGB8PitHDX.jpg" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/1ldrYhGB8PitHDX.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+<p>ELMO是通过L层的双向LSTM语言模型来学习上下文信息的，这就解决了上文提到的前两个问题，而针对OV词，ELMO采用了 char-level 来生成词向量进而进行训练。而对于ELMO的不同层而言，不同层的LSTM能够把把握不同粒度和层级的信息，比如浅层的LSTM把握的是单词特征，中层的LSTM把握句法特征，深层的LSTM把握语义特征。<br>$$<br>前向语言模型：p(t_1,t_2,\cdots,t_N) &#x3D; \prod_{k&#x3D;1}^N p(t_k|t_1,t_2, \cdots, t_{k-1}) \<br>后向语言模型：p(t_1,t_2,\cdots,t_N) &#x3D; \prod_{k&#x3D;1}^{N} p(t_k|t_{k+1},t_{k+2},\cdots.t_{N})<br>$$<br>但是，ELMO的缺点也十分明显：</p>
+<ul>
+<li><strong>LSTM特征提取能力远弱于Transformer,并行性较差</strong></li>
+<li><strong>拼接方式双向融合特征能力偏弱</strong></li>
+<li>层数浅，只有两层</li>
+</ul>
+<h3 id="2-2BERT"><a href="#2-2BERT" class="headerlink" title="2.2BERT"></a>2.2BERT</h3><p>语言模型：<br>$$<br>P(s) &#x3D; P(x_{mask}|context)<br>$$<br>我们先来看模型架构，BERT-base 采用12层的 Transformer，这里简单说明，BERT 的架构相当于 Transformer 的 Encoder-decoder 架构中的 Encoder。</p>
+<p>然后，我们关注，输入的组成部分，输入包含三个部分：</p>
+<ul>
+<li>token embedding：词向量，第一个单词是CLS标志，可以用于之后的分类任务</li>
+<li>Segment Embeddings：区别两种句子，因为预训练不光做LM还要做两个句子为输入的分类任务</li>
+<li>Position Embeddings：和之前文章中的 Transformer不一样，<strong>不是三角函数而是学习出来的</strong></li>
+</ul>
+<p>最后，我们看下预训练训练任务部分。</p>
+<p>首先是 Masked LM：随机遮蔽输入的 token 的15%，然后预测被遮住的 token。这样会带来一个问题，即训练和微调阶段的不一致性，因为训练阶段采用了 [MASK] 而 fine-tune 阶段并没有。为了减轻该问题， we do not always replace “masked” words with the actual [MASK] token.</p>
+<p>具体做法为：</p>
+<blockquote>
+<p>假如我们有一句话，my dog is hairy，被选中的词为hairy，数据生成器并不总是将hairy替换为 [MASK]，此时过程为：</p>
+<p>80%情况：用 [MASK] 替换 hairy</p>
+<p>10%情况：随机选一个词，如 apple 来替换 hairy</p>
+<p>10%情况：不改变这句话</p>
+</blockquote>
+<p>然后是NSP，即Next Sentence Prediction，选定一个句子A，B作为预训练样本，B有50%的可能是A的下一句，也有50%的可能是语料库的随机句子。</p>
+<h3 id="2-3GPT1-0"><a href="#2-3GPT1-0" class="headerlink" title="2.3GPT1.0"></a>2.3GPT1.0</h3><p>其实GPT1.0要比BERT出来的早，但是吃了不会宣传的亏。首先来看语言模型：<br>$$<br>P(s) &#x3D; P(w_i|w_{i-k}, \cdots, w_{i-1}) \<br>L_1(U) &#x3D; \sum_i log P(u_i| u_{i-k}, \cdots, u_{i-1}; \Theta); , , \text{k为窗口大小}<br>$$<br>跟 bert 有很明显的差别，但是符合原来语言模型的定义。</p>
+<p>其次，模型结构采用单向 Transformer, 这是由于语言模型决定的。</p>
+<p>再次， embedding 不包含 NSP 这种 segment embedding。</p>
+<p>说到这里，我们就说完了基础的三个预训练语言模型，接下来我们探讨下如何更好的使用预训练语言模型。</p>
+<h2 id="3-如何使用预训练语言模型"><a href="#3-如何使用预训练语言模型" class="headerlink" title="3.如何使用预训练语言模型"></a>3.如何使用预训练语言模型</h2><h3 id="3-1是否要进行微调-1"><a href="#3-1是否要进行微调-1" class="headerlink" title="3.1是否要进行微调[1]"></a>3.1是否要进行微调[1]</h3><p>我们是直接采用训练好的向量还是用预训练语言模型进行微调呢？</p>
+<p>『冰』表示freeze， 『火』表示微调的结果。</p>
+<p>实际上，对于大多数任务， BERT 进行微调的方式总是比提取向量再训练的方式能够获得更佳的效果。因此，再条件允许的情况下，推荐采用微调的方式。</p>
+<h3 id="3-2是否要进行再次预训练-2"><a href="#3-2是否要进行再次预训练-2" class="headerlink" title="3.2是否要进行再次预训练[2]"></a>3.2是否要进行再次预训练[2]</h3><p>答案是需要。</p>
+<p>我们知道现在的预训练语料采用的都是百科，书籍等比较规范的数据，而实际业务中的数据千差万别，可以这么理解，预训练本身获得的是语料库中文本的分布，而如果预训练数据分布于业务数据分布偏差较大，会带来一些负面的影响。</p>
+<p>因此，针对一些业务，如果数据与百科数据擦汗别非常大，先进性预训练，然后再进行微调是一种比较合适的方式。</p>
+<p>我们这里简单介绍下[2]中的结论：</p>
+<ol>
+<li>在目标领域的数据集上继续预训练 （DAPT）可以提升效果；目标领域与语言模型的原始预训练预训练语料越不相关，DAPT效果则提升越明显。</li>
+<li>在具体任务的数据集上继续预训练 （TAPT）可以十分廉价的提升效果。</li>
+<li>结合二者（先进行DAPT，再进行TAPT）可以进一步提升效果。</li>
+<li>如果能够获取更多的、任务相关的五标注数据继续预训练（Curated-TAPT），效果则最佳。</li>
+</ol>
+<h3 id="3-3BERT向量-vs-Glove向量"><a href="#3-3BERT向量-vs-Glove向量" class="headerlink" title="3.3BERT向量 vs Glove向量"></a>3.3BERT向量 vs Glove向量</h3><p>接下来我们分析，BERT 相对于 Glove 向量，到底强在哪。首先是训练数据集规模的影响：</p>
+<ul>
+<li>随着数据规模的扩大，Glove 向量的表现与 BERT 向量的表现差距越来越小，我们看到当训练数据足够多的时候，Glove 在一些任务撒谎给你的获得略差于 BERT的影响，但是在绝大多数情况下依旧比 BERT 向量差很多，这说明 BERT对于小数据集的优越性。</li>
+<li>在简单任务上，随着数据量的增加，Glove 能达到 BERT 十分接近的效果。</li>
+</ul>
+<p>然后是语言特征：</p>
+<ul>
+<li><strong>the complexity of text structure:</strong> 句子结构的复杂性</li>
+<li><strong>Ambiguity in word usage</strong>: 单词的歧义性</li>
+<li><strong>Prevalence of unseen words</strong>: 未登录词出现的概率</li>
+</ul>
+<p>上图我们可以得出以 BERT 为代表的 Contextual embeddings 在解决一些文本结构复杂度高和单词歧义性方面有显著的效果。</p>
+<h2 id="4-预训练语言模型-后时代"><a href="#4-预训练语言模型-后时代" class="headerlink" title="4.预训练语言模型 - 后时代"></a>4.预训练语言模型 - 后时代</h2><p>首先，我们来分析一下这张图，从上到下：</p>
+<ul>
+<li><strong>Contextual：</strong>谈论 静态 embedding 与 上下文 embedding，被做烂了，pass。</li>
+<li><strong>Architectures：</strong> 模型整体架构，这部分还有的探讨，可以参见上面 T5 的Model Architecture 部分。 目前业界还没有统一的标准说应该选择哪种架构，不过从 T5 的效果来看， Transformer+Encoder+Decoder 的效果是最好的，但参数量也上去了。其实就目前来看，研究的意义不是很大了，除非说能出现一个大的突破。</li>
+<li><strong>Task Types：</strong> 谈论了两件事： <strong>语言模型的选择</strong>以及<strong>Contrastive Learning</strong>，其实这两个应该分开讨论。</li>
+<li><strong>Multi-Lingual：</strong>  从多国语言的角度出发，这方面不太懂，也不感兴趣，觉得用处不会太大。</li>
+<li><strong>Multi-Modal：</strong> 多模角度，我个人认为这对于工业界是十分有意义的。</li>
+<li><strong>Knowledge Enriched：</strong> 知识 + 预训练语言模型，我觉得这是一个很值得研究的方向，无论是在工业界和学术界。</li>
+<li><strong>Domain Specific：</strong> 特定领域 + 预训练语言模型，我觉得这方面很有搞头，毕竟很多专有领域跟公共领域还是很不同的，比如医学，生物，法学等。由于每看过相关文章，无法说上面的模型与 bert在同样语料上预训练后哪个效果好，但还是有一定参考价值的。</li>
+<li><strong>Language-Specific：</strong> 这块我觉得还是很有研究价值的，毕竟我们中文跟英文从各个方面来说差距还是蛮大的，如果能对语言有深入了解，感觉还有搞头。</li>
+<li><strong>Model Compression：</strong> 模型压缩，这个在工业界用处很大，十分建议研究，需求也很大，一些蒸馏方法所需要的资源门槛也比较低，如果有资源，有idea，建议入坑。</li>
+</ul>
+<p>考虑到涉及到的内容太多，我这里抽取四个部分讨论，分别是： Architectures， Task Types， Knowledge Enriched 以及 language generation。 </p>
+<h3 id="4-1AE-vs-AR"><a href="#4-1AE-vs-AR" class="headerlink" title="4.1AE vs AR"></a>4.1AE vs AR</h3><p>AR 语言模型：自回归语言模型，指的是，依据前面（或后面）出现的 tokens 来预测当前时刻的 token， 代表有 ELMO， GPT 等。<br>$$<br>forward: p(x) &#x3D; \prod_{t&#x3D;1}^T p(x_t | x_{&lt;t}) \ backward: p(x) &#x3D; \prod_{t&#x3D;T}^1 p(x_t | x_{&gt;t})<br>$$<br>AE 语言模型：通过<strong>上下文信息</strong>来预测被 mask 的 token， 代表有 BERT , Word2Vec(CBOW)  。<br>$$<br>p(x) &#x3D; \prod_{x\in Mask} p(x|context)<br>$$<br><strong>AR 语言模型：</strong></p>
+<ul>
+<li><strong>缺点：</strong>它只能利用单向语义而不能同时利用上下文信息。 ELMO 通过双向都做AR 模型，然后进行拼接，但从结果来看，效果并不是太好。</li>
+<li><strong>优点：</strong> 对生成模型友好，天然符合生成式任务的生成过程。这也是为什么 GPT 能够编故事的原因。</li>
+</ul>
+<p><strong>AE 语言模型：</strong></p>
+<ul>
+<li><strong>缺点：</strong> 由于训练中采用了 [MASK] 标记，导致预训练与微调阶段不一致的问题。 此外对于生成式问题， AE 模型也显得捉襟见肘，这也是目前 BERT 为数不多实现大的突破的领域。</li>
+<li><strong>优点：</strong> 能够很好的编码上下文语义信息， 在自然语言理解相关的下游任务上表现突出。</li>
+</ul>
+<h2 id="5-GPT系列"><a href="#5-GPT系列" class="headerlink" title="5.GPT系列"></a>5.GPT系列</h2><h3 id="5-1GPT-2-0"><a href="#5-1GPT-2-0" class="headerlink" title="5.1GPT 2.0"></a>5.1GPT 2.0</h3><p>GPT 2.0 验证了数据的重要性，即使单纯的从数据角度入手，效果就可以获得巨大的提升。GPT 2.0 采用800w 互联网网页数据，这样训练出来的语言模型，能够覆盖几乎所有领域的内容。</p>
+<p>第二个意义在于，GPT 2.0 开始探索了预训练语言模型在 zero-shot 下的表现。这方面在GPT 3.0 中体现的淋漓尽致。</p>
+<ul>
+<li>预训练数据与网络深度的重要性，目前也没有到极限。</li>
+<li>GPT 2.0 的生成效果非常惊艳，至少语法，流畅度等方面是没有问题的，就是没有灵魂</li>
+<li>zero-flot 也不是不可以</li>
+</ul>
+<h3 id="5-2GPT-3-0"><a href="#5-2GPT-3-0" class="headerlink" title="5.2GPT 3.0"></a>5.2GPT 3.0</h3><p>先来介绍一下几个概念：</p>
+<ul>
+<li>FT，fine-tuning：就是微调啦</li>
+<li>FS，few-shot：允许输入数条范例和一则任务说明</li>
+<li>One-shot：只允许输入一条范例和一则任务说明</li>
+<li>Zero-shot：不允许输入任何范例，只允许输入一则任务说明</li>
+</ul>
+<p>GPT 3.0 本质上是探索超大型预训练语言模型在 few-shot，one-shot，zero-shot 上的可能性，这是延续之前 GPT 2.0 的研究，整体上，GPT 3.0 在 zero-shot 下能获得相当不错的结果。</p>
+<h2 id="6-BERT系列"><a href="#6-BERT系列" class="headerlink" title="6.BERT系列"></a>6.BERT系列</h2><h3 id="6-1Roberta"><a href="#6-1Roberta" class="headerlink" title="6.1Roberta"></a>6.1Roberta</h3><p>roberta 是bert 的一个完善版，相对于模型架构之类的都没有改变，改变的只是三个方面：</p>
+<ol>
+<li><p>预训练数据：</p>
+<ul>
+<li>BERT 采用了 BOOKCORPUS 和英文维基百科， 总共16GB。而 RoBERTa 采用了 BOOKCORPUS + 英文维基百科+ CC-NEWS+OPENWEBTEXT+STORIES， 总共160GB。</li>
+<li>Roberta 与 bert 都采用 512 个token 作为序列长度，但与 bert 不同的是， robert 不会随机掺杂一些短句，这意味着 roberta 采用的都是长句。</li>
+</ul>
+</li>
+<li><p>动态mask vs 静态 mask：</p>
+<ul>
+<li><strong>静态 mask：</strong>Bert 在准备训练数据时，每个样本只会进行一次随机 mask，每个 epoch 都重复使用，后续的每个训练步都采用相同的mask。</li>
+<li><strong>修改版静态mask：</strong> 在预处理时将数据集拷贝10次，每份数据采用不同的 mask。</li>
+<li><strong>动态mask</strong>：不在预处理时进行 mask，而是在每次向模型输入时动态生成mask</li>
+</ul>
+</li>
+<li><p>数据格式与NSP：</p>
+<ul>
+<li><strong>Segment-pair + NSP：</strong>与 bert 一样。输入包含两个 segment，这两个 segment 可能会来自同一个文档或不同文档，两个segment 的token 数均小于 512，预训练任务包含 MLM 与 NSP。</li>
+<li><strong>Sentence+pair + NSP：</strong>输入包含两个 sentence，两个句子可能来自同一文档或不同文档，两个句子 token 数均少于 512。预训练任务包含 MLM 与 NSP。</li>
+<li><strong>Full-sentences：</strong>输入只有一部分，来自同一个文档或不同文档的连续句子，token总数不超过512。输入可能跨越文档边界，如果跨文档，则在上一个文档末尾添加文档边界token。不包含NSP任务。</li>
+<li><strong>Doc-sentences：</strong>输入只有一部分，输入来自同一个文档的连续句子，token总数不超过512。预训练不包含 NSP 任务。</li>
+</ul>
+<p>通过四个对比实验我们发现：</p>
+<ul>
+<li>Segment-pair 较好于 sentence-pair，可能是因为 segment 能够学习到长距离依赖关系。</li>
+<li>Doc-sentences 几乎在所有任务中表现最佳，这意味着 NSP 任务没有什么用</li>
+<li>Doc-sentences 略好于 Full-sentences。</li>
+</ul>
+</li>
+</ol>
+<h3 id="6-2T5"><a href="#6-2T5" class="headerlink" title="6.2T5"></a>6.2T5</h3><h2 id="7-预训练语言模型与自然语言生成"><a href="#7-预训练语言模型与自然语言生成" class="headerlink" title="7.预训练语言模型与自然语言生成"></a>7.预训练语言模型与自然语言生成</h2><p>这里我们先来回顾一下BERT和GPT， 前面提到， BERT 本质上相当于 Transformer 中的 Encoder， 而GPT 相当于 Transformer 中的 Decoder。既然我们已经验证了 Transformer 在文本生成领域的成功，尤其是机器翻译领域， 那么当我们想用于生成问题的时候，很自然的想到有没有办法把二者结合起来呢？</p>
+<p>MASS 就是基于这样的思想。</p>
+<h3 id="7-1MASS"><a href="#7-1MASS" class="headerlink" title="7.1MASS"></a>7.1MASS</h3><p>MASS 的思想很简单， 对于输入序列 x，  mask 该句从 u 到 v 位置上的token，记为 $x^{\u:v}$， 而对应的， 从 u 到 v 位置上的 token 片段记为 $x^{u:v}$ 。 k &#x3D; v - u + 1 表示 mask 的窗口大小 ， 表示一句话中多少个 token 被 mask 。 对于 MASS 的语言模型来说， 其输入为 mask 后的序列 $x^{\u:v}$ ， 输出为被 mask 后的序列 $x^{u:v}$。</p>
+<p><strong>为何 MASS 适合生成</strong></p>
+<p><strong>首先，</strong> 通过 Seq2Seq 框架来预测被 mask 的tokens 使得 Encoder 去学习没有被 mask 的 token 的信息， 而Decoder 去学习如何从 Encoder 中提取有效的信息。</p>
+<p><strong>然后，</strong> 与预测离散的 tokens相比，Decoder 通过预测连续的 tokens， 其能够建立很好的语言生成能力。</p>
+<p><strong>最后，</strong> 通过输入与输出的 mask 匹配， 使得 Decoder 能够从Encoder 中提取到有意义的信息，而不是利用之前的信息。</p>
+<p>MASS 总结来说有以下几点创新：</p>
+<ul>
+<li>引入了 Seq2Seq 来训练预训练模型。</li>
+<li><strong>mask 掉的是一段连续的tokens而不是离散的 mask， 有助于模型生成语言的能力。</strong></li>
+<li>Encoder 中是 mask 掉的序列，而 Decoder 中是对应被mask的 tokens。</li>
+</ul>
+<h3 id="7-2UNILM"><a href="#7-2UNILM" class="headerlink" title="7.2UNILM"></a>7.2UNILM</h3><p>UNILM 同样想融合bert与gpt ，然而走了与 MASS 完全不同的路子，它想通过多任务学习的方式来解决。UNILM 这篇文章，厉害在，同时使用多个预训练语言模型训练这个思想，在预训练任务中包含了三种语言模型：</p>
+<ul>
+<li><p><strong>Bidirectional</strong> <strong>LM</strong> <strong>：</strong> BERT 的 mask LM</p>
+</li>
+<li><p><strong>Unidirectional LM</strong>：GPT 的 语言模型，包括 left-to-right 到 right-to-left</p>
+</li>
+<li><p><strong>Seq2Seq LM</strong>： 句子间LM。输入两个句子，第一个句子采用双向LM方式，第二个采用单向LM 方式。</p>
+</li>
+</ul>
+<h3 id="7-3BART"><a href="#7-3BART" class="headerlink" title="7.3BART"></a>7.3BART</h3><p>BART 与 MASS 的基本思想一致，都是受到 Transformer 在机器翻译领域的成功，尝试将 Transformer架构跟预训练结合起来。</p>
+<p>但是与 MASS 不同的是，他们输入的数据格式有很大的差别，Decoder 也有较大的差别。与MASS 相比， BART 完全延续 Transformer 原来的架构方式。</p>
+<p><strong>训练数据：</strong></p>
+<ul>
+<li><strong>Token Masking</strong> 和BERT一样，随机选择<strong>token</strong>用[MASK] 代替。</li>
+<li><strong>Token Deletion</strong> 随机删除<strong>token</strong>，模型必须确定哪些<strong>位置</strong>缺少输入。</li>
+<li><strong>Text Filling</strong> 屏蔽一个<strong>文段</strong>，文段长度服从泊松分布（λ&#x3D;3）。每个文段被**一个[MASK]**标记替换。如果文段长度为0，意味插入一个[MASK]标记（灵感来自Span-BERT）。</li>
+<li><strong>Sentence Permutation</strong> 以句号作为分割符，将一篇文章分成多个<strong>句子</strong>，并随机打乱。</li>
+<li><strong>Document Rotation</strong> 随机均匀地选择一个<strong>token</strong>，以这个token为中心，旋转文档，选中的这个token作为新的开头，此任务训练模型以识别文档的开头。</li>
+</ul>
+<h2 id="8-预训练语言模型融入知识"><a href="#8-预训练语言模型融入知识" class="headerlink" title="8.预训练语言模型融入知识"></a>8.预训练语言模型融入知识</h2><h3 id="8-1ERNIE"><a href="#8-1ERNIE" class="headerlink" title="8.1ERNIE"></a>8.1ERNIE</h3><p>ERINE 的网络架构，语言模型等与 BERT 完全相同，与BERT 不同的主要有两点：</p>
+<ul>
+<li>数据的mask</li>
+<li>NSP 任务 与 DLM</li>
+</ul>
+<p>首先我们来看 mask 方式，ERNIE 的 mask 包括三部分：</p>
+<ol>
+<li><p>BERT 的 basic-level mask 预训练</p>
+</li>
+<li><p>Phrase-level 预训练</p>
+</li>
+<li><p>Entity-level 预训练</p>
+</li>
+</ol>
+<p>但是我们反过来看这篇文章，它融入知识了吗？ 我觉得没有，对于知识图谱来说，实体本身的含义很重要，但是实体的关系同样非常重要，而这篇文章并没有融入任何的关系信息。</p>
+<h3 id="8-2ERNIE（清华）"><a href="#8-2ERNIE（清华）" class="headerlink" title="8.2ERNIE（清华）"></a>8.2ERNIE（清华）</h3><p>这篇文章最核心的点在于，将BERT的信息与TransE 的信息进行融合</p>
+<p>我们看到，上述整个模型可以整体分为两部分：</p>
+<ul>
+<li>T-Encoder： 与 Bert 的预训练过程完全相同，是一个多层的双向 Transformer encoder， 用来捕捉词汇和语法信息。</li>
+<li>K-Encoder： 本文创新点，描述如何将知识图谱融入到预训练模型。</li>
+</ul>
+<h3 id="8-3K-BERT"><a href="#8-3K-BERT" class="headerlink" title="8.3K-BERT"></a>8.3K-BERT</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><strong>语言模型基础与词向量：</strong></p>
+<p>[1] A Neural Probabilistic Language Model</p>
+<p>[2] Mikolov, T.(2013). Distributed Representations of Words and Phrases and their Compositionality.</p>
+<p>[3] Mikolov, T.(2013). Efficient Estimation of Word Representations in Vector Space.</p>
+<p>[4] Rong, X. (2014). word2vec Parameter Learning Explained.</p>
+<p><strong>预训练语言模型：</strong></p>
+<p>[1] ELMO: Deep contextualized word representations</p>
+<p>[2]  BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</p>
+<p>[3] GPT 1.0: Improving Language Understanding by Generative Pre-Training</p>
+<p>[4] GPT 2.0: Language Models are Unsupervised Multitask Learners</p>
+<p>[5] GPT 3.0: Language Models are Few-Shot Learners</p>
+<p><strong>应用预训练语言模型：</strong></p>
+<p>[1]  To tune or not to tune? adapting pretrained representations to diverse tasks. </p>
+<p>[2]  Don’t Stop Pretraining: Adapt Language Models to Domains and Tasks</p>
+<p><strong>预训练语言模型 - 后时代：</strong></p>
+<p>[2]  ERNIE - Enhanced Language Representation with Informative Entities</p>
+<p>[3]  ERNIE - Enhanced Representation through Knowledge Integration</p>
+<p>[4]  ERNIE 2.0 - A Continual Pre-training Framework for Language Understanding</p>
+<p>[5]  MASS - Masked Sequence to Sequence Pre-training for Language Generation</p>
+<p>[6] UNILM - Unified Language Model Pre-training for Natural Language Understanding and Generation</p>
+<p>[7]  XLNet - Generalized Autoregressive Pretraining for Language Understanding</p>
+<p>[8]  RoBERTa - A Robustly Optimized BERT Pretraining Approach</p>
+<p>[9] TransformerXL: Attentive Language Models Beyond a Fixed-Length Context</p>
+<p><strong>如何预训练一个好的预训练语言模型：</strong></p>
+<p>[1] Pre-trained Models for Natural Language Processing: A Survey</p>
+<p>[2] T5: Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bag of Tricks for Efficient Text Classification</span><br></pre></td></tr></table></figure>
+
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/12/07/00-xu-lun-ji-ben-gai-nian/">2023-12-07</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/12/04/ci-xiang-liang/">2023-12-04</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">yuan long</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0">Stellar 1.27.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%8D%E5%90%91%E9%87%8F%E4%B8%8E%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B"><span class="toc-text">词向量与语言模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%AF%8D%E5%90%91%E9%87%8F"><span class="toc-text">1.语言模型基础与词向量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95-n%E5%85%83%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.1统计方法 - n元模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B-1"><span class="toc-text">1.2深度学习方法 - 神经网络语言模型[1]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3%E8%AF%8D%E5%90%91%E9%87%8F-%E8%A1%A8%E7%A4%BA%E8%AF%AD%E8%A8%80%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">1.3词向量 - 表示语言的方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%A2%84%E8%AE%AD%E7%BB%83%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B-%E7%94%A8%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%A4%BA%E8%AF%AD%E8%A8%80"><span class="toc-text">2.预训练语言模型 - 用模型表示语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1NLP%E7%89%B9%E7%82%B9"><span class="toc-text">2.1NLP特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2ELMO"><span class="toc-text">2.2ELMO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2BERT"><span class="toc-text">2.2BERT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3GPT1-0"><span class="toc-text">2.3GPT1.0</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E9%A2%84%E8%AE%AD%E7%BB%83%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B"><span class="toc-text">3.如何使用预训练语言模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1%E6%98%AF%E5%90%A6%E8%A6%81%E8%BF%9B%E8%A1%8C%E5%BE%AE%E8%B0%83-1"><span class="toc-text">3.1是否要进行微调[1]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2%E6%98%AF%E5%90%A6%E8%A6%81%E8%BF%9B%E8%A1%8C%E5%86%8D%E6%AC%A1%E9%A2%84%E8%AE%AD%E7%BB%83-2"><span class="toc-text">3.2是否要进行再次预训练[2]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3BERT%E5%90%91%E9%87%8F-vs-Glove%E5%90%91%E9%87%8F"><span class="toc-text">3.3BERT向量 vs Glove向量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%A2%84%E8%AE%AD%E7%BB%83%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B-%E5%90%8E%E6%97%B6%E4%BB%A3"><span class="toc-text">4.预训练语言模型 - 后时代</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1AE-vs-AR"><span class="toc-text">4.1AE vs AR</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-GPT%E7%B3%BB%E5%88%97"><span class="toc-text">5.GPT系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1GPT-2-0"><span class="toc-text">5.1GPT 2.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2GPT-3-0"><span class="toc-text">5.2GPT 3.0</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-BERT%E7%B3%BB%E5%88%97"><span class="toc-text">6.BERT系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1Roberta"><span class="toc-text">6.1Roberta</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2T5"><span class="toc-text">6.2T5</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E9%A2%84%E8%AE%AD%E7%BB%83%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E4%B8%8E%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E7%94%9F%E6%88%90"><span class="toc-text">7.预训练语言模型与自然语言生成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1MASS"><span class="toc-text">7.1MASS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2UNILM"><span class="toc-text">7.2UNILM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3BART"><span class="toc-text">7.3BART</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E9%A2%84%E8%AE%AD%E7%BB%83%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%9E%8D%E5%85%A5%E7%9F%A5%E8%AF%86"><span class="toc-text">8.预训练语言模型融入知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1ERNIE"><span class="toc-text">8.1ERNIE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2ERNIE%EF%BC%88%E6%B8%85%E5%8D%8E%EF%BC%89"><span class="toc-text">8.2ERNIE（清华）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3K-BERT"><span class="toc-text">8.3K-BERT</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.27.0" async></script>
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

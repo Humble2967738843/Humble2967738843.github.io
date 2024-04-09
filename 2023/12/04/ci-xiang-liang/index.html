@@ -89,7 +89,7 @@
 <h1 id="1-Word2Vec"><a href="#1-Word2Vec" class="headerlink" title="1.Word2Vec"></a>1.Word2Vec</h1><p>Word2Vec是Google发布的一个工具， 用于训练词向量，其提供了两种语言模型来供选择， 且Google 基于大规模语料集上训练出了预训练词向量来供开发者或研究者使用。 一般情况下，我们是没有必要自己去训练词向量的，但如果要求特殊，且语料集庞大，自己训练也是可以的。</p>
 <p>在Word2Vec中，实现了两个模型：<strong>CBOW</strong> 与 <strong>Skip-Gram</strong>。</p>
 <h2 id="1-1CBOW模型"><a href="#1-1CBOW模型" class="headerlink" title="1.1CBOW模型"></a>1.1CBOW模型</h2><p>CBOW，全称Continuous Bag-of-Word，中文叫做连续词袋模型：</p>
-<p><img src="/../imgs/$%7Bfiilename%7D/image-20231204224108495-1701700870620-1.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231204224108495-1701700870620-1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231204224108495"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../imgs/$%7Bfiilename%7D/image-20231204224108495-1701700870620-1.png" alt="image-20231204224108495"></p>
 <p>如上图是一个两层的神经网络，其实在训练语言模型的过程中考虑到效率等问题，常常采用浅层的神经网络来训练，并取第一层的参数如上图就是 $W_{V \times N}$ 来作为最终的词向量矩阵（参考 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43453548">语言模型：从n元模型到NNLM</a>）。</p>
 <p>CBOW模型的目的是预测 $P(w_t| w_{t-k}, \cdots, w_{t-1}, w_{t+1}, \cdots, w_{t+k}) $，我们先来走一遍CBOW的前向传播过程 。</p>
 <h3 id="1-1-1前向传播过程"><a href="#1-1-1前向传播过程" class="headerlink" title="1.1.1前向传播过程"></a>1.1.1前向传播过程</h3><ul>
@@ -103,7 +103,7 @@
 <p>其中，向量 $u$  的第 $i$  行表示词汇表中第 $i$  个词的可能性，然后我们的目的就是取可能性最高的那个词。因此，在最后的输出层是一个softmax 层获取分数最高的词，那么就有我们的最终输出：<br>$$<br>P(w_j| context)  &#x3D;y_i &#x3D;  \frac{exp({u_j})}{\sum_{k \in V} exp({u_k})}<br>$$</p>
 <h3 id="1-1-2-损失函数"><a href="#1-1-2-损失函数" class="headerlink" title="1.1.2 损失函数"></a>1.1.2 损失函数</h3><p>我们假定 $j^*$ 是真实单词在词汇表中的下标，那么根据极大似然法，则目标函数定义如下：<br>$$<br>E &#x3D; -log , p(W_O |W_I) &#x3D; -log , \frac{exp({u_j})}{\sum_{k \in V} exp({u_k})} &#x3D;  log  , \sum_{k \in V} exp(u_{k})  -u_j<br>$$</p>
 <h2 id="1-2-Skip-gram模型"><a href="#1-2-Skip-gram模型" class="headerlink" title="1.2 Skip-gram模型"></a>1.2 Skip-gram模型</h2><p>Skip-Gram的基本思想是：已知当前词 $w_t$ 的前提下，预测其上下文 $w_{t-i}, \cdots , w_{t+i}$ ，模型如下图所示：</p>
-<p><img src="/../imgs/$%7Bfiilename%7D/image-20231204224437325-1701701078311-3.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231204224437325-1701701078311-3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231204224437325"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../imgs/$%7Bfiilename%7D/image-20231204224437325-1701701078311-3.png" alt="image-20231204224437325"></p>
 <h3 id="1-2-1前向传播过程"><a href="#1-2-1前向传播过程" class="headerlink" title="1.2.1前向传播过程"></a>1.2.1前向传播过程</h3><h4 id=""><a href="#" class="headerlink" title=""></a></h4><ul>
 <li><p>输入层：   输入的是一个单词，其表示形式为 <strong>One-hot</strong> ，我们将其表示为V维向量 $x_k$ ，其中 $V$ 为词表大小。然后，通过词向量矩阵 $W_{V \times N}$ 我们得到一个N维向量<br>$$<br>h &#x3D; W^T * x_k &#x3D; v^{T}_{w_I}<br>$$</p>
 </li>
@@ -127,7 +127,7 @@
 <p>在现实中，用于语言模型训练的数据集通常都很大，此外词表也是巨大的，这就导致对于 $W’$ 的更新所花费的计算成本是很大的，真的是验证了一个道理：穷逼没必要搞语言模型。</p>
 <p>为了解决优化起来速度太慢的问题， Word2Vec 中提供了两种策略来对这方面进行优化。</p>
 <h2 id="1-4Hierarchical-Softmax"><a href="#1-4Hierarchical-Softmax" class="headerlink" title="1.4Hierarchical Softmax"></a>1.4Hierarchical Softmax</h2><p>HS 基于哈夫曼树将计算量大的部分转化为一种二分类问题。</p>
-<p><img src="/../imgs/$%7Bfiilename%7D/image-20231204224719385-1701701240403-5.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231204224719385-1701701240403-5.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231204224719385"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../imgs/$%7Bfiilename%7D/image-20231204224719385-1701701240403-5.png" alt="image-20231204224719385"></p>
 <p>原先的模型中，模型再隐层之后通过 $W’$ 连接输出层，现在 HS 则去掉了 $W’$ , 隐层向量 <strong>h</strong> 直接与上图的二叉树的 root 节点相连， 图中的每一个分支都代表一个选择。 上图中白色的叶子节点表示词表中所有的$|V|$个词， 黑色节点表示非叶子节点， 每一个叶子节点（单词）都对应一条从 root 节点出发的路径，而问题就转化为了使得 $w&#x3D;w_o$ 这条路径的概率最大， 即：$P(w&#x3D;w+O|w_I)$ 最大。</p>
 <p>用 $n(w,j)$ 表示从 root 到叶子节点 w 的路径上的第 j 个非叶子节点, 并且每个非叶子节点都对应一个向量$v_{n(w,j)}′$, 维度与h 相同, 然后使用一个sigmod函数: $σ(x)&#x3D;\frac{1}{1+exp(−x)}∈[0,1]$ ，结合向量的内积, 来判断该向左还是向右，那么第 n 个节点向左以及向右的概率分别为：<br>$$<br>P(n,left) &#x3D; \sigma(v_w’ \cdot h) \<br>P(n, right) &#x3D; 1 - \sigma(v_w’ \cdot h)<br>$$<br>那么就有：<br>$$<br>P(w&#x3D;w_O|W_I) &#x3D; \prod_{j&#x3D;1}^{L(w)-1} P(\sigma(I(n(w, j+1 &#x3D;&#x3D; left) v_w’ \cdot h))<br>$$</p>
 <ul>

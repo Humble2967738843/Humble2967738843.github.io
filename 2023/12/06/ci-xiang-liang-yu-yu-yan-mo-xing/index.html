@@ -104,7 +104,7 @@
 <li>训练语料里面有些n元组没有出现过，其对应的条件概率就是0， 导致计算一整句话的概率为0，解决这个问题有来个那种常用的方法：平滑法和回退法。</li>
 </ol>
 <h3 id="1-2深度学习方法-神经网络语言模型-1"><a href="#1-2深度学习方法-神经网络语言模型-1" class="headerlink" title="1.2深度学习方法 - 神经网络语言模型[1]"></a>1.2深度学习方法 - 神经网络语言模型[1]</h3><p>首先，我们回到问题本身，我们为什么要计算$p(s)$，我们的目的是为了通过大规模语料库学习到语言内部的概率分布，那么有没有办法通过深度学习额方式来学习到这种概率分布呢？</p>
-<p><img src="https://s2.loli.net/2023/12/09/vfWaFKh4Oox2lki.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/vfWaFKh4Oox2lki.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231206130946742"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/09/vfWaFKh4Oox2lki.png" alt="image-20231206130946742"></p>
 <p>观察上图，假设有一组词序列，$w_1, w_2, …, w_t$ ，其中，$w_i \in V$，$V$是所有单词的集合。我们输入的是一个词序列， 而我们的输出是一个概率值，表示根据context预测出下一个词是$i$的概率。用数学来表示，我们最终是要训练一个模型：<br>$$<br>P(s) &#x3D; P(w_t|w_1^{t-1})<br>$$</p>
 <ul>
 <li>$w_t$ 表示这个词序列中的第$t$个单词，$w_{t-n+1}$表示输入长度为n的词序列中的第一个单词</li>
@@ -114,7 +114,7 @@
 <h3 id="1-3词向量-表示语言的方式"><a href="#1-3词向量-表示语言的方式" class="headerlink" title="1.3词向量 - 表示语言的方式"></a>1.3词向量 - 表示语言的方式</h3><p>前面，我们通过NNLM可以知道，通过语言模型的训练，模型可以学习到语言的概率分布，那么如何将学习到的信息应用到下游任务呢？这就是词向量产生的背景，这里简单介绍下Word2Vec[4]。</p>
 <p>首先明确一点，<strong>词向量是语言模型的副产物</strong>。怎么理解呢？意思是说，词向量是语言模型训练完成之后产生的。</p>
 <p>这里我们以Word2Vec的CBOW训练模型为例：</p>
-<p><img src="https://s2.loli.net/2023/12/09/5h2RyCPvrNwLEf9.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/5h2RyCPvrNwLEf9.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"><br>$$<br>h &#x3D; \frac{1}{C} W^T(w_1 + w_2 + \cdots + x_c) \<br>u &#x3D; w’^{T} * h \<br>P(w_j| context) &#x3D; y_i &#x3D; \frac{exp({u_j})}{\sum_{k \in V} exp({u_k})}<br>$$<br>通过这样的训练完成后，把$W_{V \times N}$ 保存下来，我们就得到了词向量。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/09/5h2RyCPvrNwLEf9.png" alt="img"><br>$$<br>h &#x3D; \frac{1}{C} W^T(w_1 + w_2 + \cdots + x_c) \<br>u &#x3D; w’^{T} * h \<br>P(w_j| context) &#x3D; y_i &#x3D; \frac{exp({u_j})}{\sum_{k \in V} exp({u_k})}<br>$$<br>通过这样的训练完成后，把$W_{V \times N}$ 保存下来，我们就得到了词向量。</p>
 <h2 id="2-预训练语言模型-用模型表示语言"><a href="#2-预训练语言模型-用模型表示语言" class="headerlink" title="2.预训练语言模型 - 用模型表示语言"></a>2.预训练语言模型 - 用模型表示语言</h2><p>前面提到，我们的最终目的还是<strong>通过语言模型来获得某种语言的表示</strong>，但是我们看到，上面那种训练方式，似乎不太合适，那个最后$W_{V \times N}$ 消失不见了，并且模型没有做深。</p>
 <p>我们此处总结一些Word2Vec的弱点：</p>
 <ul>
@@ -180,7 +180,7 @@
 </ol>
 </li>
 </ul>
-<h3 id="2-2ELMO"><a href="#2-2ELMO" class="headerlink" title="2.2ELMO"></a>2.2ELMO</h3><p><img src="https://s2.loli.net/2023/12/09/1ldrYhGB8PitHDX.jpg" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/12/09/1ldrYhGB8PitHDX.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+<h3 id="2-2ELMO"><a href="#2-2ELMO" class="headerlink" title="2.2ELMO"></a>2.2ELMO</h3><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/09/1ldrYhGB8PitHDX.jpg"></p>
 <p>ELMO是通过L层的双向LSTM语言模型来学习上下文信息的，这就解决了上文提到的前两个问题，而针对OV词，ELMO采用了 char-level 来生成词向量进而进行训练。而对于ELMO的不同层而言，不同层的LSTM能够把把握不同粒度和层级的信息，比如浅层的LSTM把握的是单词特征，中层的LSTM把握句法特征，深层的LSTM把握语义特征。<br>$$<br>前向语言模型：p(t_1,t_2,\cdots,t_N) &#x3D; \prod_{k&#x3D;1}^N p(t_k|t_1,t_2, \cdots, t_{k-1}) \<br>后向语言模型：p(t_1,t_2,\cdots,t_N) &#x3D; \prod_{k&#x3D;1}^{N} p(t_k|t_{k+1},t_{k+2},\cdots.t_{N})<br>$$<br>但是，ELMO的缺点也十分明显：</p>
 <ul>
 <li><strong>LSTM特征提取能力远弱于Transformer,并行性较差</strong></li>

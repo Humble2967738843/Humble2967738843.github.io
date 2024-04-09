@@ -108,7 +108,7 @@
 
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 生成javadoc文档</span><br><span class="line">javadoc -d 文件夹名 -xx -yy Demo3.java</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../imgs/$%7Bfiilename%7D/image-20231103203001632-1699014603805-1.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231103203001632-1699014603805-1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231103203001632"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../imgs/$%7Bfiilename%7D/image-20231103203001632-1699014603805-1.png" alt="image-20231103203001632"></p>
 <h1 id="2-Java代码规范"><a href="#2-Java代码规范" class="headerlink" title="2.Java代码规范"></a>2.Java代码规范</h1><p>1.类、方法的注释，要以javadoc方式来写</p>
 <p>2.非Java Doc的注释，往往是给代码的维护者看的，着重告诉读者为什么这样写，如何修改，注意什么问题等</p>
 <p>3.使用tab操作，实现缩进，默认整体向右边移动，用shift+tab整体向左移</p>
@@ -123,7 +123,7 @@
 <p>2.对象是具体的，实际的，代表一个具体事物，即它是实例</p>
 <p>3.类是对象的模板，对象是类的一个个体，对应一个实例</p>
 <p><strong>对象在内存中的样子</strong></p>
-<p><img src="/../imgs/$%7Bfiilename%7D/image-20231105184116067-1699180877570-1.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231105184116067-1699180877570-1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231105184116067"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../imgs/$%7Bfiilename%7D/image-20231105184116067-1699180877570-1.png" alt="image-20231105184116067"></p>
 <p><strong>注意事项</strong></p>
 <p>1.属性定义语法同变量：<code>访问修饰符 属性类型 属性名</code></p>
 <p>​	简而言之：控制属性的访问范围</p>
@@ -135,7 +135,7 @@
 <p>1.先声明再创建</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cat cat; <span class="comment">// 声明对象cat</span></span><br><span class="line">cat = <span class="keyword">new</span> <span class="title class_">Cat</span>(); <span class="comment">// 创建对象cat</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/../imgs/$%7Bfiilename%7D/image-20231105215310062-1699192391808-3.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231105215310062-1699192391808-3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231105215310062"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../imgs/$%7Bfiilename%7D/image-20231105215310062-1699192391808-3.png" alt="image-20231105215310062"></p>
 <p>2.直接创建</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Cat</span> <span class="variable">cat</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br></pre></td></tr></table></figure>
 
@@ -143,7 +143,7 @@
 <p>一个思考题，下面代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Person</span> <span class="variable">p1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">p1.age = <span class="number">10</span>;</span><br><span class="line">p1.name = <span class="string">&quot;小明&quot;</span>;</span><br><span class="line"><span class="type">Person</span> <span class="variable">p2</span> <span class="operator">=</span> p1;</span><br><span class="line">System.out.println(p2.age);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../imgs/$%7Bfiilename%7D/image-20231105220804011-1699193287494-5.png" class="lazyload placeholder" data-srcset="/../imgs/$%7Bfiilename%7D/image-20231105220804011-1699193287494-5.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20231105220804011"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../imgs/$%7Bfiilename%7D/image-20231105220804011-1699193287494-5.png" alt="image-20231105220804011"></p>
 <p>Java内存结构分析</p>
 <p>1.栈：一般存放基本数据类型（局部变量）</p>
 <p>2.堆：存放对象（Cat cat, 数组等）</p>

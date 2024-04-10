@@ -40,6 +40,7 @@
 <meta property="article:tag" content="EMNLP2023">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://humble2967738843.github.io/2023/11/06/imgs/$%7Bfiilename%7D/image-20231107182632183-1699352793499-1.png">
+<meta name="twitter:creator" content="@humbleyl">
   
   
   
@@ -169,6 +170,21 @@
     <section class='body'>
     <div class="related-posts"><a class="item" href="\2023\11\02\duo-yu-yan-mo-xing-zhong-shi-shi-zhi-shi-de-kua-yu-yan-yi-zhi-xing\" title="多语言模型中事实知识的跨语言一致性"><span class="title">多语言模型中事实知识的跨语言一致性</span></a><a class="item" href="\2023\11\02\qing-jing-xue-xi-chuang-jian-ren-wu-xiang-liang\" title="情境学习创建任务向量"><span class="title">情境学习创建任务向量</span></a><a class="item" href="\2023\11\02\wo-men-ke-yi-bian-ji-duo-mo-tai-da-xing-yu-yan-mo-xing-ma\" title="我们可以编辑多模态大型语言模型吗？"><span class="title">我们可以编辑多模态大型语言模型吗？</span></a><a class="item" href="\2023\11\02\wo-men-ke-yi-tong-guo-qing-jing-xue-xi-lai-bian-ji-shi-shi-zhi-shi-ma\" title="我们可以通过情景学习来编辑事实知识吗？"><span class="title">我们可以通过情景学习来编辑事实知识吗？</span></a><a class="item" href="\2023\11\06\ji-yu-ti-shi-de-ling-yang-ben-guan-xi-chou-qu-fang-fa-tan-suo\" title="基于提示的零样本关系抽取方法探索"><span class="title">基于提示的零样本关系抽取方法探索</span></a></div></section></div>
 
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>快来参与讨论吧~</p>
+
+    </section>
+    <section class='body cmt-body giscus'>
+      
+
+<svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="giscus" src="https://giscus.app/client.js" data-repo="Humble2967738843/giscus" data-repo-id="R_kgDOLsS5kA" data-category="Announcements" data-category-id="DIC_kwDOLsS5kM4Cel5C" data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous"></div>
+
+    </section>
+  </div>
 
 
 
@@ -412,6 +428,30 @@
 <script src="/js/main.js?v=1.27.0" async></script>
 
 <!-- optional -->
+
+  <script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const els = document.querySelectorAll("#comments #giscus");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.error(error);
+      }
+      var script = document.createElement('script');
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  });
+</script>
+
 
 
 

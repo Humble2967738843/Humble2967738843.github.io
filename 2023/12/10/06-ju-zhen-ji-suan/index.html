@@ -19,12 +19,12 @@
   <title>humbleyl</title>
 
   
-    <meta name="description" content="06矩阵计算6.1矩阵计算 标量导数    导数是切线的斜率    亚导数 将导数拓展到不可微的函数      另一个例子   梯度 将导数拓展到向量      $\frac{\partial y}{\partial x}$ 列向量的导数是行向量     【举例】 $$\frac{\partial x_1^2}{\partial x} + 2x_2^2&#x3D;[2x_1 + 4x_2]$$方向">
+    <meta name="description" content="06矩阵计算6.1矩阵计算 标量导数    导数是切线的斜率    亚导数 将导数拓展到不可微的函数      另一个例子   梯度 将导数拓展到向量      $\frac{\partial y}{\partial x}$ 列向量的导数是行向量     【举例】  \frac{\partial x_1^2}{\partial x} + 2x_2^2&#x3D;[2x_1 + 4x_2]方向 $(2, 4)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="humbleyl">
 <meta property="og:url" content="http://humble2967738843.github.io/2023/12/10/06-ju-zhen-ji-suan/index.html">
 <meta property="og:site_name" content="humbleyl">
-<meta property="og:description" content="06矩阵计算6.1矩阵计算 标量导数    导数是切线的斜率    亚导数 将导数拓展到不可微的函数      另一个例子   梯度 将导数拓展到向量      $\frac{\partial y}{\partial x}$ 列向量的导数是行向量     【举例】 $$\frac{\partial x_1^2}{\partial x} + 2x_2^2&#x3D;[2x_1 + 4x_2]$$方向">
+<meta property="og:description" content="06矩阵计算6.1矩阵计算 标量导数    导数是切线的斜率    亚导数 将导数拓展到不可微的函数      另一个例子   梯度 将导数拓展到向量      $\frac{\partial y}{\partial x}$ 列向量的导数是行向量     【举例】  \frac{\partial x_1^2}{\partial x} + 2x_2^2&#x3D;[2x_1 + 4x_2]方向 $(2, 4)">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2023/12/10/SgVNKrhO89EGjRv.png">
 <meta property="og:image" content="https://s2.loli.net/2023/12/10/ISj9R3t1UWzdAnx.png">
@@ -135,9 +135,10 @@
 </ul>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/10/XWvAMFKkmLesYli.png" alt="image-20231210213818208"></p>
 <p>【举例】</p>
-<p>$$<br>\frac{\partial x_1^2}{\partial x} + 2x_2^2&#x3D;[2x_1 + 4x_2]<br>$$<br>方向 $(2, 4)$ 与等高线正交</p>
+<script type="math/tex; mode=display">
+\frac{\partial x_1^2}{\partial x} + 2x_2^2=[2x_1 + 4x_2]</script><p>方向 $(2, 4)$ 与等高线正交</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/10/7KpYcLPmDo4jIw3.png" alt="image-20231210214202"></p>
-<p>如何理解：<strong>前面的函数可以画作是等高线，可以看作是一座山，现取任意一点 $(x_1, x_2) &#x3D; (1, 1)$  ，经过这个点做等高线的切线（可以看作是上面函数的导数），而这个切线的垂线方向恰好可以使用我们所谓的梯度函数 $[2x_1, 4x_2]$ 计算出来。</strong></p>
+<p>如何理解：<strong>前面的函数可以画作是等高线，可以看作是一座山，现取任意一点 $(x_1, x_2) = (1, 1)$  ，经过这个点做等高线的切线（可以看作是上面函数的导数），而这个切线的垂线方向恰好可以使用我们所谓的梯度函数 $[2x_1, 4x_2]$ 计算出来。</strong></p>
 <p><strong>梯度和等高线是正交的，指向的是等高线变化最大的方向。</strong>也就是机器学习求解的核心思想。</p>
 <p>【举例】</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/10/pqwCnxD5MA6tiWf.png" alt="image-20231210215112830"></p>

@@ -19,12 +19,12 @@
   <title>humbleyl</title>
 
   
-    <meta name="description" content="08线性回归 8.1线性回归 如何在美国买房 看中一个房子，参观了解 估计一个价格，出价    房屋基本信息：  房屋实景：   房价预测  历史的房价走势：  当你以一定的价格购入本套房屋之后，过了一段时间，再次给出房价走势，就可以看出你的盈亏情况。   一个简化模型 假设1：影响房价的关键因素是卧室个数，卫生间个数和居住面积，记为：$x_1, x_2, x_3$    假设2：成交价是关键因素">
+    <meta name="description" content="08线性回归 8.1线性回归 如何在美国买房 看中一个房子，参观了解 估计一个价格，出价    房屋基本信息：  房屋实景：   房价预测  历史的房价走势：  当你以一定的价格购入本套房屋之后，过了一段时间，再次给出房价走势，就可以看出你的盈亏情况。   一个简化模型 假设1：影响房价的关键因素是卧室个数，卫生间个数和居住面积，记为：$x_1, x_2, x_3$     假设2：成交价是关键因">
 <meta property="og:type" content="article">
 <meta property="og:title" content="humbleyl">
 <meta property="og:url" content="http://humble2967738843.github.io/2023/12/12/08-xian-xing-hui-gui/index.html">
 <meta property="og:site_name" content="humbleyl">
-<meta property="og:description" content="08线性回归 8.1线性回归 如何在美国买房 看中一个房子，参观了解 估计一个价格，出价    房屋基本信息：  房屋实景：   房价预测  历史的房价走势：  当你以一定的价格购入本套房屋之后，过了一段时间，再次给出房价走势，就可以看出你的盈亏情况。   一个简化模型 假设1：影响房价的关键因素是卧室个数，卫生间个数和居住面积，记为：$x_1, x_2, x_3$    假设2：成交价是关键因素">
+<meta property="og:description" content="08线性回归 8.1线性回归 如何在美国买房 看中一个房子，参观了解 估计一个价格，出价    房屋基本信息：  房屋实景：   房价预测  历史的房价走势：  当你以一定的价格购入本套房屋之后，过了一段时间，再次给出房价走势，就可以看出你的盈亏情况。   一个简化模型 假设1：影响房价的关键因素是卧室个数，卫生间个数和居住面积，记为：$x_1, x_2, x_3$     假设2：成交价是关键因">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2023/12/12/tPoJxLu1haDlczS.png">
 <meta property="og:image" content="https://s2.loli.net/2023/12/12/G8lb3v2MTjiUFkp.png">
@@ -139,27 +139,27 @@
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/12/S4DWyRkCAedNTxK.png" alt="image-20231212124913782"></p>
 <ul>
 <li>一个简化模型</li>
-<li>假设1：影响房价的关键因素是卧室个数，卫生间个数和居住面积，记为：$x_1, x_2, x_3$</li>
+<li>假设1：影响房价的关键因素是卧室个数，卫生间个数和居住面积，记为：$x_1, x_2, x_3$ </li>
 </ul>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/12/I3yiWQ5vYeoMTkZ.png" alt="image-20231212125228395"></p>
 <ul>
 <li>假设2：成交价是关键因素的加权和</li>
 </ul>
-<p>$$<br>y &#x3D; w_1x_1 + w_2x_2 + w_3x_3 + b<br>$$</p>
-<p>权重和偏差的实际值在后面决定</p>
+<script type="math/tex; mode=display">
+y = w_1x_1 + w_2x_2 + w_3x_3 + b</script><p>权重和偏差的实际值在后面决定</p>
 <ul>
 <li>线性模型<ul>
-<li>给定 n 维输入 $\boldsymbol {x} &#x3D; [x_1,x_2,…, x_n]^T$</li>
+<li>给定 n 维输入 $\boldsymbol {x} = [x_1,x_2,…, x_n]^T$</li>
 <li>线性模型有一个 n 维权重和一个标量偏差</li>
 </ul>
 </li>
 </ul>
-<p>$$<br>\boldsymbol {w} &#x3D; [w_1, w_2, …, w_n]^T, b<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+\boldsymbol {w} = [w_1, w_2, ..., w_n]^T, b</script><ul>
 <li>输出是输入的加权和</li>
 </ul>
-<p>$$<br>y &#x3D; w_1x_1 + w_2x_2 + … + w_nx_n + b<br>$$</p>
-<p>向量版本：$y &#x3D; &lt;\boldsymbol {w}, \boldsymbol {x}&gt; + b$</p>
+<script type="math/tex; mode=display">
+y = w_1x_1 + w_2x_2 + ... + w_nx_n + b</script><p>向量版本：$y = &lt;\boldsymbol {w}, \boldsymbol {x}&gt; + b$</p>
 <ul>
 <li><strong>线性模型可以看作是单层的神经网络</strong></li>
 </ul>
@@ -175,8 +175,8 @@
 </ul>
 </li>
 </ul>
-<p>$$<br>l(y, \hat{y}) &#x3D; 1&#x2F;2(y - \hat{y})^2<br>$$</p>
-<p>这个叫做平方损失</p>
+<script type="math/tex; mode=display">
+l(y, \hat{y}) = 1/2(y - \hat{y})^2</script><p>这个叫做平方损失</p>
 <ul>
 <li>训练数据<ul>
 <li>收集一些数据点来决定参数值（权重和偏差），例如过去6个卖的房子</li>
@@ -186,30 +186,34 @@
 </ul>
 </li>
 </ul>
-<p>$$<br>\boldsymbol {X} &#x3D; \left[ \boldsymbol {x_1}, \boldsymbol {x_2}, …, \boldsymbol {x_n} \right]^T \<br>\boldsymbol {y} &#x3D; \left[ {y_1}, {y_2}, …, {y_n} \right]^T<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+\boldsymbol {X} = \left[ \boldsymbol {x_1}, \boldsymbol {x_2}, ..., \boldsymbol {x_n} \right]^T \\
+\boldsymbol {y} = \left[ {y_1}, {y_2}, ..., {y_n} \right]^T</script><ul>
 <li>参数学习<ul>
 <li>训练损失</li>
 </ul>
 </li>
 </ul>
-<p>$$<br>l(\boldsymbol {X}, \boldsymbol {y}, \boldsymbol {w}, b) &#x3D; 1&#x2F;2n \sum_{i&#x3D;1}^n (y_i - &lt;\boldsymbol {x_i}, \boldsymbol {w}&gt; - b)^2 \ &#x3D; 1&#x2F;2n ||\boldsymbol {y} - \boldsymbol {X}\boldsymbol {w} - b||^2<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+l(\boldsymbol {X}, \boldsymbol {y}, \boldsymbol {w}, b) = 1/2n \sum_{i=1}^n (y_i - <\boldsymbol {x_i}, \boldsymbol {w}> - b)^2 \\ = 1/2n ||\boldsymbol {y} - \boldsymbol {X}\boldsymbol {w} - b||^2</script><ul>
 <li>最小化损失来学习参数</li>
 </ul>
-<p>$$<br>\boldsymbol {w}^*, \boldsymbol {b}^* &#x3D; arg \space min_{\boldsymbol {w}, b} \space l(\boldsymbol {X}, \boldsymbol {y}, \boldsymbol {w}, b)<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+\boldsymbol {w}^*, \boldsymbol {b}^* = arg \space min_{\boldsymbol {w}, b} \space l(\boldsymbol {X}, \boldsymbol {y}, \boldsymbol {w}, b)</script><ul>
 <li>显式解<ul>
 <li>将偏差加入权重 $\boldsymbol {X} \longleftarrow [\boldsymbol {X}, \boldsymbol {1}] \space \boldsymbol {w} \longleftarrow [\boldsymbol {w}, b]^T$</li>
 </ul>
 </li>
 </ul>
-<p>$$<br>l(\boldsymbol {X}, \boldsymbol {y}, \boldsymbol {w} &#x3D; 1&#x2F;2n ||\boldsymbol {y} - \boldsymbol {X}\boldsymbol {w}||^2 \space ) \space \frac{\partial}{\partial \boldsymbol {w}}l(\boldsymbol {X}, \boldsymbol {y}, \boldsymbol {w}) \<br>&#x3D;1&#x2F;n (\boldsymbol {y} - \boldsymbol {X}\boldsymbol {w})^T\boldsymbol {X}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+l(\boldsymbol {X}, \boldsymbol {y}, \boldsymbol {w} = 1/2n ||\boldsymbol {y} - \boldsymbol {X}\boldsymbol {w}||^2 \space ) \space \frac{\partial}{\partial \boldsymbol {w}}l(\boldsymbol {X}, \boldsymbol {y}, \boldsymbol {w}) \\
+=1/n (\boldsymbol {y} - \boldsymbol {X}\boldsymbol {w})^T\boldsymbol {X}</script><ul>
 <li>损失是凸函数（<strong>意味着最优解就在梯度等于0的地方</strong>），所以满足最优解</li>
 </ul>
-<p>$$<br>\frac{\partial}{\partial w} l(\boldsymbol {X}, \boldsymbol {y}, \boldsymbol {w}) &#x3D; 0 \<br>&lt;&#x3D;&gt; 1&#x2F;n(\boldsymbol {y} - \boldsymbol {X}\boldsymbol {w})^T\boldsymbol {X} &#x3D; 0 \<br>&lt;&#x3D;&gt; \boldsymbol {W}^* &#x3D; (\boldsymbol {X}^T\boldsymbol {X})^{-1}\boldsymbol {X}\boldsymbol {y}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+\frac{\partial}{\partial w} l(\boldsymbol {X}, \boldsymbol {y}, \boldsymbol {w}) = 0 \\
+<=> 1/n(\boldsymbol {y} - \boldsymbol {X}\boldsymbol {w})^T\boldsymbol {X} = 0 \\
+<=> \boldsymbol {W}^* = (\boldsymbol {X}^T\boldsymbol {X})^{-1}\boldsymbol {X}\boldsymbol {y}</script><ul>
 <li>总结<ul>
 <li>线性回归是对 n 维输入的加权，外加偏差</li>
 <li>使用平方损失来衡量预测值于真实值的差异</li>
@@ -222,12 +226,12 @@
 <ul>
 <li>梯度下降（<strong>当一个模型没有显式解</strong>）<ul>
 <li>挑选一个初始值 $\boldsymbol {w}_0$</li>
-<li>重复迭代参数 t &#x3D; 1, 2, 3</li>
+<li>重复迭代参数 t = 1, 2, 3</li>
 </ul>
 </li>
 </ul>
-<p>$$<br>\boldsymbol {w}<em>t &#x3D; \boldsymbol {w}</em>{t-1} - \eta \frac{\partial \phi }{\partial \boldsymbol {w}_{t-1}}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+\boldsymbol {w}_t = \boldsymbol {w}_{t-1} - \eta \frac{\partial \phi }{\partial \boldsymbol {w}_{t-1}}</script><ul>
 <li><p>沿着梯度方向将增加损失函数值</p>
 </li>
 <li><p>学习率：步长的超参数</p>
@@ -249,18 +253,19 @@
 </ul>
 </li>
 </ul>
-<p>$$<br>\frac{1}{b} \sum_{i \in I_b} l(\boldsymbol {X}_i, y_i, \boldsymbol {w})<br>$$</p>
+<script type="math/tex; mode=display">
+\frac{1}{b} \sum_{i \in I_b} l(\boldsymbol {X}_i, y_i, \boldsymbol {w})</script><ul>
+<li>b是批量大小，另一个重要的超参数</li>
+</ul>
 <ul>
-<li><p>b是批量大小，另一个重要的超参数</p>
-</li>
-<li><p>选择批量大小</p>
-<ul>
+<li>选择批量大小<ul>
 <li>不能太小：每次计算量太小，不适合并行最大利用计算资源</li>
 <li>不能太大：内存消耗增加，浪费计算，例如：如果所有样本嗾使相同的</li>
 </ul>
 </li>
-<li><p>总结</p>
+</ul>
 <ul>
+<li>总结<ul>
 <li><strong>梯度下降通过不断沿着繁体都方向更新参数求解</strong></li>
 <li><strong>小批量随机梯度下降是深度学习的求解算法</strong></li>
 <li><strong>两个重要的超参数是批量大小和学习率</strong></li>
@@ -272,10 +277,10 @@
 </ul>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/13/4aWFywdeXGmxp59.png" alt="image-20231213125158033"></p>
 <ul>
-<li>根据带有噪声的线性模型构造一个人造数据集，我们使用线性模型参数$\boldsymbol {w} &#x3D; [2, -3.4]^T$、$b &#x3D; 4.2$ 和噪声$\xi$生成数据集及其标签：</li>
+<li>根据带有噪声的线性模型构造一个人造数据集，我们使用线性模型参数$\boldsymbol {w} = [2, -3.4]^T$、$b = 4.2$ 和噪声$\xi$生成数据集及其标签：</li>
 </ul>
-<p>$$<br>\boldsymbol {y} &#x3D; \boldsymbol {X}\boldsymbol {w} + b + \xi<br>$$</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/17/2qSVmaTbBR1K5f9.png" alt="image-20231217121341803"></p>
+<script type="math/tex; mode=display">
+\boldsymbol {y} = \boldsymbol {X}\boldsymbol {w} + b + \xi</script><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/17/2qSVmaTbBR1K5f9.png" alt="image-20231217121341803"></p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/17/WXuQLoEcINxZPvn.png" alt="image-20231217121408819"></p>
 <p>参考</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41898018/article/details/119244914">torch.normal()的用法</a></p>

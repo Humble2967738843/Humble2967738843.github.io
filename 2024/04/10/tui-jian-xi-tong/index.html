@@ -113,42 +113,53 @@
 <p><strong>不管是 UserCF 还是 ItemCF 算法， 重点是计算用户之间（或物品之间）的相似度。</strong></p>
 <h3 id="相似度度量方法"><a href="#相似度度量方法" class="headerlink" title="相似度度量方法"></a>相似度度量方法</h3><ol>
 <li><p><strong>杰卡德（Jaccard）相似系数</strong></p>
-<p><code>Jaccard</code> 系数是衡量两个集合的相似度一种指标，计算公式如下：<br>$$<br>sim_{uv} &#x3D; \frac{\left| N(u) \cap N(v) \right|}{\left| N(u) \cup N(v) \right|}<br>$$</p>
+<p><code>Jaccard</code> 系数是衡量两个集合的相似度一种指标，计算公式如下：</p>
+<script type="math/tex; mode=display">
+sim_{uv} = \frac{\left| N(u) \cap N(v) \right|}{\left| N(u) \cup N(v) \right|}</script></li>
+</ol>
 <ul>
 <li>其中 $N(u)$，$N(v)$分别表示用户$u$和用户交$v$互物品的集合。</li>
-<li>对于用户$u$ 和$v$，该公式反映了两个交互物品交集的数量占这两个用户交互物品并集的数量的比例。</li>
-</ul>
+<li><p>对于用户$u$ 和$v$，该公式反映了两个交互物品交集的数量占这两个用户交互物品并集的数量的比例。</p>
 <p>由于杰卡德相似系数一般无法反映具体用户的评分喜好信息，所以常用来评估用户是否会对某物品进行打分， 而不是预估用户会对某物品打多少分。</p>
 </li>
-<li><p><strong>余弦相似度</strong> 余弦相似度衡量了两个向量的夹角，夹角越小越相似。余弦相似度的计算如下，其与杰卡德（Jaccard）相似系数只是在分母上存在差异：<br>$$<br>sim_{uv} &#x3D; \frac{\left| N(u) \cap N(v) \right|}{\sqrt{\left| N(u) \cdot N(v) \right|}}<br>$$<br>从向量的角度进行描述，令矩阵$A$ 为用户-物品交互矩阵，矩阵的行表示用户，列表示物品。</p>
-<ul>
-<li><p>设用户和物品数量分别为$m$, $n$，交互矩阵$$A$$就是一个$m$行$n$列的矩阵。</p>
-</li>
-<li><p>矩阵中的元素均为$ 0&#x2F;1$。若用户$i$对物品$j$存在交互，那么 $A_{ij} &#x3D;1$，否则为 $0$。</p>
-</li>
-<li><p>那么，用户之间的相似度可以表示为：<br>$$<br>sim_{uv} &#x3D; cos(u, v) &#x3D; \frac{u \cdot v}{\left| u \right| \cdot \left| v \right|}<br>$$</p>
-</li>
-<li><p>向量 $u$,$v$在形式都是 one-hot 类型，$u \cdot v$表示向量点积。</p>
-</li>
 </ul>
-<p>			</p>
+<ol>
+<li><p><strong>余弦相似度</strong> 余弦相似度衡量了两个向量的夹角，夹角越小越相似。余弦相似度的计算如下，其与杰卡德（Jaccard）相似系数只是在分母上存在差异：</p>
+<script type="math/tex; mode=display">
+sim_{uv} = \frac{\left| N(u) \cap N(v) \right|}{\sqrt{\left| N(u) \cdot N(v) \right|}}</script><p>从向量的角度进行描述，令矩阵$A$ 为用户-物品交互矩阵，矩阵的行表示用户，列表示物品。</p>
+<ul>
+<li><p>设用户和物品数量分别为$m$, $n$，交互矩阵<script type="math/tex">A</script>就是一个$m$行$n$列的矩阵。</p>
+</li>
+<li><p>矩阵中的元素均为$ 0/1$。若用户$i$对物品$j$存在交互，那么 $A_{ij} =1$，否则为 $0$。</p>
+</li>
+<li><p>那么，用户之间的相似度可以表示为：</p>
+<script type="math/tex; mode=display">
+sim_{uv} = cos(u, v) = \frac{u \cdot v}{\left| u \right| \cdot \left| v \right|}</script></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>向量 $u$,$v$在形式都是 one-hot 类型，$u \cdot v$表示向量点积。            </p>
 <p>上述用户-物品交互矩阵在现实中是十分稀疏的，为了节省内存，交互矩阵会采用字典进行存储。在 <code>sklearn</code> 中，余弦相似度的实现：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics.pairwise <span class="keyword">import</span> cosine_similarity</span><br><span class="line"></span><br><span class="line">i = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">j = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>]</span><br><span class="line">cosine_similarity([i, j])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
 </li>
-<li><p><strong>皮尔逊相关系数</strong></p>
-<p>在用户之间的余弦相似度计算时，将用户向量的内积展开为各元素乘积和：<br>$$<br>sim_{uv} &#x3D; \frac{\sum_ir_{ui} * r_{vi}}{\sqrt{\sum_i r_{ui}^{2} \sqrt{\sum_i r_{vi}^{2}}}}<br>$$</p>
-<ul>
-<li>其中，$r_{ui},r_{vi}$分别表示用户$u$和用户$v$对物品 $i$是否有交互(或具体评分值)。</li>
 </ul>
-<p>皮尔逊相关系数与余弦相似度的计算公式非常的类似，如下：<br>$$<br>sim(u, v) &#x3D; \frac{\sum_{i \in I}(r_{ui} - \bar r_u )(r_{vi} - \bar r_v)}{\sqrt{\sum_{i \in I}(r_{ui} - \bar r_u )^{2}} \sqrt{\sum_{i \in I}(r_{vi} - \bar r_v)^{2}}}<br>$$</p>
-<ul>
-<li>其中，$r_{ui}, r_{vi}$分别表示用户$u$和用户$i$对物品$i$是否有交互(或具体评分值)；</li>
+<ol>
+<li><p><strong>皮尔逊相关系数</strong></p>
+<p>在用户之间的余弦相似度计算时，将用户向量的内积展开为各元素乘积和：</p>
+<script type="math/tex; mode=display">
+sim_{uv} = \frac{\sum_ir_{ui} * r_{vi}}{\sqrt{\sum_i r_{ui}^{2} \sqrt{\sum_i r_{vi}^{2}}}}</script><ul>
+<li>其中，$r<em>{ui},r</em>{vi}$分别表示用户$u$和用户$v$对物品 $i$是否有交互(或具体评分值)。</li>
+</ul>
+<p>皮尔逊相关系数与余弦相似度的计算公式非常的类似，如下：</p>
+<script type="math/tex; mode=display">
+sim(u, v) = \frac{\sum_{i \in I}(r_{ui} - \bar r_u )(r_{vi} - \bar r_v)}{\sqrt{\sum_{i \in I}(r_{ui} - \bar r_u )^{2}} \sqrt{\sum_{i \in I}(r_{vi} - \bar r_v)^{2}}}</script><ul>
+<li>其中，$r<em>{ui}, r</em>{vi}$分别表示用户$u$和用户$i$对物品$i$是否有交互(或具体评分值)；</li>
 <li>$\bar r_u, \bar r_v$分别表示用户$u$和用户$v$交互的所有物品交互数量或者评分的平均值；</li>
 </ul>
 <p>相较于余弦相似度，皮尔逊相关系数通过使用用户的平均分对各独立评分进行修正，减小了用户评分偏置的影响。在<code>scipy</code>中，皮尔逊相关系数的实现：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> pearsonr</span><br><span class="line"></span><br><span class="line">i = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">j = [<span class="number">1</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0</span>]</span><br><span class="line">pearsonr(i, j)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> pearsonr</span><br><span class="line"></span><br><span class="line">i = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">j = [<span class="number">1</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0</span>]</span><br><span class="line">pearsonr(i, j)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
 <li><em>Jaccard</em> 相似度表示两个集合的交集元素个数在并集中所占的比例 ，所以适用于隐式反馈数据（0-1）。</li>

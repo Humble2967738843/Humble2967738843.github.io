@@ -19,12 +19,12 @@
   <title>humbleyl</title>
 
   
-    <meta name="description" content="07自动求导7.1自动求导 向量链式法则  标量链式法则   拓展到向量      【举例】 假设  计算  先分解  得到：  【举例】 假设  计算：  分解：  得到：   自动求导  自动求导计算一个函数在指定值上的导数  它有别于  符号求导   数值求导       计算图  将代码分解成操作子 将计算表示成一个无环图 显示构造（Tensorflow&#x2F;Theano&#x2F;">
+    <meta name="description" content="07自动求导7.1自动求导 向量链式法则  标量链式法则   拓展到向量      【举例】 假设  计算  先分解  得到：  【举例】 假设  计算：  分解：  得到：   自动求导  自动求导计算一个函数在指定值上的导数  它有别于  符号求导   数值求导       计算图  将代码分解成操作子 将计算表示成一个无环图 显示构造（Tensorflow&#x2F;Theano&#x2F;MXNet） 隐式构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="humbleyl">
 <meta property="og:url" content="http://humble2967738843.github.io/2023/12/11/07-zi-dong-qiu-dao/index.html">
 <meta property="og:site_name" content="humbleyl">
-<meta property="og:description" content="07自动求导7.1自动求导 向量链式法则  标量链式法则   拓展到向量      【举例】 假设  计算  先分解  得到：  【举例】 假设  计算：  分解：  得到：   自动求导  自动求导计算一个函数在指定值上的导数  它有别于  符号求导   数值求导       计算图  将代码分解成操作子 将计算表示成一个无环图 显示构造（Tensorflow&#x2F;Theano&#x2F;">
+<meta property="og:description" content="07自动求导7.1自动求导 向量链式法则  标量链式法则   拓展到向量      【举例】 假设  计算  先分解  得到：  【举例】 假设  计算：  分解：  得到：   自动求导  自动求导计算一个函数在指定值上的导数  它有别于  符号求导   数值求导       计算图  将代码分解成操作子 将计算表示成一个无环图 显示构造（Tensorflow&#x2F;Theano&#x2F;MXNet） 隐式构">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2023/12/11/S6Tb8R7FJHlnz4d.png">
 <meta property="og:image" content="https://s2.loli.net/2023/12/11/COAszUhudmN2DTr.png">
@@ -170,8 +170,8 @@
 <ul>
 <li>将代码分解成操作子</li>
 <li>将计算表示成一个无环图</li>
-<li>显示构造（<code>Tensorflow</code>&#x2F;<code>Theano</code>&#x2F;<code>MXNet</code>）</li>
-<li>隐式构造（<code>PyTorch</code>&#x2F;<code>MXNet</code>）</li>
+<li>显示构造（<code>Tensorflow</code>/<code>Theano</code>/<code>MXNet</code>）</li>
+<li>隐式构造（<code>PyTorch</code>/<code>MXNet</code>）</li>
 </ul>
 </li>
 </ul>
@@ -235,7 +235,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="7-2自动求导实现"><a href="#7-2自动求导实现" class="headerlink" title="7.2自动求导实现"></a>7.2自动求导实现</h2><p>假设我们想对函数 $y &#x3D; 2 \boldsymbol {x}^T\boldsymbol {x}$ 关于列向量 $\boldsymbol {x}$ 求导</p>
+<h2 id="7-2自动求导实现"><a href="#7-2自动求导实现" class="headerlink" title="7.2自动求导实现"></a>7.2自动求导实现</h2><p>假设我们想对函数 $y = 2 \boldsymbol {x}^T\boldsymbol {x}$ 关于列向量 $\boldsymbol {x}$ 求导</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/11/iprdJa5QMcyGVkR.png" alt="image-20231211221815678"></p>
 <p>在我们计算 $y$ 关于 $\boldsymbol {x}$ 的梯度之前，我们需要一个地方来存储梯度。</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/11/zRwyU2geNMVEHIs.png" alt="image-20231211221935331"></p>

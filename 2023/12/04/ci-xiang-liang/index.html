@@ -26,14 +26,14 @@
 <meta property="og:site_name" content="humbleyl">
 <meta property="og:description" content="词向量 https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;29364112 1.Word2VecWord2Vec是Google发布的一个工具， 用于训练词向量，其提供了两种语言模型来供选择， 且Google 基于大规模语料集上训练出了预训练词向量来供开发者或研究者使用。 一般情况下，我们是没有必要自己去训练词向量的，但如果要求特殊，且语料集庞大，自己训练也是可以的。 在Word2Vec中，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://humble2967738843.github.io/imgs/$%7Bfiilename%7D/image-20231204224108495-1701700870620-1.png">
-<meta property="og:image" content="http://humble2967738843.github.io/imgs/$%7Bfiilename%7D/image-20231204224437325-1701701078311-3.png">
-<meta property="og:image" content="http://humble2967738843.github.io/imgs/$%7Bfiilename%7D/image-20231204224719385-1701701240403-5.png">
+<meta property="og:image" content="http://humble2967738843.github.io/2023/12/04/imgs/$%7Bfiilename%7D/image-20231204224108495-1701700870620-1.png">
+<meta property="og:image" content="http://humble2967738843.github.io/2023/12/04/imgs/$%7Bfiilename%7D/image-20231204224437325-1701701078311-3.png">
+<meta property="og:image" content="http://humble2967738843.github.io/2023/12/04/imgs/$%7Bfiilename%7D/image-20231204224719385-1701701240403-5.png">
 <meta property="article:published_time" content="2023-12-04T14:36:48.645Z">
 <meta property="article:modified_time" content="2023-12-04T14:48:38.700Z">
 <meta property="article:author" content="yuan long">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://humble2967738843.github.io/imgs/$%7Bfiilename%7D/image-20231204224108495-1701700870620-1.png">
+<meta name="twitter:image" content="http://humble2967738843.github.io/2023/12/04/imgs/$%7Bfiilename%7D/image-20231204224108495-1701700870620-1.png">
   
   
   
@@ -93,58 +93,78 @@
 <h1 id="1-Word2Vec"><a href="#1-Word2Vec" class="headerlink" title="1.Word2Vec"></a>1.Word2Vec</h1><p>Word2Vec是Google发布的一个工具， 用于训练词向量，其提供了两种语言模型来供选择， 且Google 基于大规模语料集上训练出了预训练词向量来供开发者或研究者使用。 一般情况下，我们是没有必要自己去训练词向量的，但如果要求特殊，且语料集庞大，自己训练也是可以的。</p>
 <p>在Word2Vec中，实现了两个模型：<strong>CBOW</strong> 与 <strong>Skip-Gram</strong>。</p>
 <h2 id="1-1CBOW模型"><a href="#1-1CBOW模型" class="headerlink" title="1.1CBOW模型"></a>1.1CBOW模型</h2><p>CBOW，全称Continuous Bag-of-Word，中文叫做连续词袋模型：</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../imgs/$%7Bfiilename%7D/image-20231204224108495-1701700870620-1.png" alt="image-20231204224108495"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="../imgs/$%7Bfiilename%7D/image-20231204224108495-1701700870620-1.png" alt="image-20231204224108495"></p>
 <p>如上图是一个两层的神经网络，其实在训练语言模型的过程中考虑到效率等问题，常常采用浅层的神经网络来训练，并取第一层的参数如上图就是 $W_{V \times N}$ 来作为最终的词向量矩阵（参考 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43453548">语言模型：从n元模型到NNLM</a>）。</p>
-<p>CBOW模型的目的是预测 $P(w_t| w_{t-k}, \cdots, w_{t-1}, w_{t+1}, \cdots, w_{t+k}) $，我们先来走一遍CBOW的前向传播过程 。</p>
+<p>CBOW模型的目的是预测 $P(w<em>t| w</em>{t-k}, \cdots, w<em>{t-1}, w</em>{t+1}, \cdots, w_{t+k}) $，我们先来走一遍CBOW的前向传播过程 。</p>
 <h3 id="1-1-1前向传播过程"><a href="#1-1-1前向传播过程" class="headerlink" title="1.1.1前向传播过程"></a>1.1.1前向传播过程</h3><ul>
-<li><p>输入层: 输入C个单词： $x_{1k}, \cdots, x_{Ck} $，并且每个 $x$ 都是用 One-hot 编码表示，每一个 $x$ 的维度为 V（词表长度）。</p>
+<li><p>输入层: 输入C个单词： $x<em>{1k}, \cdots, x</em>{Ck} $，并且每个 $x$ 都是用 One-hot 编码表示，每一个 $x$ 的维度为 V（词表长度）。</p>
 </li>
-<li><p>输入层到隐层:  共享矩阵为 $W_{V \times N}$ ，V表示词表长度，W的每一行表示的就是一个N维的向量（训练结束后，W的每一行就表示一个词的词向量）。在隐藏层中，我们的所有输入的词转化为对应词向量，然后取平均值，这样我们就得到了隐层输出值 ( 注意，隐层中无激活函数，也就是说这里是线性组合)。 其中，隐层输出 $h$ 是一个N维的向量 。<br>$$<br>h &#x3D; \frac{1}{C} W^T(x_1 + x_2 + \cdots + x_c)<br>$$</p>
-</li>
-<li><p>隐层到输出层：隐层的输出为N维向量 $h$ ， 隐层到输出层的权重矩阵为  $W’_{N \times V}$ 。然后，通过矩阵运算我们得到一个 $V \times 1 $ 维向量<br>$$<br>u &#x3D; W’^{T} * h<br>$$</p>
-</li>
+<li><p>输入层到隐层:  共享矩阵为 $W_{V \times N}$ ，V表示词表长度，W的每一行表示的就是一个N维的向量（训练结束后，W的每一行就表示一个词的词向量）。在隐藏层中，我们的所有输入的词转化为对应词向量，然后取平均值，这样我们就得到了隐层输出值 ( 注意，隐层中无激活函数，也就是说这里是线性组合)。 其中，隐层输出 $h$ 是一个N维的向量 。</p>
+<script type="math/tex; mode=display">
+h = \frac{1}{C} W^T(x_1 + x_2 + \cdots + x_c)</script></li>
+<li><p>隐层到输出层：隐层的输出为N维向量 $h$ ， 隐层到输出层的权重矩阵为  $W’_{N \times V}$ 。然后，通过矩阵运算我们得到一个 $V \times 1 $ 维向量</p>
+<script type="math/tex; mode=display">
+u = W'^{T} * h</script></li>
 </ul>
-<p>其中，向量 $u$  的第 $i$  行表示词汇表中第 $i$  个词的可能性，然后我们的目的就是取可能性最高的那个词。因此，在最后的输出层是一个softmax 层获取分数最高的词，那么就有我们的最终输出：<br>$$<br>P(w_j| context)  &#x3D;y_i &#x3D;  \frac{exp({u_j})}{\sum_{k \in V} exp({u_k})}<br>$$</p>
-<h3 id="1-1-2-损失函数"><a href="#1-1-2-损失函数" class="headerlink" title="1.1.2 损失函数"></a>1.1.2 损失函数</h3><p>我们假定 $j^*$ 是真实单词在词汇表中的下标，那么根据极大似然法，则目标函数定义如下：<br>$$<br>E &#x3D; -log , p(W_O |W_I) &#x3D; -log , \frac{exp({u_j})}{\sum_{k \in V} exp({u_k})} &#x3D;  log  , \sum_{k \in V} exp(u_{k})  -u_j<br>$$</p>
-<h2 id="1-2-Skip-gram模型"><a href="#1-2-Skip-gram模型" class="headerlink" title="1.2 Skip-gram模型"></a>1.2 Skip-gram模型</h2><p>Skip-Gram的基本思想是：已知当前词 $w_t$ 的前提下，预测其上下文 $w_{t-i}, \cdots , w_{t+i}$ ，模型如下图所示：</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../imgs/$%7Bfiilename%7D/image-20231204224437325-1701701078311-3.png" alt="image-20231204224437325"></p>
-<h3 id="1-2-1前向传播过程"><a href="#1-2-1前向传播过程" class="headerlink" title="1.2.1前向传播过程"></a>1.2.1前向传播过程</h3><h4 id=""><a href="#" class="headerlink" title=""></a></h4><ul>
-<li><p>输入层：   输入的是一个单词，其表示形式为 <strong>One-hot</strong> ，我们将其表示为V维向量 $x_k$ ，其中 $V$ 为词表大小。然后，通过词向量矩阵 $W_{V \times N}$ 我们得到一个N维向量<br>$$<br>h &#x3D; W^T * x_k &#x3D; v^{T}_{w_I}<br>$$</p>
-</li>
-<li><p>隐层： 而隐层中没有激活函数，也就是说输入&#x3D;输出，因此隐藏的输出也是 $h$ 。</p>
+<p>其中，向量 $u$  的第 $i$  行表示词汇表中第 $i$  个词的可能性，然后我们的目的就是取可能性最高的那个词。因此，在最后的输出层是一个softmax 层获取分数最高的词，那么就有我们的最终输出：</p>
+<script type="math/tex; mode=display">
+P(w_j| context)  =y_i =  \frac{exp({u_j})}{\sum_{k \in V} exp({u_k})}</script><h3 id="1-1-2-损失函数"><a href="#1-1-2-损失函数" class="headerlink" title="1.1.2 损失函数"></a>1.1.2 损失函数</h3><p>我们假定 $j^*$ 是真实单词在词汇表中的下标，那么根据极大似然法，则目标函数定义如下：</p>
+<script type="math/tex; mode=display">
+E = -log \, p(W_O |W_I) = -log \, \frac{exp({u_j})}{\sum_{k \in V} exp({u_k})} =  log  \, \sum_{k \in V} exp(u_{k})  -u_j</script><h2 id="1-2-Skip-gram模型"><a href="#1-2-Skip-gram模型" class="headerlink" title="1.2 Skip-gram模型"></a>1.2 Skip-gram模型</h2><p>Skip-Gram的基本思想是：已知当前词 $w<em>t$ 的前提下，预测其上下文 $w</em>{t-i}, \cdots , w_{t+i}$ ，模型如下图所示：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="../imgs/$%7Bfiilename%7D/image-20231204224437325-1701701078311-3.png" alt="image-20231204224437325"></p>
+<h3 id="1-2-1前向传播过程"><a href="#1-2-1前向传播过程" class="headerlink" title="1.2.1前向传播过程"></a>1.2.1前向传播过程</h3><h4 id=""><a href="#" class="headerlink" title=" "></a> </h4><ul>
+<li>输入层：   输入的是一个单词，其表示形式为 <strong>One-hot</strong> ，我们将其表示为V维向量 $x<em>k$ ，其中 $V$ 为词表大小。然后，通过词向量矩阵 $W</em>{V \times N}$ 我们得到一个N维向量  <script type="math/tex; mode=display">
+h = W^T * x_k = v^{T}_{w_I}</script></li>
+</ul>
+<ul>
+<li><p>隐层： 而隐层中没有激活函数，也就是说输入=输出，因此隐藏的输出也是 $h$ 。</p>
 </li>
 <li><p>隐层到输出层：</p>
 <blockquote>
 <ul>
 <li>首先，因为要输出C个单词，因此我们此时的输出有C个分布： $y_1, \cdots y_C $，且每个分布都是独立的，我们需要单独计算， 其中 $y_i$  表示窗口的第 $i$  个单词的分布。 </li>
-<li>其次， 因为矩阵 $W’<em>{N \times V}$ 是共享的，因此我们得到的 $V \times 1$ 维向量 $u$ 其实是相同的，也就是有 $u</em>{c,j} &#x3D; u_j$ ，这里 $u$ 的每一行同 CBOW 中一样，表示的也是评分。</li>
+<li>其次， 因为矩阵 $W’<em>{N \times V}$ 是共享的，因此我们得到的 $V \times 1$ 维向量 $u$ 其实是相同的，也就是有 $u</em>{c,j} = u_j$ ，这里 $u$ 的每一行同 CBOW 中一样，表示的也是评分。</li>
 <li>最后，每个分布都经过一个 softmax 层，不同于 CBOW，我们此处产生的是第 $i$ 个单词的分布（共有C个单词），如下：</li>
 </ul>
 </blockquote>
-<p>$$<br>P(w_{i,j}| context)  &#x3D;y_i &#x3D;  \frac{exp({u_j})}{\sum_{k \in V} exp({u_k})}<br>$$</p>
-</li>
+<script type="math/tex; mode=display">
+P(w_{i,j}| context)  =y_i =  \frac{exp({u_j})}{\sum_{k \in V} exp({u_k})}</script></li>
 </ul>
-<h3 id="1-2-2-损失函数"><a href="#1-2-2-损失函数" class="headerlink" title="1.2.2 损失函数"></a>1.2.2 损失函数</h3><p>假设 $j^*$ 是真实单词在词汇表中的下标，那么根据极大似然法，则目标函数定义如下：<br>$$<br>\begin{split} E &amp;&#x3D; - log , p(w_1, w_2, \cdots, w_C | w_I)   \ &amp;&#x3D; - log \prod_{c&#x3D;1}^C P(w_c|w_i) \ &amp;&#x3D; - log  \prod_{c&#x3D;1}^{C} \frac{exp(u_{c, j})}{\sum_{k&#x3D;1}^{V} exp(u_{c,k}) } \ &amp;&#x3D; - \sum_{c&#x3D;1}^C u_{j^*<em>c} + C \cdot log \sum</em>{k&#x3D;1}^{V} exp(u_k) \end{split}<br>$$</p>
-<h2 id="1-3模型复杂度"><a href="#1-3模型复杂度" class="headerlink" title="1.3模型复杂度"></a>1.3模型复杂度</h2><p>本节中我们来分析一下模型训练时的复杂度，无论是在CBOW还是Skip-Gram模型中，都需要学习两个词向量矩阵： $W, W’$ 。</p>
+<h3 id="1-2-2-损失函数"><a href="#1-2-2-损失函数" class="headerlink" title="1.2.2 损失函数"></a>1.2.2 损失函数</h3><p>假设 $j^*$ 是真实单词在词汇表中的下标，那么根据极大似然法，则目标函数定义如下：</p>
+<script type="math/tex; mode=display">
+\begin{split} E &= - log \, p(w_1, w_2, \cdots, w_C | w_I)   \\ &= - log \prod_{c=1}^C P(w_c|w_i) \\ &= - log  \prod_{c=1}^{C} \frac{exp(u_{c, j})}{\sum_{k=1}^{V} exp(u_{c,k}) } \\ &= - \sum_{c=1}^C u_{j^*_c} + C \cdot log \sum_{k=1}^{V} exp(u_k) \end{split}</script><h2 id="1-3模型复杂度"><a href="#1-3模型复杂度" class="headerlink" title="1.3模型复杂度"></a>1.3模型复杂度</h2><p>本节中我们来分析一下模型训练时的复杂度，无论是在CBOW还是Skip-Gram模型中，都需要学习两个词向量矩阵： $W, W’$ 。</p>
 <p>对于矩阵 $W$ ， 从前向传播中可以看到， 可以看到对于每一个样本(或mini-batch)，CBOW更新 $W$  的 C 行（h与C个x相关）， 而Skip-Gram 更新W中的其中一行（h与1个x相关），这点训练量并不算大。</p>
 <p>对于 $W’$  而言， 无论是 CBOW 还是 Skip-Gram 模型，每个训练样本(mini-batch)都更新 $W’$ 的所有 $V \times N$ 个元素。</p>
 <p>在现实中，用于语言模型训练的数据集通常都很大，此外词表也是巨大的，这就导致对于 $W’$ 的更新所花费的计算成本是很大的，真的是验证了一个道理：穷逼没必要搞语言模型。</p>
 <p>为了解决优化起来速度太慢的问题， Word2Vec 中提供了两种策略来对这方面进行优化。</p>
 <h2 id="1-4Hierarchical-Softmax"><a href="#1-4Hierarchical-Softmax" class="headerlink" title="1.4Hierarchical Softmax"></a>1.4Hierarchical Softmax</h2><p>HS 基于哈夫曼树将计算量大的部分转化为一种二分类问题。</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../imgs/$%7Bfiilename%7D/image-20231204224719385-1701701240403-5.png" alt="image-20231204224719385"></p>
-<p>原先的模型中，模型再隐层之后通过 $W’$ 连接输出层，现在 HS 则去掉了 $W’$ , 隐层向量 <strong>h</strong> 直接与上图的二叉树的 root 节点相连， 图中的每一个分支都代表一个选择。 上图中白色的叶子节点表示词表中所有的$|V|$个词， 黑色节点表示非叶子节点， 每一个叶子节点（单词）都对应一条从 root 节点出发的路径，而问题就转化为了使得 $w&#x3D;w_o$ 这条路径的概率最大， 即：$P(w&#x3D;w+O|w_I)$ 最大。</p>
-<p>用 $n(w,j)$ 表示从 root 到叶子节点 w 的路径上的第 j 个非叶子节点, 并且每个非叶子节点都对应一个向量$v_{n(w,j)}′$, 维度与h 相同, 然后使用一个sigmod函数: $σ(x)&#x3D;\frac{1}{1+exp(−x)}∈[0,1]$ ，结合向量的内积, 来判断该向左还是向右，那么第 n 个节点向左以及向右的概率分别为：<br>$$<br>P(n,left) &#x3D; \sigma(v_w’ \cdot h) \<br>P(n, right) &#x3D; 1 - \sigma(v_w’ \cdot h)<br>$$<br>那么就有：<br>$$<br>P(w&#x3D;w_O|W_I) &#x3D; \prod_{j&#x3D;1}^{L(w)-1} P(\sigma(I(n(w, j+1 &#x3D;&#x3D; left) v_w’ \cdot h))<br>$$</p>
-<ul>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="../imgs/$%7Bfiilename%7D/image-20231204224719385-1701701240403-5.png" alt="image-20231204224719385"></p>
+<p>原先的模型中，模型再隐层之后通过 $W’$ 连接输出层，现在 HS 则去掉了 $W’$ , 隐层向量 <strong>h</strong> 直接与上图的二叉树的 root 节点相连， 图中的每一个分支都代表一个选择。 上图中白色的叶子节点表示词表中所有的$|V|$个词， 黑色节点表示非叶子节点， 每一个叶子节点（单词）都对应一条从 root 节点出发的路径，而问题就转化为了使得 $w=w_o$ 这条路径的概率最大， 即：$P(w=w+O|w_I)$ 最大。</p>
+<p>用 $n(w,j)$ 表示从 root 到叶子节点 w 的路径上的第 j 个非叶子节点, 并且每个非叶子节点都对应一个向量$v_{n(w,j)}′$, 维度与h 相同, 然后使用一个sigmod函数: $σ(x)=\frac{1}{1+exp(−x)}∈[0,1]$ ，结合向量的内积, 来判断该向左还是向右，那么第 n 个节点向左以及向右的概率分别为：</p>
+<script type="math/tex; mode=display">
+P(n,left) = \sigma(v_w' \cdot h) \\
+P(n, right) = 1 - \sigma(v_w' \cdot h)</script><p>那么就有：</p>
+<script type="math/tex; mode=display">
+P(w=w_O|W_I) = \prod_{j=1}^{L(w)-1} P(\sigma(I(n(w, j+1 == left) v_w' \cdot h))</script><ul>
 <li>$I()$ ：指示函数，条件成立值为1， 反之为 -1</li>
 <li>$L(w)$ ：表示整条路径的长度</li>
 </ul>
-<p>这样我们就能够通过训练来更新每个非叶子节点的参数 $v_w’$了。举例来说，图上加黑的黑色路径： $(n(w_2,1),n(w_2,2),n(w_2,3),w2$， 对于一个训练样本，我们要使得 $P(w_O&#x3D;w_2|w_I)$  概率最大：<br>$$<br>P(w_2&#x3D;w_O) &#x3D; P(n(w_2, 1), left) \cdot P(n(w_2, 2), left) \cdot P(n(w_2, 3), right)<br>$$<br>且需要注意的时，再一个非叶子节点处， 向左向右的概率和为1， 因此一直分裂下去，最后的和肯定还是1， 因此可以得出：<br>$$<br>\sum_{j&#x3D;1}^V P(w_j &#x3D; w_O) &#x3D; 1<br>$$<br>损失函数同样为最大似然：<br>$$<br>E &#x3D; -log P(w &#x3D; w_O | w_I) &#x3D; -\sum_{j&#x3D;1}^{L(w) -1} log \sigma([I] v_j’^Th)<br>$$<br>通过 HS， 隐层到输出层的计算量从 $O(V)$ 降到了 $O(logV)$。</p>
-<h2 id="1-5Negative-Sampling-–-负采样"><a href="#1-5Negative-Sampling-–-负采样" class="headerlink" title="1.5Negative Sampling – 负采样"></a>1.5Negative Sampling – 负采样</h2><p>在 Word2Vec 中， 对于输出层来说，我每一个输出节点都要预测词表中所有词在当前位置的概率，在动辄几万甚至几十万大的词表中，用softmax 计算真的十分困难。 </p>
+<p>这样我们就能够通过训练来更新每个非叶子节点的参数 $v_w’$了。举例来说，图上加黑的黑色路径： $(n(w_2,1),n(w_2,2),n(w_2,3),w2$， 对于一个训练样本，我们要使得 $P(w_O=w_2|w_I)$  概率最大：</p>
+<script type="math/tex; mode=display">
+P(w_2=w_O) = P(n(w_2, 1), left) \cdot P(n(w_2, 2), left) \cdot P(n(w_2, 3), right)</script><p>且需要注意的时，再一个非叶子节点处， 向左向右的概率和为1， 因此一直分裂下去，最后的和肯定还是1， 因此可以得出：</p>
+<script type="math/tex; mode=display">
+\sum_{j=1}^V P(w_j = w_O) = 1</script><p>损失函数同样为最大似然：</p>
+<script type="math/tex; mode=display">
+E = -log P(w = w_O | w_I) = -\sum_{j=1}^{L(w) -1} log \sigma([I] v_j'^Th)</script><p>通过 HS， 隐层到输出层的计算量从 $O(V)$ 降到了 $O(logV)$。</p>
+<h2 id="1-5Negative-Sampling-—-负采样"><a href="#1-5Negative-Sampling-—-负采样" class="headerlink" title="1.5Negative Sampling — 负采样"></a>1.5Negative Sampling — 负采样</h2><p>在 Word2Vec 中， 对于输出层来说，我每一个输出节点都要预测词表中所有词在当前位置的概率，在动辄几万甚至几十万大的词表中，用softmax 计算真的十分困难。 </p>
 <p>但我们的目的不在于训练一个精准的语言模型，而只是为了训练得到语言模型的副产物-词向量，那么我们可不可以把输出压缩呢，将几万的输出压缩到几十程度，这计算量是成几何倍数的下降。</p>
 <p>负采样的思路很简单，<strong>不直接让模型从整个词表中找最可能的词，而是直接给定这个词（正例）和几个随机采样的噪声词（负例），然后模型能够从这几个词中找到正确的词，就算达到目的了。</strong></p>
-<p>那么如何对负例进行采样呢？作者直接使用<strong>基于词频的权重分布</strong>来获得概率分布进行抽样：<br>$$<br>weight(w) &#x3D; \frac{count(w)^{0.75}}{\sum_u count(w)^{0.75}}<br>$$<br>相比于直接使用频次作为权重， 取0.75幂的好处可以减弱不同频次差异过大带来的影响，使得小频次的单词被采样的概率变大。</p>
-<p>此时的损失函数为：<br>$$<br>E &#x3D; - log \sigma(v_{w_O}’ h) - \sum_{w_j \in W_{neg}} log \sigma(-v_{w_j}’h)<br>$$</p>
-<h2 id="Glove"><a href="#Glove" class="headerlink" title="Glove []"></a>Glove []</h2><h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><h2 id="Reference-Papers"><a href="#Reference-Papers" class="headerlink" title="Reference Papers"></a>Reference Papers</h2><p>[1] Mikolov, T.(2013). Distributed Representations of Words and Phrases and their Compositionality.</p>
+<p>那么如何对负例进行采样呢？作者直接使用<strong>基于词频的权重分布</strong>来获得概率分布进行抽样：</p>
+<script type="math/tex; mode=display">
+weight(w) = \frac{count(w)^{0.75}}{\sum_u count(w)^{0.75}}</script><p>相比于直接使用频次作为权重， 取0.75幂的好处可以减弱不同频次差异过大带来的影响，使得小频次的单词被采样的概率变大。</p>
+<p>此时的损失函数为：</p>
+<script type="math/tex; mode=display">
+E = - log \sigma(v_{w_O}' h) - \sum_{w_j \in W_{neg}} log \sigma(-v_{w_j}'h)</script><h2 id="Glove"><a href="#Glove" class="headerlink" title="Glove []"></a>Glove []</h2><h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><h2 id="Reference-Papers"><a href="#Reference-Papers" class="headerlink" title="Reference Papers"></a>Reference Papers</h2><p>[1] Mikolov, T.(2013). Distributed Representations of Words and Phrases and their Compositionality.</p>
 <p>[2] Mikolov, T.(2013). Efficient Estimation of Word Representations in Vector Space.</p>
 <p>[3] Rong, X. (2014). word2vec Parameter Learning Explained.</p>
 <p>[4] GloVe: Global Vectors for Word Representation</p>
@@ -193,7 +213,7 @@ https://zhuanlan.zhihu.com/p/29364112
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%8D%E5%90%91%E9%87%8F"><span class="toc-text">词向量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Word2Vec"><span class="toc-text">1.Word2Vec</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1CBOW%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.1CBOW模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1%E5%89%8D%E5%90%91%E4%BC%A0%E6%92%AD%E8%BF%87%E7%A8%8B"><span class="toc-text">1.1.1前向传播过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-text">1.1.2 损失函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-Skip-gram%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.2 Skip-gram模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1%E5%89%8D%E5%90%91%E4%BC%A0%E6%92%AD%E8%BF%87%E7%A8%8B"><span class="toc-text">1.2.1前向传播过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-text">1.2.2 损失函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3%E6%A8%A1%E5%9E%8B%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">1.3模型复杂度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4Hierarchical-Softmax"><span class="toc-text">1.4Hierarchical Softmax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5Negative-Sampling-%E2%80%93-%E8%B4%9F%E9%87%87%E6%A0%B7"><span class="toc-text">1.5Negative Sampling – 负采样</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Glove"><span class="toc-text">Glove []</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Questions"><span class="toc-text">Questions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Papers"><span class="toc-text">Reference Papers</span></a></li></ol></li></ol></div><div class="widget-footer">
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%8D%E5%90%91%E9%87%8F"><span class="toc-text">词向量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Word2Vec"><span class="toc-text">1.Word2Vec</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1CBOW%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.1CBOW模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1%E5%89%8D%E5%90%91%E4%BC%A0%E6%92%AD%E8%BF%87%E7%A8%8B"><span class="toc-text">1.1.1前向传播过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-text">1.1.2 损失函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-Skip-gram%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.2 Skip-gram模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1%E5%89%8D%E5%90%91%E4%BC%A0%E6%92%AD%E8%BF%87%E7%A8%8B"><span class="toc-text">1.2.1前向传播过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text"> </span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-text">1.2.2 损失函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3%E6%A8%A1%E5%9E%8B%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">1.3模型复杂度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4Hierarchical-Softmax"><span class="toc-text">1.4Hierarchical Softmax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5Negative-Sampling-%E2%80%94-%E8%B4%9F%E9%87%87%E6%A0%B7"><span class="toc-text">1.5Negative Sampling — 负采样</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Glove"><span class="toc-text">Glove []</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Questions"><span class="toc-text">Questions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Papers"><span class="toc-text">Reference Papers</span></a></li></ol></li></ol></div><div class="widget-footer">
 
 <a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel blur'>

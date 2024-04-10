@@ -19,15 +19,15 @@
   <title>推荐系统 - humbleyl</title>
 
   
-    <meta name="description" content="一级标题二级标题三级标题dccdsdscsd">
+    <meta name="description" content="第一章 推荐系统概述1.1推荐系统的意义推荐系统就是一个将信息生产者和信息消费者连接起来的桥梁。平台往往会作为推荐系统的载体，实现信息生产者和消费者之间信息的匹配。上述提到的平台方、信息生产者和消费者可以分别用平台方（如：腾讯视频、淘宝、网易云音乐等）、物品（如：视频、商品、音乐等）和用户和来指代。下面分别从这三方需求出发，介绍推荐系统的存在的意义。 平台方平台方一般是为信息生产者提供物品展示的位">
 <meta property="og:type" content="article">
 <meta property="og:title" content="推荐系统">
 <meta property="og:url" content="http://humble2967738843.github.io/2024/04/10/tui-jian-xi-tong/index.html">
 <meta property="og:site_name" content="humbleyl">
-<meta property="og:description" content="一级标题二级标题三级标题dccdsdscsd">
+<meta property="og:description" content="第一章 推荐系统概述1.1推荐系统的意义推荐系统就是一个将信息生产者和信息消费者连接起来的桥梁。平台往往会作为推荐系统的载体，实现信息生产者和消费者之间信息的匹配。上述提到的平台方、信息生产者和消费者可以分别用平台方（如：腾讯视频、淘宝、网易云音乐等）、物品（如：视频、商品、音乐等）和用户和来指代。下面分别从这三方需求出发，介绍推荐系统的存在的意义。 平台方平台方一般是为信息生产者提供物品展示的位">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-10T04:09:32.000Z">
-<meta property="article:modified_time" content="2024-04-10T04:22:54.913Z">
+<meta property="article:modified_time" content="2024-04-10T05:34:06.995Z">
 <meta property="article:author" content="yuan long">
 <meta property="article:tag" content="DeepFM">
 <meta property="article:tag" content="FFM">
@@ -81,7 +81,7 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%90%9C%E5%B9%BF%E6%8E%A8/">搜广推</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-04-10T04:09:32.000Z">2024-04-10</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-04-10T04:22:54.913Z">2024-04-10</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-04-10T04:09:32.000Z">2024-04-10</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-04-10T05:34:06.995Z">2024-04-10</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -92,7 +92,71 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p>dccdsdscsd</p>
+  </div><article class="md-text content"><h1 id="第一章-推荐系统概述"><a href="#第一章-推荐系统概述" class="headerlink" title="第一章 推荐系统概述"></a>第一章 推荐系统概述</h1><h2 id="1-1推荐系统的意义"><a href="#1-1推荐系统的意义" class="headerlink" title="1.1推荐系统的意义"></a>1.1推荐系统的意义</h2><p>推荐系统就是一个将信息生产者和信息消费者连接起来的桥梁。平台往往会作为推荐系统的载体，实现信息生产者和消费者之间信息的匹配。上述提到的平台方、信息生产者和消费者可以分别用平台方（如：腾讯视频、淘宝、网易云音乐等）、物品（如：视频、商品、音乐等）和用户和来指代。下面分别从这三方需求出发，介绍推荐系统的存在的意义。</p>
+<h3 id="平台方"><a href="#平台方" class="headerlink" title="平台方"></a>平台方</h3><p>平台方一般是为信息生产者提供物品展示的位置，然后通过不同的方式吸引用户来到平台上寻找他们感兴趣的物品。平台通过商家对物品的展示以及用户的浏览、观看或下单等行为，就产生了所谓的”流量”。</p>
+<p>对平台方而言，流量的高效利用是推荐系统存在的重要原因。以典型的电商网站一般具有如图所示的树状拓扑结构，树状结构在连通性方面有着天然的劣势，阻碍这流量的高效流通。推荐系统的出现使得原本的树状结构变成网络拓扑结构，大大增强了整个网络的连通性。推荐模块不仅使用户在当前页面有了更好的选择路径，同时也给了每个商品增加入口和展示机会，进而提高了成交概率。而推荐质量的好坏，直接决定了用户选择这条路径的可能性，进而影响着流量的利用效率。</p>
+<h1 id="第二章-推荐系统算法基础"><a href="#第二章-推荐系统算法基础" class="headerlink" title="第二章 推荐系统算法基础"></a>第二章 推荐系统算法基础</h1><h2 id="2-1经典召回模型"><a href="#2-1经典召回模型" class="headerlink" title="2.1经典召回模型"></a>2.1经典召回模型</h2><h3 id="2-1-1基于协同过滤的召回"><a href="#2-1-1基于协同过滤的召回" class="headerlink" title="2.1.1基于协同过滤的召回"></a>2.1.1基于协同过滤的召回</h3><h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><p>协同过滤（Collaborative Filtering）推荐算法是最经典、最常用的推荐算法。基本思想是：</p>
+<ul>
+<li>根据用户之前的喜好以及其他兴趣相近的用户的选择来给用户推荐物品。<ul>
+<li>基于对用户历史行为数据的挖掘发现用户的喜好偏向， 并预测用户可能喜好的产品进行推荐。</li>
+<li>一般是仅仅基于用户的行为数据（评价、购买、下载等）, 而不依赖于项的任何附加信息（物品自身特征）或者用户的任何附加信息（年龄， 性别等）。</li>
+</ul>
+</li>
+<li>目前应用比较广泛的协同过滤算法是基于邻域的方法，主要有：<ul>
+<li>基于用户的协同过滤算法（UserCF）：给用户推荐和他兴趣相似的其他用户喜欢的产品。</li>
+<li>基于物品的协同过滤算法（ItemCF）：给用户推荐和他之前喜欢的物品相似的物品。</li>
+</ul>
+</li>
+</ul>
+<p><strong>不管是 UserCF 还是 ItemCF 算法， 重点是计算用户之间（或物品之间）的相似度。</strong></p>
+<h3 id="相似度度量方法"><a href="#相似度度量方法" class="headerlink" title="相似度度量方法"></a>相似度度量方法</h3><ol>
+<li><p><strong>杰卡德（Jaccard）相似系数</strong></p>
+<p><code>Jaccard</code> 系数是衡量两个集合的相似度一种指标，计算公式如下：<br>$$<br>sim_{uv} &#x3D; \frac{\left| N(u) \cap N(v) \right|}{\left| N(u) \cup N(v) \right|}<br>$$</p>
+<ul>
+<li>其中 $N(u)$，$N(v)$分别表示用户$u$和用户交$v$互物品的集合。</li>
+<li>对于用户$u$ 和$v$，该公式反映了两个交互物品交集的数量占这两个用户交互物品并集的数量的比例。</li>
+</ul>
+<p>由于杰卡德相似系数一般无法反映具体用户的评分喜好信息，所以常用来评估用户是否会对某物品进行打分， 而不是预估用户会对某物品打多少分。</p>
+</li>
+<li><p><strong>余弦相似度</strong> 余弦相似度衡量了两个向量的夹角，夹角越小越相似。余弦相似度的计算如下，其与杰卡德（Jaccard）相似系数只是在分母上存在差异：<br>$$<br>sim_{uv} &#x3D; \frac{\left| N(u) \cap N(v) \right|}{\sqrt{\left| N(u) \cdot N(v) \right|}}<br>$$<br>从向量的角度进行描述，令矩阵$A$ 为用户-物品交互矩阵，矩阵的行表示用户，列表示物品。</p>
+<ul>
+<li><p>设用户和物品数量分别为$m$, $n$，交互矩阵$$A$$就是一个$m$行$n$列的矩阵。</p>
+</li>
+<li><p>矩阵中的元素均为$ 0&#x2F;1$。若用户$i$对物品$j$存在交互，那么 $A_{ij} &#x3D;1$，否则为 $0$。</p>
+</li>
+<li><p>那么，用户之间的相似度可以表示为：<br>$$<br>sim_{uv} &#x3D; cos(u, v) &#x3D; \frac{u \cdot v}{\left| u \right| \cdot \left| v \right|}<br>$$</p>
+</li>
+<li><p>向量 $u$,$v$在形式都是 one-hot 类型，$u \cdot v$表示向量点积。</p>
+</li>
+</ul>
+<p>			</p>
+<p>上述用户-物品交互矩阵在现实中是十分稀疏的，为了节省内存，交互矩阵会采用字典进行存储。在 <code>sklearn</code> 中，余弦相似度的实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics.pairwise <span class="keyword">import</span> cosine_similarity</span><br><span class="line"></span><br><span class="line">i = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">j = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>]</span><br><span class="line">cosine_similarity([i, j])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>皮尔逊相关系数</strong></p>
+<p>在用户之间的余弦相似度计算时，将用户向量的内积展开为各元素乘积和：<br>$$<br>sim_{uv} &#x3D; \frac{\sum_ir_{ui} * r_{vi}}{\sqrt{\sum_i r_{ui}^{2} \sqrt{\sum_i r_{vi}^{2}}}}<br>$$</p>
+<ul>
+<li>其中，$r_{ui},r_{vi}$分别表示用户$u$和用户$v$对物品 $i$是否有交互(或具体评分值)。</li>
+</ul>
+<p>皮尔逊相关系数与余弦相似度的计算公式非常的类似，如下：<br>$$<br>sim(u, v) &#x3D; \frac{\sum_{i \in I}(r_{ui} - \bar r_u )(r_{vi} - \bar r_v)}{\sqrt{\sum_{i \in I}(r_{ui} - \bar r_u )^{2}} \sqrt{\sum_{i \in I}(r_{vi} - \bar r_v)^{2}}}<br>$$</p>
+<ul>
+<li>其中，$r_{ui}, r_{vi}$分别表示用户$u$和用户$i$对物品$i$是否有交互(或具体评分值)；</li>
+<li>$\bar r_u, \bar r_v$分别表示用户$u$和用户$v$交互的所有物品交互数量或者评分的平均值；</li>
+</ul>
+<p>相较于余弦相似度，皮尔逊相关系数通过使用用户的平均分对各独立评分进行修正，减小了用户评分偏置的影响。在<code>scipy</code>中，皮尔逊相关系数的实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> pearsonr</span><br><span class="line"></span><br><span class="line">i = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">j = [<span class="number">1</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0</span>]</span><br><span class="line">pearsonr(i, j)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li><em>Jaccard</em> 相似度表示两个集合的交集元素个数在并集中所占的比例 ，所以适用于隐式反馈数据（0-1）。</li>
+<li>余弦相似度在度量文本相似度、用户相似度、物品相似度的时候都较为常用。</li>
+<li>皮尔逊相关度，实际上也是一种余弦相似度。不过先对向量做了中心化，范围在 −1−1 到 11。<ul>
+<li>相关度量的是两个变量的变化趋势是否一致，两个随机变量是不是同增同减。</li>
+<li>不适合用作计算布尔值向量（0-1）之间相关度。</li>
+</ul>
+</li>
+</ul>
 
 <div class="article-footer fs14">
     <section id="license">
@@ -105,8 +169,7 @@
       <div class="header"><span>分享文章</span></div>
       <div class="body">
         <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://humble2967738843.github.io/2024/04/10/tui-jian-xi-tong/" /></div>
-        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://humble2967738843.github.io/2024/04/10/tui-jian-xi-tong/&title=推荐系统 - humbleyl&summary=一级标题二级标题三级标题dccdsdscsd
-"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject=推荐系统 - humbleyl&amp;body=http://humble2967738843.github.io/2024/04/10/tui-jian-xi-tong/"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://humble2967738843.github.io/2024/04/10/tui-jian-xi-tong/&title=推荐系统 - humbleyl&summary=第一章 推荐系统概述1.1推荐系统的意义推荐系统就是一个将信息生产者和信息消费者连接起来的桥梁。平台往往会作为推荐系统的载体，实现信息生产者和消费者之间信息的匹配。上述提到的平台方、信息生产者和消费者可以分别用平台方（如：腾讯视频、淘..."><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject=推荐系统 - humbleyl&amp;body=http://humble2967738843.github.io/2024/04/10/tui-jian-xi-tong/"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
         
         <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
           <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://humble2967738843.github.io/2024/04/10/tui-jian-xi-tong/"/>
@@ -130,7 +193,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-text">一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-text">二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-text">三级标题</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer">
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="toc-text">第一章 推荐系统概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-text">1.1推荐系统的意义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E5%8F%B0%E6%96%B9"><span class="toc-text">平台方</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80"><span class="toc-text">第二章 推荐系统算法基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E7%BB%8F%E5%85%B8%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B"><span class="toc-text">2.1经典召回模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1%E5%9F%BA%E4%BA%8E%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E7%9A%84%E5%8F%AC%E5%9B%9E"><span class="toc-text">2.1.1基于协同过滤的召回</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-text">核心思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E4%BC%BC%E5%BA%A6%E5%BA%A6%E9%87%8F%E6%96%B9%E6%B3%95"><span class="toc-text">相似度度量方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">适用场景</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer">
 
 <a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel blur'>

@@ -4,13 +4,27 @@
   
     
     <entry>
-      <title></title>
+      <title>推荐系统</title>
       <link href="/2024/04/10/tui-jian-xi-tong/"/>
       <url>/2024/04/10/tui-jian-xi-tong/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>c</p><p>吃撒擦拭</p>]]></content>
       
       
+      <categories>
+          
+          <category> 搜广推 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> DeepFM </tag>
+            
+            <tag> FFM </tag>
+            
+        </tags>
       
     </entry>
     

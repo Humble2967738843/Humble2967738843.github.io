@@ -6,7 +6,7 @@
   <link href="http://humble2967738843.github.io/atom.xml" rel="self"/>
   
   <link href="http://humble2967738843.github.io/"/>
-  <updated>2024-05-26T09:25:07.225Z</updated>
+  <updated>2024-05-26T11:14:12.534Z</updated>
   <id>http://humble2967738843.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于链式推理的文档级事件论元提取</title>
+    <link href="http://humble2967738843.github.io/2024/05/06/ji-yu-lian-shi-tui-li-de-wen-dang-ji-shi-jian-lun-yuan-ti-qu/"/>
+    <id>http://humble2967738843.github.io/2024/05/06/ji-yu-lian-shi-tui-li-de-wen-dang-ji-shi-jian-lun-yuan-ti-qu/</id>
+    <published>2024-05-06T04:21:08.000Z</published>
+    <updated>2024-05-26T11:14:12.534Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Document-Level Event Argument Extraction With A Chain Reasoning</summary>
+        
+      
+    
+    
+    
+    <category term="事件参数抽取" scheme="http://humble2967738843.github.io/categories/%E4%BA%8B%E4%BB%B6%E5%8F%82%E6%95%B0%E6%8A%BD%E5%8F%96/"/>
+    
+    
+    <category term="ACL2023" scheme="http://humble2967738843.github.io/tags/ACL2023/"/>
+    
+  </entry>
   
   <entry>
     <title>推荐系统</title>
@@ -413,27 +438,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;自注意力机制&quot;&gt;&lt;a href=&quot;#自注意力机制&quot; class=&quot;headerlink&quot; title=&quot;自注意力机制&quot;&gt;&lt;/a&gt;自注意力机制&lt;/h1&gt;&lt;h2 id=&quot;Sophisticated-input&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>39核对矩阵的维数</title>
-    <link href="http://humble2967738843.github.io/2023/12/24/39-he-dui-ju-zhen-de-wei-shu/"/>
-    <id>http://humble2967738843.github.io/2023/12/24/39-he-dui-ju-zhen-de-wei-shu/</id>
-    <published>2023-12-24T05:07:34.929Z</published>
-    <updated>2024-05-26T05:12:49.422Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;39-核对矩阵的维数&quot;&gt;&lt;a href=&quot;#39-核对矩阵的维数&quot; class=&quot;headerlink&quot; title=&quot;39 核对矩阵的维数&quot;&gt;&lt;/a&gt;39</summary>
         
       
     

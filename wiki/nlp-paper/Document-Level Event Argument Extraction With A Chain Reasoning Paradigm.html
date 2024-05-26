@@ -19,24 +19,19 @@
   <title>humbleyl</title>
 
   
-    <meta name="description" content="绪论基本概念 1.1引言问题  通过计算的手段，利用经验来改善系统自身的性能 有了数据 通过某种学习算法 得到模型 进行预测  1.2基本术语1.有了数据  数据集：100个西瓜🍉  样本：1个西瓜  特征向量：  样本空间；  色泽、大小、敲起来的振幅；  维度    属性：色泽   2.通过某种学习算法  学习 训练  3.得到模型  有监督学习：  分类  二分类  Y 正负  瓜农眼中：">
-<meta property="og:type" content="article">
+    <meta name="description" content="Document-Level Event Argument Extraction With A Chain Reasoning Paradigm 文档级事件参数提取旨在识别句子级别之外的事件参数，其中一个重大挑战是对远程依赖关系进行建模。针对这一挑战，我们为该任务提出了一种新的链式推理范式，它可以生成可分解的一阶逻辑规则进行推理。由于链的组合性质，这种范式自然地捕获了远程相互依赖，这也通过显式地建">
+<meta property="og:type" content="website">
 <meta property="og:title" content="humbleyl">
-<meta property="og:url" content="http://humble2967738843.github.io/2023/12/07/00-xu-lun-ji-ben-gai-nian/index.html">
+<meta property="og:url" content="http://humble2967738843.github.io/wiki/nlp-paper/Document-Level%20Event%20Argument%20Extraction%20With%20A%20Chain%20Reasoning%20Paradigm.html">
 <meta property="og:site_name" content="humbleyl">
-<meta property="og:description" content="绪论基本概念 1.1引言问题  通过计算的手段，利用经验来改善系统自身的性能 有了数据 通过某种学习算法 得到模型 进行预测  1.2基本术语1.有了数据  数据集：100个西瓜🍉  样本：1个西瓜  特征向量：  样本空间；  色泽、大小、敲起来的振幅；  维度    属性：色泽   2.通过某种学习算法  学习 训练  3.得到模型  有监督学习：  分类  二分类  Y 正负  瓜农眼中：">
+<meta property="og:description" content="Document-Level Event Argument Extraction With A Chain Reasoning Paradigm 文档级事件参数提取旨在识别句子级别之外的事件参数，其中一个重大挑战是对远程依赖关系进行建模。针对这一挑战，我们为该任务提出了一种新的链式推理范式，它可以生成可分解的一阶逻辑规则进行推理。由于链的组合性质，这种范式自然地捕获了远程相互依赖，这也通过显式地建">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2023/12/07/o4PD9Ujh3gv8kwY.png">
-<meta property="og:image" content="https://s2.loli.net/2023/12/07/Wztg3MfNDEOTeFr.png">
-<meta property="og:image" content="https://s2.loli.net/2023/12/07/GHZhEfSA4LRwTDq.png">
-<meta property="og:image" content="https://s2.loli.net/2023/12/07/L1QyENhxDmu8ZYv.png">
-<meta property="og:image" content="https://s2.loli.net/2023/12/07/LMEKs2BmryC5WAD.png">
-<meta property="og:image" content="https://s2.loli.net/2023/12/07/HPEFTV3aB15gy6r.png">
-<meta property="article:published_time" content="2023-12-07T10:22:21.575Z">
-<meta property="article:modified_time" content="2023-12-10T13:27:39.979Z">
+<meta property="og:image" content="http://humble2967738843.github.io/wiki/nlp-paper/attachments/T4XFLP62.png">
+<meta property="article:published_time" content="2024-05-26T04:28:04.022Z">
+<meta property="article:modified_time" content="2024-05-26T04:27:56.444Z">
 <meta property="article:author" content="yuan long">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2023/12/07/o4PD9Ujh3gv8kwY.png">
+<meta name="twitter:image" content="http://humble2967738843.github.io/wiki/nlp-paper/attachments/T4XFLP62.png">
 <meta name="twitter:creator" content="@humbleyl">
   
   
@@ -62,7 +57,7 @@
 <!-- hexo injector head_end end --></head>
 <body>
 
-<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body s:aa content tech" id="start" layout="page" ><aside class="l_left"><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://s2.loli.net/2024/04/10/32Y4obwgxJCeOMr.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">humbleyl</div><div class="sub normal cap">院龙的博客</div><div class="sub hover cap" style="opacity:0"> humbleyl</div></a></div></header>
@@ -74,8 +69,6 @@
 <nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="文档" href="/wiki/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a><a class="nav-item" title="探索" href="/explore/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a></nav>
 </div>
 <div class="widgets">
-
-
 <widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/04/10/tui-jian-xi-tong/"><span class="title">推荐系统</span></a><a class="item title" href="/2023/11/02/suan-fa-bi-ji-v2.0/"><span class="title">算法笔记V2.0</span></a><a class="item title" href="/2023/12/02/16-1-ci-qian-ru-word2vec/"><span class="title">16.1词嵌入（Word2Vec）</span></a><a class="item title" href="/2023/12/06/ci-xiang-liang-yu-yu-yan-mo-xing/"><span class="title">词向量与语言模型</span></a><a class="item title" href="/2023/11/16/kaggle-s-30-days-of-ml/"><span class="title">Kaggle's_30_Days_Of_ML</span></a><a class="item title" href="/2023/11/02/qing-jing-xue-xi-chuang-jian-ren-wu-xiang-liang/"><span class="title">情境学习创建任务向量</span></a><a class="item title" href="/2023/11/02/she-ji-mo-shi/"><span class="title">设计模式</span></a><a class="item title" href="/2023/11/09/wen-xian-zheng-li/"><span class="title">文献整理</span></a><a class="item title" href="/2023/11/06/wang-diao-ni-xiang-wang-diao-de-dong-xi-llms-de-gao-xiao-wang-que/"><span class="title">忘掉你想忘掉的东西：LLMs的高效忘却</span></a><a class="item title" href="/2023/11/02/zhi-shi-shen-jing-yuan-zhong-xin-zhi-lu-yu-yan-wu-guan-zhi-shi-shen-jing-yuan-he-jian-bing-zhi-shi-shen-jing-yuan-de-fa-xian/"><span class="title">知识神经元中心之旅：语言无关知识神经元和简并知识神经元的发现</span></a></div></widget>
 </div>
 <footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/placeholder/social/08a41b181ce68.svg"/></a><a class="social" href="https://" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/placeholder/social/3845874.svg"/></a><a class="social" href="https://" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/placeholder/social/3616429.svg"/></a><a class="social" href="https://" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/placeholder/social/942ebbf1a4b91.svg"/></a></div></footer>
@@ -88,181 +81,74 @@
 <div class="article banner top">
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
-<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-12-07T10:22:21.575Z">2023-12-07</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2023-12-10T13:27:39.979Z">2023-12-10</time></span></div></div></div>
+
+  <span class="sep"></span>
+  <a class="cap breadcrumb" href="/wiki/nlp-paper/Document-Level%20Event%20Argument%20Extraction%20With%20A%20Chain%20Reasoning%20Paradigm.html"></a>
+  </div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-05-26T04:28:04.022Z">2024-05-26</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-05-26T04:27:56.444Z">2024-05-26</time></span></div></div></div>
     
   </div>
-  </div><article class="md-text content"><h1 id="绪论基本概念"><a href="#绪论基本概念" class="headerlink" title="绪论基本概念"></a>绪论基本概念</h1><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/07/o4PD9Ujh3gv8kwY.png" alt="image-20231207182255445"></p>
-<h2 id="1-1引言"><a href="#1-1引言" class="headerlink" title="1.1引言"></a>1.1引言</h2><p><strong>问题</strong></p>
-<ol>
-<li>通过计算的手段，利用经验来改善系统自身的性能</li>
-<li>有了数据</li>
-<li>通过某种学习算法</li>
-<li>得到模型</li>
-<li>进行预测</li>
-</ol>
-<h2 id="1-2基本术语"><a href="#1-2基本术语" class="headerlink" title="1.2基本术语"></a>1.2基本术语</h2><p>1.有了数据</p>
-<ul>
-<li><p>数据集：100个西瓜🍉</p>
-</li>
-<li><p>样本：1个西瓜</p>
-</li>
-<li><p>特征向量：</p>
-<ul>
-<li><p>样本空间；</p>
-</li>
-<li><p>色泽、大小、敲起来的振幅；</p>
-</li>
-<li><p>维度</p>
-</li>
-</ul>
-</li>
-<li><p>属性：色泽</p>
-</li>
-</ul>
-<p>2.通过某种学习算法</p>
-<ul>
-<li>学习</li>
-<li>训练</li>
-</ul>
-<p>3.得到模型</p>
-<ul>
-<li><p><strong>有监督学习</strong>：</p>
-<ul>
-<li><p>分类</p>
-<ul>
-<li><p>二分类</p>
-<ul>
-<li><p>Y 正负</p>
-</li>
-<li><p>瓜农眼中：这个瓜该不该摘，这个瓜熟没熟，我要不要摘<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/07/Wztg3MfNDEOTeFr.png" alt="image-20231207184933954"></p>
-</li>
-</ul>
-</li>
-<li><p>多分类</p>
-<ul>
-<li><p>Y大于2</p>
-</li>
-<li><p>市场上要买哪种瓜</p>
-<ul>
-<li><p>黑美人<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/07/GHZhEfSA4LRwTDq.png" alt="image-20231207185136355"></p>
-</li>
-<li><p>小地雷<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/07/L1QyENhxDmu8ZYv.png" alt="image-20231207185150282"></p>
-</li>
-<li><p>特小凤<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/07/LMEKs2BmryC5WAD.png" alt="image-20231207185206503"></p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>回归</p>
-<ul>
-<li><p>Y = R 实数集</p>
-</li>
-<li><p>某段时间内西瓜的价格，啥时间卖西瓜最合适<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2023/12/07/HPEFTV3aB15gy6r.png" alt="image-20231207185346067"></p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>无监督学习</strong>：</p>
-<ul>
-<li><p>聚类</p>
-<ul>
-<li><p>我们不知道要分几类，机器自己分</p>
-</li>
-<li><p>每个组称为“簇” cluster</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>4.进行预测</p>
-<ul>
-<li>测试</li>
-<li>测试样本</li>
-<li>泛化能力</li>
-</ul>
-<h2 id="1-3假设空间"><a href="#1-3假设空间" class="headerlink" title="1.3假设空间"></a>1.3假设空间</h2><ol>
-<li><p>科学的推理手段</p>
-<ul>
-<li><p>归纳：特殊到一般</p>
-<ul>
-<li><p>狭义：从训练数据中得到概念</p>
-<ul>
-<li><p>布尔概念：是或不是</p>
-</li>
-<li><p>假设就是各种情况</p>
-</li>
-</ul>
-</li>
-<li><p>广义：从样本中学习</p>
-</li>
-</ul>
-</li>
-<li><p>演绎：一般到特殊</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="1-4归纳偏好"><a href="#1-4归纳偏好" class="headerlink" title="1.4归纳偏好"></a>1.4归纳偏好</h2><ul>
-<li>同一个数据集训练出了不同的模型，如何选择模型</li>
-<li>原则：<strong>奥卡姆剃刀原理：选择最简单的那个，也有其他理解</strong></li>
-<li>推了半天期望，由于假设不成立，我们跳过，P8出现了很多符号</li>
-</ul>
-
-<div class="article-footer fs14">
-    <section id="license">
-      <div class="header"><span>许可协议</span></div>
-      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
-</div>
-    </section>
-    
-    <section id="share">
-      <div class="header"><span>分享文章</span></div>
-      <div class="body">
-        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://humble2967738843.github.io/2023/12/07/00-xu-lun-ji-ben-gai-nian/" /></div>
-        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://humble2967738843.github.io/2023/12/07/00-xu-lun-ji-ben-gai-nian/&title= - humbleyl&summary=绪论基本概念
-1.1引言问题
-
-通过计算的手段，利用经验来改善系统自身的性能
-有了数据
-通过某种学习算法
-得到模型
-进行预测
-
-1.2基本术语1.有了数据
-
-数据集：100个西瓜🍉
-
-样本：1个西瓜
-
-特征向量：
-
-样本空间；
-
-色..."><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject= - humbleyl&amp;body=http://humble2967738843.github.io/2023/12/07/00-xu-lun-ji-ben-gai-nian/"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
-        
-        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
-          <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://humble2967738843.github.io/2023/12/07/00-xu-lun-ji-ben-gai-nian/"/>
-        </div>
-        
-      </div>
-    </section>
-    </div>
+  </div><article class="md-text content"><p>Document-Level Event Argument Extraction With A Chain Reasoning Paradigm</p>
+<p>文档级事件参数提取旨在识别句子级别之外的事件参数，其中一个重大挑战是对远程依赖关系进行建模。针对这一挑战，我们为该任务<span style="background-color: #ff666680">提出了一种新的链式推理范式，它可以生成可分解的一阶逻辑规则进行推理。由于链的组合性质，这种范式自然地捕获了远程相互依赖，这也通过显式地建模推理过程来提高可解释性</span>。我们<span style="background-color: #ff666680">引入 T 范数模糊逻辑进行优化，它允许端到端学习，并有望将逻辑推理的表达能力与神经网络的泛化相结合</span>。在实验中，我们表明我们的方法在两个标准基准上明显优于以前的方法（F1 中超过 6 个点）。此外，它在资源匮乏的情况下具有数据效率，并且足够强大以防御对抗性攻击。</p>
+<p>1.</p>
+<p>识别事件参数（即事件的参与者）是文档级事件理解的一项关键任务（Ebner et al., 2020；Li et al., 2021）。在此任务中，主要挑战是对事件触发器和参数之间的远程依赖关系进行建模，因为事件表达式可以跨越多个句子（Ebner 等人，2020；Liu 等人，2021；Li 等人，2021）。考虑图 1 中由触发引爆（类型 = 攻击）表示的事件。为了定位其参数 Tartus（语义角色 = 地点），模型应捕获包含三个句子和 178 个单词的大型上下文窗口，以支持推理过程。</p>
+<p>目前，有效捕获此类依赖关系仍然是一个悬而未决的问题（Liu et al., 2021, 2022c）。先前的研究提出建模通过结合分层编码机制（Du and Cardie，2020a）、生成范式（Li et al.，2021；Ma et al.，2022；Du et al.，2022）和文档级归纳偏差（Wei等人，2021；Pouran Ben Veyseh 等人，2022；Liu 等人，2022b)。然而，此类方法并未明确表征文档上下文背后的推理模式，这可能会导致性能不佳。此外，大多数以前的方法都是不可解释的，因为它们依赖于黑盒神经网络。</p>
+<p>在本文中，我们提出了一种新的推理链范式来解决文档级事件参数提取（EAE）。如图 1 底部所示，<span style="background-color: #ff666680">我们的方法试图通过一系列局部推理步骤来描述全局参数查找过程。</span>例如，我们可以使用以下链来定位塔尔图斯：<span style="background-color: #ff666680">引爆目标→Arzunah Bridge locatedIn→塔尔图斯。</span>与以前的方法相比，这种推理链范式具有三个明显的好处：<span style="background-color: #ff666680">首先，由于推理链的组合结构，它自然地捕获了长距离依赖关系</span>。其次，<span style="background-color: #ff666680">它只涉及局部推理，这在概念上比直接执行全局推理更容易</span>。第三，<span style="background-color: #ff666680">它提高了可解释性，因为推理过程是可见的</span>。</p>
+<p>我们的方法将推理链形式化为一阶逻辑（FOL）规则（Cresswell 和 Hughes，1996）。具体来说，<span style="background-color: #ff666680">令 RL(T , ?) 为对事件参数的查询，该事件参数满足关于事件触发器 T 的语义角色 RL （例如，地点）</span>。我们将查询形式化为以下 FOL 规则：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="attachments/T4XFLP62.png" alt="\&lt;img alt=&quot;&quot; data-attachment-key=&quot;T4XFLP62&quot; width=&quot;513&quot; height=&quot;69&quot; src=&quot;attachments/T4XFLP62.png&quot; ztype=&quot;zimage&quot;&gt;"></p>
+<p>其中<span style="background-color: #ff666680">规则主体（右侧）由具有低级谓词 {ri}1n 和中间线索实体 {Bi}n−1 1 的合取命题组成</span>。我们<span style="background-color: #ff666680">构建一个模型，根据文档上下文自动生成规则，然后将规则转换为推理链来定位事件参数</span>。然而，由于 FOL 规则的离散性质，使用 FOL 规则进行优化通常具有挑战性（Qu 等人，2021a）。受到使用 FOL 增强神经网络的工作的启发（Li 和 Srikumar，2019；Ahmed 等人，2022），我们<span style="background-color: #ff666680">提出了用于松弛的 T-Norm 模糊逻辑（Hajek，1998），这导致了端到端的训练机制。</span></p>
+<p>我们在两个基准上验证了我们的方法的有效性（Ebner 等人，2020；Li 等人，2021）。根据结果​​，我们的方法通过这种链式推理范式提供了有希望的结果，例如与使用大规模外部资源训练的模型相比，F1 提高了 6 个点（第 6.1 节）。有趣的是，除了性能提升之外，我们的方法还表现出良好的鲁棒性，特别是在资源匮乏的情况下和防御对抗性噪音（第 7.2 节）。最后，我们使用彻底的案例研究来评估我们方法的可解释性（第 7.3 节）。</p>
+<p>2 相关工作</p>
+<p><strong>使用 FOL 规则进行推理</strong>。一阶逻辑（FOL）规则可以对声明性知识进行编码，并在符号推理中发挥至关重要的作用（Cresswell 和 Hughes，1996）。在深度学习时代，多项研究探讨了 <span style="background-color: #2ea8e580">FOL 规则与神经网络的集成以进行推理（称为神经符号方法），以及在知识库推理（Qu 等人，2021b）、文本蕴涵（Li 和 Srikumar）中的应用，2019）、问答（Wang 和 Pan，2022）以及其他（Medina 等人，2021；Ahmed 等人，2022）</span>。我们的方法<span style="background-color: #ff666680">受到知识库推理工作的启发，据我们所知，这是在文档级 EAE 背景下合并 FOL 规则进行推理的首次尝试</span>。与其他方法相比，我们研究了使用神经网络自动生成规则，而不是像（Li 和 Srikumar，2019；Wang 和 Pan，2022）那样采用专家编写的规则。此外，与基于强化学习的方法不同（Qu et al., 2021b），我们使用 T 范数进行规则松弛，从而形成具有更稳定学习过程的端到端训练范例。</p>
+<p>3 方法</p>
+<p>图 2 概述了我们的方法，并提供了一个提取事件引爆的 Place 角色参数的示例。令 D = {w1, · · · , T, · · · , wN } 为包含 N 个单词和事件触发器 T 的文档，并令 RL(T , ?) 为对语义角色 RL 的事件参数的查询。我们的方法不是直接执行可能涉及高级过程的推理，而是将查询表示为具有连接命题和低级谓词的 FOL 规则{ri}1n：</p>
+<p>这样，规则的主体就暗示了一个推理链：T r1 → B1 r2 → · · · Bn−1 rn → ?。我们使用双谓词公式，特别是RL(T, ?) ← r1(T, B) ∧ r2(B, ?)为了解释我们的方法，我们在第 4 节中描述了一般情况。</p>
+<p>3.1</p>
+<p>在我们方法的第一步中，我们创建一组实体，可以从中选择一个实体作为中间线索实体以形成推理链（关于我们的双谓词结构）。<span style="background-color: #ff666680">我们扩大了“实体”的概念，以包含文档中的任何单个单词，以合并基于动词的提示</span>。<span style="background-color: #ff666680">为了限制集合的大小，我们给每个单词一个分数源自 BERT 表示</span>（Devlin 等人，2019）。例如，wi 的得分为：</p>
+<p>其中hwi是wi的表示，ws和bs是模型参数。我们根据疮口对所有单词进行排序，并选择疮口最高的 K 个单词组成集合，表示为 B = {bi}iK=1。</p>
+<p>为了促进训练和测试，我们还生成了一个参数候选集。在这种情况下，<span style="background-color: #2ea8e580">我们不使用实体的广义定义，因为事件参数被定义为名词实体</span>（Walker and Consortium，2005；Ahn，2006）。当真实实体可用时（例如在 WikiEvents (Li et al., 2021) 中），我们将候选集视为真实实体集；否则，我们使用外部工具包2来识别实体。我们用 A = {ai}iL=1 表示参数候选集。</p>
+<p>3.2</p>
+<p>给定实体候选集B和参数候选集A，下一步是生成两个谓词并选择集合中的相关候选者以形成规则。在这里，我们解释了生成关于特定实体参数对（B ∈ B，A ∈ A）的谓词的方法，并且我们在第 4 节中展示了对不同候选对生成的规则进行排名的度量。</p>
+<p>谓词表示。在我们的方法中，我们假设有 M 个原子谓词不可分解的语义，由谓词集 R = {Ri}iM=1 表示。我们给每个谓词一个 d 维向量化表示，并导出 R 的矩阵表示 U ∈ RM×d。对于语义角色 RL，我们还给它一个 d 维表示，由 rRL ∈ Rd 表示。</p>
+<p>学习角色-谓词关联。给定这些表示，我们首先学习角色-顶级谓词关联，该关联指示哪些谓词可能仅基于角色而不考虑上下文而生成。我们采用自回归学习并生成概率向量 a(1) RL ∈ RM 指示第一个谓词 r1 在谓词集 R 上的分布：</p>
+<p>其中 W (1) s ∈ Rd×d 是一个参数。为了了解第二个谓词 r2 的分布，我们首先通过整合第一个谓词的影响来更新角色的表示：</p>
+<p>然后计算概率向量 a(2) RL ∈ RM ：</p>
+<p>其中 W (1) a ∈ RM×d 和 W (2) s ∈ Rd×d 是要学习的参数。我们可以将 r1 和 r2 分别设置为 a(1) RL 和 a(2) RL 中概率最高的谓词。然而，这种方法总是为语义角色生成相同的谓词，并且性能相当差（7.1）。作为解决方案，我们引入了一种根据上下文对谓词重新排序的机制。</p>
+<p>上下文相关谓词生成。设 X 和 Y 为两个实体。我们首先计算一个概率向量 v(X,Y ) ∈ RM 表示 (X,Y ) 与每个谓词 R ∈ R 的兼容性，以形成命题 R(X, Y )：</p>
+<p>其中 hX ​​和 hY 是 X 和 Y 的表示，⊕ 是串联运算符，W ∈ Rm×2d 是模型参数。我们将兼容性概率与角色谓词关联概率相结合，以生成最终谓词。具体来说，对于事件触发器 T ，一定实体 B ∈ B 和参数候选 A ∈ A，我们生成以下两个谓词：</p>
+<p>其中 是逐元素乘法运算符，sX 表示被选为候选线索实体集 B 中的实体 X 的得分（式（1））。这样，生成的 FOL 规则为 RL(T, A) ← r1(T, B) ∧ r2(B, A)，暗示到达事件参数 A 的推理路径： T r1 −→ B r2 −→ A 。\<br>4.</p>
+<p>由于 FOL 规则的离散性，使用 FOL 规则进行优化通常具有挑战性（Qu 等人，2021a）。在这里，我们提出了用于松弛的 T-Norm 模糊逻辑，它产生了端到端的学习过程。</p>
+<p>用于松弛的 T 范数模糊逻辑。 T-Norm 模糊逻辑通过承认 1（真值）和 0（假值）之间的中间真值来概括经典的二值逻辑。对于我们生成的 FOL 规则 RL(T, A) ← r1(T, B) ∧ r2(B, A)，我们将 r1(T, B) 和 r2(B, A) 的真值设置为相应的分数式（6）和式（7）中，分别记为p1和p2。然后，遵循 Łukasiewicz T-Norm 逻辑，两个命题的合取对应于：</p>
+<p>我们将其重写为度量4：M (T, B, A) = p(r1(T, B) ∧ r2(B, A)) 并将其用于规则排序和优化。特别地，我们枚举每个实体参数对 (B, A) ∈ B × A，并用 ( ˆ B, ˆ A) 表示得分最高的一个。然后我们得出以下优化损失：</p>
+<p>其中θ表示整体参数集（在训练时，ground-truth参数是已知的，我们可以直接将最优参数设置为ground-truth）。尽管我们的方法考虑了每个候选实体和参数，但我们通过并行张量运算表明，我们的方法与先前的方法一样有效地进行竞争（参见附录 A.1）。</p>
+<p>概括为一般情况。我们使用结构二谓词结构来解释我们的方法，但是很容易将其适用于具有任意数量谓词的一般情况。现在假设一个 n 谓词结构。我们首先使用类似于等式 1 的自回归机制来学习一系列角色预测关联向量 a(1) RL 、 a(2) RL 、…、a(n) RL 。 （3）和（4）。然后，我们重新排序并生成谓词r1，r2，····，rn以形成逻辑规则。为了优化，我们驱动以下度量 p(r1∧r2∧···∧rn) = min(p1, p2,···, pn)，这类似于等式： (8)进行规则排序和模型训练。</p>
+<p>5.</p>
+<p>基准和评估。我们使用两个文档级 EAE 基准进行实验：RAMS（Ebner 等人，2020）和 WikiEvents（Li 等人，2021）。 RAMS基准定义了139种事件类型和59种语义角色，并给出了7,329个带注释的文档； WikiEvents 基准定义了 50 个事件类型和 59 个语义角色，并提供了 246 个带注释的文档。详细的数据统计如表1所示。接下来（Ebner et al., 2020; Liu et al., 2021），我们采用类型约束解码（TCD）设置进行评估，假设事件触发器及其类型已知。我们在 RAMS 上使用 Span-F1，在 WikiEvents 上使用 Head-F1 和 Coref-F1 作为评估指标，其中 Head-F1 仅检查参数中的中心词，Coref-F1 还考虑参数之间的共指链接（Du 和Cardie 等人，2020a；Li 等人，2021；Ma 等人，2022）。</p>
+<p>实施。在我们的方法中，我们使用 BERTbase 来学习上下文单词表示（Devlin 等人，2019）。使用开发集调整超参数。最后，实体候选集K的大小设置为40，从范围[20,30,40,50]中选择，而参数候选集的大小由外部实体识别器自动确定。谓词数量 M 设置为 [10, 15, 20, 25] 选项中的 20 个。为了优化，我们使用 Adam 优化器（Kingma 和 Ba，2015），批量大小为 10（来自 [5, 10, 15, 20]），学习率为 1e-4（来自 [1e-3, 1e-4, 1e]） -5]。</p>
+<p>基线。为了进行比较，我们考虑以下四类方法：1）传统方法，例如 BIOLabel（Shi 和 Lin，2019），它将任务视为顺序标记问题。 2）全局编码方法，例如 QAEE（Du 和 Cardie，2020b）和 DocMRC（Liu 等人，2021），它们将任务形成为基于文档的问答问题，以及 MemNet（Du 等人，2022） ），它使用内存来存储全局事件信息。 3）生成方法，例如BART-Gen（Li et al., 2021），它提出了用于参数提取的序列到序列范式，以及PAIE（Ma et al., 2022），它采用集合生成公式。 4）使用额外监督的方法，例如采用框架相关知识的FEAE（Wei et al., 2021）和利用抽象意义表示（AMR）资源的TSAR（Xu et al., 2022）。</p>
+<p>6.</p>
+<p>在本节中，我们将介绍关键结果，按整体性能和捕获远程依赖项的结果分开。</p>
+<p>6.1</p>
+<p>表 2 和表 3 分别显示了不同模型在 RAMS 和 WikiEvents 上的性能。通过采用推理链范式，我们的方法显着优于以前的方法，并实现了最先进的性能——RAMS 上的 F1 为 56.1%，WikiEvents 上的 Head-F1 和 Coref-F1 为 72.3%。值得注意的是，我们的模型不使用外部资源进行训练，但它比以前使用大量外部资源训练的模型在 RAMS 上的 F1 中优于 6%，在 WikiEvents 上的 Head-F1 中优于 4%（在 Coref-F1 中为 7%）。此外，我们发现主要的改进来自于召回率的提高，这表明学习推理逻辑规则有助于定位以前的全局推理方法难以找到的论点。</p>
+<p>6.2</p>
+<p>然后，我们评估不同模型处理远程依赖关系的能力，这对于文档级任务至关重要。表 4 和表 5 相应地显示了不同参数触发距离 d 的结果，我们的模型在解决远程依赖性方面取得了显着的性能，例如，当 d=-1 时，F1 的绝对改进为 10.9%、15.7% 和 6.7%， RAMS 上分别为 d=1 和 d=2。有效性背后的见解是，通过采用推理链范式，我们的方法可以利用线索实体来缩短触发器和论点之间的距离，从而促进长上下文学习。尽管如此，我们还注意到，当参数是触发器之前的两个句子时（d=-2），我们的方法产生相对较差的性能。一个可能的原因是我们的推理链总是从触发器开始，而我们没有定义反向谓词5，这可能会限制其灵活性。我们将解决这些问题以供进一步的工作。</p>
+<p>7.</p>
+<p>我们进行了一系列详细的研究，以进一步验证我们模型的有效性。为了方便讨论，我们使用 RAMS 基准测试作为案例。</p>
+<p>7.1</p>
+<p>我们进行消融研究来分析不同成分的影响。</p>
+<p>谓词生成的影响。表6将我们的方法与采用各种谓词生成策略的方法进行了对比：1）“w/o Predicate Generation”，直接生成推理路径而不生成谓词（换句话说，它只关心两个变量之间是否存在关系） ，但没有具体关系）。 2）“w/o Role Association”，消除了角色-谓词关联学习过程，其中谓词纯粹由两个变量确定。 3）“无 CTX 重新排名”，其中省略了上下文相关的谓词重新排序过程，其中谓词完全由角色生成。<span style="background-color: #ff666680">结果表明，谓词生成对于推理至关重要；如果没有它，性能会显着下降（F1 中为 23.9%）。</span>此外，<span style="background-color: #ff666680">角色的语义对于谓词生成至关重要；如果没有它，F1 的性能会下降 15.7%。</span>最后，<span style="background-color: #ff666680">学习上下文相关谓词重新排序是有利的，导致 F1 绝对提高 3.9%。</span></p>
+<p>规则长度的消融。表7检查了LOC规则中谓词计数的影响，其中N（严格）表示我们精确地采用具有N个谓词的规则，N（自适应）表示我们采用最多具有N个谓词的规则并考虑预测自适应地获得最大分数，N（Ensemble）表示我们通过对参数的最终分数求和来集成结果。<span style="background-color: #ff666680">结果表明，指定固定数量的谓词会导致性能较差，而提供选择不同数量的谓词的选项会带来出色的性能</span>。这也<span style="background-color: #5fb23680">意味着论证寻找过程确实涉及不同的推理模式。</span>此外，我们没有注意到 N（自适应）相对于N（Ensemble），表明FOL规则可能不利于集成。</p>
+<p>谓词数量的消融。图3考察了基于RAMS开发集的谓词数量对最终性能的影响，以及它们与规则长度的联合效应（我们使用Adaptive设置）。根据结果​​，<span style="background-color: #ff666680">我们的方法对谓词数量不敏感，并且当谓词数量超过 15 时始终保持高性能</span>。此外，<span style="background-color: #ff666680">我们证明当规则长度增加时可以减少谓词数量（例如，从两个到三个）。这是有道理的，因为更长的规则意味着更长的推理链，而推理链已经具有高度的内在表达性。相反，对于长度为 1 的 FOL 规则，即使我们增加谓词数量以增加其多样性，性能也始终不能令人满意。<br>7.2</span></p>
+<p>鉴于我们的方法使用 FOL 规则来捕获基本推理模式，它可能比以前的推理方法更强大。我们通过分析其在低资源场景下的性能和防御对抗性攻击的性能来验证这一假设（Jia和Liang，2017）。</p>
+<p>资源匮乏场景中的性能。图 4 比较了资源匮乏条件下的不同模型，其中显示模型仅在部分训练数据上进行训练（我们报告 5 次运行平均值以对抗随机性）。显然，我们的方法始终优于其他方法，并且值得注意的是，在极低的资源设置（少于 5% 的训练数据）下，它优于基于大型预训练语言模型和基于外部资源的 TSAR 提示的 PAIE，这表明了其有效性和学习 FOL 推理规则的普遍性。随着更多训练数据的可用，性能会提高。</p>
+<p>防御对抗性攻击。图 5 显示了通过在测试示例中注入三种形式的噪声来防御对抗性攻击的结果。 ATK1：我们随机将句子中包含触发器的单词替换为槽符号[BLANK]； ATK2：我们将损坏的句子“答案是[空白]”放在包含触发器的句子后面。ATK3：我们在包含触发器的句子后面插入句子“[角色]的参数是[空白]”，其中 [ROLE] 被我们关注的语义角色所取代，考虑了两种设置： 攻击（随机），其中槽位填充有参数。在其他情况下发挥相同的作用。攻击（金色），其中槽填充了真实参数，但如果模型预测槽中的参数是答案，我们认为这是一个错误，因为注入的句子与上下文无关。结果表明，我们的方法在防御对抗性攻击方面表现出色，尤其是在“攻击（随机）”设置下（见图 5(a)）。原因之一是我们的方法强制预测与文档上下文中其他实体具有语义关系的参数，因此它受隔离注入参数的影响较小。使用真实参数来防御攻击更具挑战性（图 5(b)），但我们的方法仍然实现了最佳的整体性能。</p>
+<p>7.3</p>
+<p>表 8 通过案例研究检验了我们方法的可解释性。通过分析案例 1)、2) 和 3)，我们建议我们的方法可以为相同的语义角色生成特定的且依赖于上下文的推理规则。此外，情况 2) 和 3) 的推理模式类似，其中 r2 可以解释为 Attacker 谓词，r4 可以解释为 LocationIn 谓词。情况 4) 生成与情况 2) 和 3) 相同的谓词 r2，可以将其解释为支付事件的 Committer 谓词；它与情况 2) 和 3) 中攻击事件的攻击者共享相似的语义。案例 5) 表明我们的方法可以捕获极远的依赖关系。</p>
+<p>8.</p>
+<p>总之，我们提出了一种新的文档级 EAE 链推理范式，展示了捕获远程依赖项和提高可解释性的明显好处。我们的方法构建一阶逻辑规则来表示参数查询，并使用 T-Norm 模糊逻辑进行端到端学习。通过这种机制，我们的方法在两个基准测试中实现了最先进的性能，并在解决资源匮乏场景和防御对抗性攻击方面表现出良好的鲁棒性。在未来的工作中，我们寻求将我们的方法扩展到需要远程依赖关系建模的其他任务，例如文档级关系提取。</p>
+<p>9.</p>
+<p>我们方法的一个限制是，当存在不同长度的规则时，最终结果是由集成决定的，而不是通过构建模型来生成具有最佳长度的单个规则。第二种方式更加自然和重要，因为计算出规则的长度也是符号推理的关键部分。然而，它需要更多的参数化（例如，规则的长度可以是参数）和更高级的优化方法。上述方法的研究留待以后的工作。</p>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/12/08/05-xian-xing-dai-shu/">2023-12-08</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/12/06/ci-xiang-liang-yu-yu-yan-mo-xing/">词向量与语言模型</a></div></section></div>
-
-<div class="related-wrap" id="related-posts">
-    <section class='header'>
-      <div class='title cap theme'>您可能感兴趣的文章</div>
-    </section>
-    <section class='body'>
-    <div class="related-posts"><a class="item" href="\2023\12\10\06-ju-zhen-ji-suan\" title=""><span class="title"></span></a></div></section></div>
-
 
   <div class="related-wrap md-text" id="comments">
     <section class='header cmt-title cap theme'>
@@ -306,14 +192,7 @@ show_runtime();
 </center>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-<div class="widgets">
-
-
-
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%AA%E8%AE%BA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">绪论基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E5%BC%95%E8%A8%80"><span class="toc-text">1.1引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD"><span class="toc-text">1.2基本术语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3%E5%81%87%E8%AE%BE%E7%A9%BA%E9%97%B4"><span class="toc-text">1.3假设空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4%E5%BD%92%E7%BA%B3%E5%81%8F%E5%A5%BD"><span class="toc-text">1.4归纳偏好</span></a></li></ol></li></ol></div><div class="widget-footer">
-
-<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
-</div></aside><div class='float-panel blur'>
+</aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>

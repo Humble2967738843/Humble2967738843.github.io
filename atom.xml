@@ -6,7 +6,7 @@
   <link href="http://humble2967738843.github.io/atom.xml" rel="self"/>
   
   <link href="http://humble2967738843.github.io/"/>
-  <updated>2024-05-26T11:14:12.534Z</updated>
+  <updated>2024-11-23T03:59:41.152Z</updated>
   <id>http://humble2967738843.github.io/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>csac</title>
+    <link href="http://humble2967738843.github.io/2024/11/23/csac/"/>
+    <id>http://humble2967738843.github.io/2024/11/23/csac/</id>
+    <published>2024-11-23T03:59:41.000Z</published>
+    <updated>2024-11-23T03:59:41.152Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>基于链式推理的文档级事件论元提取</title>
@@ -46,7 +59,7 @@
     <link href="http://humble2967738843.github.io/2024/04/10/tui-jian-xi-tong/"/>
     <id>http://humble2967738843.github.io/2024/04/10/tui-jian-xi-tong/</id>
     <published>2024-04-10T04:09:32.000Z</published>
-    <updated>2024-05-26T09:25:07.225Z</updated>
+    <updated>2024-06-26T23:34:34.658Z</updated>
     
     
       
@@ -417,27 +430,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;Transformer&quot;&gt;&lt;a href=&quot;#Transformer&quot; class=&quot;headerlink&quot; title=&quot;Transformer&quot;&gt;&lt;/a&gt;Transformer&lt;/h1&gt;&lt;h2</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>自注意力机制</title>
-    <link href="http://humble2967738843.github.io/2023/12/29/zi-zhu-yi-li-ji-zhi/"/>
-    <id>http://humble2967738843.github.io/2023/12/29/zi-zhu-yi-li-ji-zhi/</id>
-    <published>2023-12-29T02:52:53.232Z</published>
-    <updated>2024-05-26T05:19:07.027Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;自注意力机制&quot;&gt;&lt;a href=&quot;#自注意力机制&quot; class=&quot;headerlink&quot; title=&quot;自注意力机制&quot;&gt;&lt;/a&gt;自注意力机制&lt;/h1&gt;&lt;h2 id=&quot;Sophisticated-input&quot;&gt;&lt;a</summary>
         
       
     
